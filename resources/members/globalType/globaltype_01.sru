@@ -1,0 +1,3 @@
+global type n_cst_controlacceso from nonvisualobject
+end type
+global n_cst_controlacceso n_cst_controlacceso

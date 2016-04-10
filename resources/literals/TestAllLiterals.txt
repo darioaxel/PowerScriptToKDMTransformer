@@ -1,0 +1,15 @@
+integer ii_a = 10 , ii_b = 24
+string is_Name , is_Address1
+
+integer ii_Units //With comments
+double idb_Results
+string is_Lname
+
+integer ii_Weight /* Also this comments
+are fine */
+string is_Name , is_Address1
+string is_Location ="Home"
+private integer ii_test
+
+privatewrite double is_Lname
+privatewrite string idb_Results

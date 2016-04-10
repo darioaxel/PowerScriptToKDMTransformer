@@ -1,0 +1,6 @@
+$PBExportHeader$m_master.srm
+$PBExportComments$Extension Master menu class
+forward
+global type m_master from pfc_m_master
+end type
+end forward

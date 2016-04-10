@@ -1,0 +1,2 @@
+$PBExportHeader$ m_master . srm
+$PBExportComments$ Extension Master menu class 83 con métodos genéricos de MOTORES y temas GRÁFICOS

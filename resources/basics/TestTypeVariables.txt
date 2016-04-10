@@ -1,0 +1,34 @@
+type variables
+// Referencia a la ventana de conexión y selección:
+w_conexion   iw_conexion
+w_seleccion  iw_seleccion
+
+// Tipo de proceso y motor:
+String   is_proceso,  is_motor
+
+// Formato fecha según motor:
+String   is_formatofecha
+
+// Variables del entorno:
+String   is_puesto, is_unidad, is_dirapl,  is_fichini
+
+// Para la conexión con la base de datos:
+String   is_nombre_servidor
+String   is_usua_servidor, is_pswd_servidor
+String   is_tipoconec,  is_dbms,  is_fuente_datos
+String   is_nombre_base
+String   is_usua_base, is_pswd_base
+
+// Versión de Powerbuilder:
+Integer  ii_versionpb
+
+// Licencia y Nº del cliente (se desencripta la lic. de la Nómina al conectar con la B.D.)
+String   is_liccliente
+Integer  ii_numcliente
+// Satxa - 07-Dic-2012.56835
+Integer  ii_tipolicencia
+String		is_AppName
+
+// Proceso Web (subir o bajar)
+String	is_procweb
+end variables
