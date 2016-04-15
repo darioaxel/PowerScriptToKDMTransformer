@@ -6,7 +6,7 @@
 grammar powerscript;
 
 @header {
-package src.grammar.powerscript;
+package org.darioaxel.grammar.powerscript;
 }
 
 compilationUnit

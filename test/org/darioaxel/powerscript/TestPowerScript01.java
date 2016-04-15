@@ -34,13 +34,14 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.TokenSource;
 import org.antlr.v4.runtime.TokenStream;
+import org.darioaxel.grammar.powerscript.powerscript_01Lexer;
+import org.darioaxel.grammar.powerscript.powerscript_01Parser;
 
 import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-import src.grammar.powerscript.powerscript_01Lexer;
-import src.grammar.powerscript.powerscript_01Parser;
+
 
 
 /**

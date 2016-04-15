@@ -5,6 +5,11 @@
 
 grammar powerscriptPBT;
 
+@header {
+package org.darioaxel.grammar.powerscript.pbt;
+}
+
+
 prog: header libraries objects EOF;
 
 header: 'Save Format v3.0(' NUMBER ')' #headers;
