@@ -9,5 +9,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="lib/antlr-4.5.3-complete.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/Trabajo/eclipse/plugins/org.eclipse.modisco.kdm.source.discoverer_0.12.2.201501021045.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/Trabajo/eclipse/plugins/org.eclipse.gmt.modisco.omg.kdm.source_0.12.2.201501021045.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/Trabajo/eclipse/plugins/org.eclipse.gmt.modisco.omg.kdm_0.12.2.201501021045.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
