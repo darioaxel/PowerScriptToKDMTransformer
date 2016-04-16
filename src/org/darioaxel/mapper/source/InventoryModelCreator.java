@@ -7,13 +7,13 @@ import java.nio.file.Path;
 public class InventoryModelCreator {
 	
 	private static Path startDir;
-	private static InventoryFileVisitor inventoryFileVisitor;
+	private InventoryFileVisitor inventoryFileVisitor;
 		
 	public InventoryModelCreator(Path startDir) {		
 		InventoryModelCreator.setStartDir(startDir);		
 	}
 	
-	public static void create() {
+	public void create() {
 		
 		try {
 			Files.walkFileTree( getStartDir(), inventoryFileVisitor);

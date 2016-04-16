@@ -12,7 +12,7 @@ public enum PowerscriptFileTypes {
     Language("lng"),
     ImageJPG("jpg");
     
-    private String extension;
+    private final String extension;
     
     PowerscriptFileTypes (String extension) {
     	this.extension = extension;
