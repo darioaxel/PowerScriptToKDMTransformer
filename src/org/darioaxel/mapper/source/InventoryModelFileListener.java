@@ -18,8 +18,6 @@ import org.eclipse.gmt.modisco.omg.kdm.source.ResourceDescription;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFactory;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
-
-
 public class InventoryModelFileListener implements FileListener {
 
 	private InventoryContainer			parentContainer;
@@ -128,21 +126,7 @@ public class InventoryModelFileListener implements FileListener {
 	private String getLanguageFromFile(final File file) {
 
 		String fileExt = FileAccess.getFileExtension(file);
-		// switch (fileExt) {
-		// case "java":
-		// return "Java";
-		// case "rb":
-		// return "Ruby";
-		// case "cpp":
-		// return "C++";
-		// case "c":
-		// return "C";
-		// case "cs":
-		// return "C#";
-		// default:
-		// return "Unknown";
-		// }
-		// TODO use jdk7
+	
 		if (fileExt.equals("cs")) {
 			return "C#";
 		}

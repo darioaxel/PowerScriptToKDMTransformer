@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 public final class FileAccess {
 
-	private static final int	BUFFER_SIZE	= 1024;
+	private static final int BUFFER_SIZE	= 1024;
 
 	private FileAccess() {
 		// utility class

@@ -1,6 +1,9 @@
 package org.darioaxel.transformator;
 
 import java.io.File;
+
+import org.darioaxel.mapper.source.InventoryModelCreator;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.Segment;
 import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
 
@@ -19,15 +22,14 @@ public class Transformator {
 		
 		File directory = new File(this.directory);
 		
-		InventoryModel inventoryModel = new InventoryModelCreator().create();//new InventoryModelCreator().openDirectory(directory, new NullProgressMonitor());
+		InventoryModel inventoryModel = new InventoryModelCreator().create(directory, new NullProgressMonitor());//new InventoryModelCreator().openDirectory(directory, new NullProgressMonitor());
 
-		Segment segment = ModelCreationHelper.buildKDMInstance(inventoryModel, null, new MyProperties(), 3);
+	//	Segment segment = ModelCreationHelper.buildKDMInstance(inventoryModel, null, new MyProperties(), 3);
 
 		//FileAccess.saveEcoreToXMI(segment, outputFilename, monitor);
 	}
 	
 	public String getDirectory() {
 		return this.directory;
-	}
-	
+	}	
 }

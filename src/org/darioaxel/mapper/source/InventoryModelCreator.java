@@ -1,34 +1,51 @@
 package org.darioaxel.mapper.source;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.File;
+import org.darioaxel.mapper.code.MoDiscoKDM;
+import org.darioaxel.util.FileAccess;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.gmt.modisco.omg.kdm.source.Directory;
+import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
+import org.eclipse.gmt.modisco.omg.kdm.source.SourceFactory;
 
-public class InventoryModelCreator {
-	
-	private static Path startDir;
-	private InventoryFileVisitor inventoryFileVisitor;
-		
-	public InventoryModelCreator(Path startDir) {		
-		InventoryModelCreator.setStartDir(startDir);		
+public final class InventoryModelCreator implements ModelCreator<InventoryModel> {
+
+	private final SourceFactory sourceFactory;
+
+	public InventoryModelCreator() {
+		this.sourceFactory = SourceFactory.eINSTANCE;
 	}
+
+	@Override
+	public InventoryModel create(final File directory, IProgressMonitor monitor) {
 	
-	public void create() {
-		
+		if (monitor == null)
+			monitor = new NullProgressMonitor();
+
+		InventoryModel inventoryModel = sourceFactory.createInventoryModel();
+		inventoryModel.setName(MoDiscoKDM.INVENTORYMODEL_NAME);
+
+		final Directory root = sourceFactory.createDirectory();
+		root.setName(directory.getName());
+		root.setPath(directory.getAbsolutePath());
+
+		inventoryModel.getInventoryElement().add(root);
+
+		monitor.beginTask("Scanning directory..." + directory.getAbsolutePath(), IProgressMonitor.UNKNOWN);
+
 		try {
-			Files.walkFileTree( getStartDir(), inventoryFileVisitor);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			FileAccess.walkDirectoryRecursively(directory, new InventoryModelFileListener(root));
+		} finally {
+			monitor.done();
 		}
+
+		return inventoryModel;
 	}
 
-	public static Path getStartDir() {
-		return startDir;
+	@Override
+	public InventoryModel create(final String dirname, final IProgressMonitor monitor) {
+		return create(new File(dirname), monitor);
 	}
 
-	public static void setStartDir(Path startDir) {
-		InventoryModelCreator.startDir = startDir;
-	}	
 }
-
