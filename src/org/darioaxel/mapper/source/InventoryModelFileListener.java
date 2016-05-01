@@ -29,9 +29,10 @@ public class InventoryModelFileListener implements FileListener {
 
 	static {
 		IMAGE_EXTENSIONS.addAll(Arrays.asList("jpg", "jpeg", "png", "bmp", "tif", "gif", "svg"));
-		SOURCECODE_EXTENSIONS.addAll(Arrays.asList("java", "c", "cpp", "rb", "cs", "py"));
+		SOURCECODE_EXTENSIONS.addAll(Arrays.asList("srw", "srm", "srd", "sra", "sru", "srf", "srs",
+												    "sql"));
 		CONFIGURATIONS.addAll(Arrays.asList("cfg", "ini", "xml", "prefs", "properties"));
-		RESOURCE_DESCRIPTIONS.addAll(Arrays.asList("web.xml", "plugin.xml", "MANIFEST.MF"));
+		RESOURCE_DESCRIPTIONS.addAll(Arrays.asList("pbt", "pbg"));
 	}
 
 	public InventoryModelFileListener(final InventoryContainer root) {
@@ -55,23 +56,25 @@ public class InventoryModelFileListener implements FileListener {
 			inventoryItem = configuration;
 
 		} else if (isExecutableFile(file)) {
+			
 			ExecutableFile executableFile = sourceFactory.createExecutableFile();
-
 			inventoryItem = executableFile;
+
 		} else if (isResourceDescriptionFile(file)) {
+			
 			ResourceDescription resourceDescription = sourceFactory.createResourceDescription();
-
 			inventoryItem = resourceDescription;
+			
 		} else if (isSourceFile(file)) {
+			
 			SourceFile sourceFile = sourceFactory.createSourceFile();
-
 			sourceFile.setEncoding("not checked");
 			sourceFile.setLanguage(getLanguageFromFile(file));
-
 			inventoryItem = sourceFile;
+			
 		} else { // fall back case: it's at least a binary file
+			
 			BinaryFile binaryFile = sourceFactory.createBinaryFile();
-
 			inventoryItem = binaryFile;
 		}
 
@@ -115,7 +118,8 @@ public class InventoryModelFileListener implements FileListener {
 	}
 
 	private boolean isResourceDescriptionFile(final File file) {
-		return RESOURCE_DESCRIPTIONS.contains(file.getName());
+		String fileExt = FileAccess.getFileExtension(file);
+		return RESOURCE_DESCRIPTIONS.contains(fileExt);
 	}
 
 	private boolean isSourceFile(final File file) {
@@ -127,10 +131,11 @@ public class InventoryModelFileListener implements FileListener {
 
 		String fileExt = FileAccess.getFileExtension(file);
 	
-		if (fileExt.equals("cs")) {
-			return "C#";
+		if (fileExt.equals("sql")) {
+			return "SQL";
 		}
-		return "Unknown";
+		
+		return "Powerscript";
 	}
 
 }

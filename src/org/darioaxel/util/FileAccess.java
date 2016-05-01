@@ -135,8 +135,8 @@ public final class FileAccess {
 	 * @param monitor
 	 */
 	public static void walkDirectoryRecursively(final File dir, final FileListener listener) {
-
-		for (File file : dir.listFiles()) {
+		File[] test = dir.listFiles();
+		for (File file : dir.listFiles()) {			
 			if (file.isDirectory()) {
 				listener.enterDir(dir, file);
 				walkDirectoryRecursively(file, listener);

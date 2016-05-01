@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.ecore_2.10.2.v20150123-0348.jar"/>
 	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.common_2.10.1.v20150123-0348.jar"/>
 	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.equinox.common_3.6.200.v20130402-1505.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/log4j-api-2.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
