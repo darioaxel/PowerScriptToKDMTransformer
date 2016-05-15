@@ -48,7 +48,7 @@ public class CodeModelCreator {
 		rootDir = prop.getProperty("ExternalDatatypeInfoRepository.rootDir");
 	}
 
-	public void buildCodeModel(final InventoryModel inventoryModel, IProgressMonitor monitor) {
+	public void create(final InventoryModel inventoryModel, IProgressMonitor monitor) {
 		// ensure there is a monitor of some sort
 		if (monitor == null) monitor = new NullProgressMonitor();
 
@@ -114,6 +114,7 @@ public class CodeModelCreator {
 
 //	private CodeModel buildTypes(final CSharpTypeParser sourceFileTypeParser, final InventoryModelWalker walker,
 //			final IProgressMonitor monitor) {
+	
 //		ActionSourceFileVisitor visitor = new ActionSourceFileVisitor(monitor);
 //		visitor.addSourceFileParser(sourceFileTypeParser);
 //		walker.walk(visitor);
@@ -125,106 +126,7 @@ public class CodeModelCreator {
 //		return visitor.getInternalCodeModel();
 //	}
 
-//	private void buildMemberDeclarations(final CodeModel initialInternalCodeModel,
-//			final CSharpMemberDeclarationParser cSharpParser, final InventoryModelWalker walker,
-//			final IProgressMonitor monitor) {
-////		this.valueRepository = KDMElementFactory.createValueRepository(initialInternalCodeModel);
-////
-////		SequentialParseVisitor visitor = new SequentialParseVisitor(initialInternalCodeModel, externalCodeModel,
-////				monitor, valueRepository);
-////		visitor.addSourceFileParser(cSharpParser);
-////		walker.walk(visitor);
-////
-////		this.internalCodeModel = visitor.getInternalCodeModel();
-////		this.externalCodeModel = visitor.getExternalCodeModel();
-//	}
 
-//	private void buildSequentially(final CodeModel passedInternalCodeModel, final CSharpSourceFileParser cSharpParser,
-//			final InventoryModelWalker walker, final IProgressMonitor monitor) {
-//		SequentialParseVisitor visitor = new SequentialParseVisitor(passedInternalCodeModel, externalCodeModel,
-//				monitor, valueRepository);
-//		visitor.addSourceFileParser(cSharpParser);
-//		walker.walk(visitor);
-//
-//		this.internalCodeModel = visitor.getInternalCodeModel();
-//		this.externalCodeModel = visitor.getExternalCodeModel();
-//	}
-//
-//	// TODO does not yet work
-//	private void buildConcurrently(final CSharpSourceFileParser cSharpParser, final InventoryModelWalker walker,
-//			final IProgressMonitor monitor) {
-//		final BlockingQueue<SourceFile> queue = new LinkedBlockingQueue<SourceFile>();
-//		BlockingQueue<Thread> finishedQueue = new LinkedBlockingQueue<Thread>();
-//		int numThreads = Runtime.getRuntime().availableProcessors();
-//		numThreads = 1;
-//
-//		monitor.subTask("Building code models in concurrent mode with " + numThreads + " thread(s)...");
-//
-//		for (int i = 0; i < numThreads; i++) {
-//			SourceFile2ModelTransformator transformator = new SourceFile2ModelTransformator(queue, finishedQueue,
-//					monitor);
-//			transformator.setName("Transformator " + i);
-//			transformator.addSourceFileParser(cSharpParser);
-//			transformator.start();
-//		}
-//
-//		Thread producer = new Thread(new Runnable() {
-//			@Override
-//			public void run() {
-//				SourceFileVisitor visitor = new QueuingSourceFileVisitor(queue);
-//				walker.walk(visitor);
-//			}
-//		});
-//		producer.start();
-//
-//		// 1. wait for the visitor to terminate
-//		try {
-//			producer.join();
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		// 2. add as much END_OF_QUEUE_TOKEN as consumer threads are running
-//		queue.addAll(Collections.nCopies(numThreads, SourceFile2ModelTransformator.END_OF_QUEUE_TOKEN));
-//		// TODO 1. and 2. can be done in another thread to not freeze the main
-//		// thread
-//
-//		// wait for all consumer threads and process the consumer's models as
-//		// soon as it has
-//		// terminate
-//		mergeAllThreadsCodeModels(finishedQueue, numThreads, monitor);
-//	}
-//
-//	private void mergeAllThreadsCodeModels(final BlockingQueue<Thread> finishedQueue, int activeThreadCount,
-//			final IProgressMonitor monitor) {
-//		monitor.subTask("Merging code models...");
-//		try {
-//			while (activeThreadCount > 0) {
-//				Thread t = finishedQueue.take();
-//				SourceFile2ModelTransformator transformator = (SourceFile2ModelTransformator) t;
-//
-//				merge(transformator.getInternalCodeModel(), transformator.getExternalCodeModel());
-//
-//				activeThreadCount--;
-//			}
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		monitor.worked(1);
-//	}
-//
-//	private void merge(final CodeModel internalCodeModel2, final CodeModel externalCodeModel2) {
-//		// for the first thread
-//		// TODO remove if by instantiating empty code models before merge
-//		// operation
-//		if (internalCodeModel == null && externalCodeModel == null) {
-//			internalCodeModel = internalCodeModel2;
-//			externalCodeModel = externalCodeModel2;
-//		} else { // for all following threads
-//			// TODO
-//		}
-//	}
 
 	public CodeModel getInternalCodeModel() {
 		return this.internalCodeModel;
@@ -233,9 +135,4 @@ public class CodeModelCreator {
 	public CodeModel getExternalCodeModel() {
 		return this.externalCodeModel;
 	}
-
-//	public Collection<LanguageUnit> getNeccessaryLanguageUnits() {
-//		return languageUnitDetectorVisitor.getNecessaryLanguageUnits();
-//	}
-
 }

@@ -63,7 +63,7 @@ public class InventoryModelFileListener implements FileListener {
 		} else if (isResourceDescriptionFile(file)) {
 			
 			ResourceDescription resourceDescription = sourceFactory.createResourceDescription();
-			inventoryItem = resourceDescription;
+			inventoryItem = resourceDescription;			
 			
 		} else if (isSourceFile(file)) {
 			

@@ -21,13 +21,14 @@ public class SegmentCreator {
 	private SegmentCreator() {	
 	}
 
-	public static Segment buildKDMInstance(final InventoryModel inventoryModel, final IProgressMonitor monitor, final Properties prop, final int toPhase) {
+	public static Segment create(final InventoryModel inventoryModel, final IProgressMonitor monitor, 
+			final Properties prop, final int toPhase) {
 
-		CodeModelCreator creator = new CodeModelCreator(prop, toPhase);
+		CodeModelCreator codeModelCreator = new CodeModelCreator(prop, toPhase);
 
 		try {
 
-			creator.buildCodeModel(inventoryModel, monitor);
+			codeModelCreator.create(inventoryModel, monitor);
 
 		} catch (StackOverflowError e) {
 			LOGGER.error("Could not build model due to StackOverflowError. "
@@ -35,9 +36,9 @@ public class SegmentCreator {
 			e.printStackTrace();
 		}
 
-		CodeModel internalCodeModel = creator.getInternalCodeModel();
-		CodeModel externalCodeModel = creator.getExternalCodeModel();
-		Collection<LanguageUnit> neccessaryLanguageUnits = creator.getNeccessaryLanguageUnits();
+		CodeModel internalCodeModel = codeModelCreator.getInternalCodeModel();
+		CodeModel externalCodeModel = codeModelCreator.getExternalCodeModel();
+		Collection<LanguageUnit> neccessaryLanguageUnits = codeModelCreator.getNeccessaryLanguageUnits();
 
 		internalCodeModel.getCodeElement().addAll(neccessaryLanguageUnits);
 
