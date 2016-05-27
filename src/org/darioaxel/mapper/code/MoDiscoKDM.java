@@ -5,7 +5,10 @@ import java.util.List;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionElement;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionFactory;
 import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeElement;
+import org.eclipse.gmt.modisco.omg.kdm.code.CodeAssembly;
+import org.eclipse.gmt.modisco.omg.kdm.code.CodeFactory;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
+import org.eclipse.gmt.modisco.omg.kdm.code.Module;
 import org.eclipse.gmt.modisco.omg.kdm.core.Element;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.Attribute;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.KdmFactory;
@@ -18,6 +21,7 @@ public final class MoDiscoKDM {
 	public static final String			METHOD_INVOCATION		= "method invocation";
 	private static final String			CONST_DECLARATION		= "const declaration";
 	private static final ActionFactory	ACTION_FACTORY			= ActionFactory.eINSTANCE;
+	private static final CodeFactory	CODE_FACTORY 			= CodeFactory.eINSTANCE;
 	public static final String			VARIABLE_ACCESS			= "variable access";
 	public static final String			INVENTORYMODEL_NAME		= "source references";
 
@@ -56,6 +60,11 @@ public final class MoDiscoKDM {
 		element.getAttribute().add(attribute);
 	}
 
+	public static CodeAssembly createCodeAssembly() {
+		CodeAssembly codeAssembly = CODE_FACTORY.createCodeAssembly();
+		return codeAssembly;
+	}
+	
 	public static ActionElement createVariableDeclaration() {
 		ActionElement variableDecl = ACTION_FACTORY.createActionElement();
 		variableDecl.setName("variable declaration");

@@ -42,25 +42,7 @@ public final class FileAccess {
 
 	private static void saveEcoreToXMIUnsafe(final EObject modelInstance, final String filename, final IProgressMonitor monitor) throws IOException {
 
-		monitor.subTask("Saving model to file..." + filename);
-		// create resource set and resource
-		// ResourceSet resourceSet = new ResourceSetImpl();
-		//
-		// // Register XML resource factory
-		// resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-		// .put("xmi", new XMIResourceFactoryImpl());
-		//
-		// Resource resource =
-		// resourceSet.createResource(URI.createFileURI(filename));
-		//
-		// // add the root object to the resource
-		// resource.getContents().add(modelInstance);
-		// // serialize resource – you can specify also serialization
-		// // options which defined on org.eclipse.emf.ecore.xmi.XMIResource
-		// resource.save(null);
-
-		// the following adds the xml namespace for kdm automatically, i.e.
-		// saving in this way works
+		monitor.subTask("Saving model to file..." + filename);		
 		XMIResource resource;
 		resource = new XMIResourceImpl();
 		resource.setURI(URI.createFileURI(filename));

@@ -1,12 +1,6 @@
 package org.darioaxel.mapper;
 
-import java.util.Arrays;
-import java.util.List;
-
-import lang.csharp.CSharp4AST;
-import mapping.action.MicroKDM;
 import org.darioaxel.mapper.code.MoDiscoKDM;
-
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionElement;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionFactory;
@@ -17,6 +11,8 @@ import org.eclipse.gmt.modisco.omg.kdm.action.Reads;
 import org.eclipse.gmt.modisco.omg.kdm.action.Writes;
 import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.ClassUnit;
+import org.eclipse.gmt.modisco.omg.kdm.code.Package;
+import org.eclipse.gmt.modisco.omg.kdm.code.CodeAssembly;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeFactory;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeItem;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
@@ -82,6 +78,16 @@ public final class KDMElementFactory {
 		// utility class
 	}
 
+	public static CodeAssembly createCodeAssembly() {
+		CodeAssembly classUnit = CODE_FACTORY.createCodeAssembly();
+		return classUnit;
+	}
+	
+	public static Package createPackage() {
+		Package classUnit = CODE_FACTORY.createPackage();
+		return classUnit;
+	}
+	
 	public static ClassUnit createClassUnit() {
 		ClassUnit classUnit = CODE_FACTORY.createClassUnit();
 		return classUnit;
@@ -117,12 +123,6 @@ public final class KDMElementFactory {
 	public static InterfaceUnit createInterfaceUnit() {
 		InterfaceUnit interfaceUnit = CODE_FACTORY.createInterfaceUnit();
 		return interfaceUnit;
-	}
-
-	public static ActionElement createMethodCall() {
-		ActionElement actionElement = ACTION_FACTORY.createActionElement();
-		actionElement.setKind(MicroKDM.getMethodCall());
-		return actionElement;
 	}
 
 	public static Value createValue() {
@@ -273,13 +273,7 @@ public final class KDMElementFactory {
 	public static MemberUnit createMemberUnit() {
 		MemberUnit memberUnit = CODE_FACTORY.createMemberUnit();
 		return memberUnit;
-	}
-
-	public static void addQualifiedAttributeTo(final Datatype datatype, final List<String> namespacePath) {
-		String qualifiedName = ListUtil.combine(namespacePath, ".") + "." + datatype.getName();
-		Attribute qualifiedNameAttribute = KDMElementFactory.createFullyQualifiedNameAttribute(qualifiedName);
-		datatype.getAttribute().add(qualifiedNameAttribute);
-	}
+	}	
 
 	public static BlockUnit createBlockUnit() {
 		BlockUnit blockUnit = ACTION_FACTORY.createBlockUnit();
