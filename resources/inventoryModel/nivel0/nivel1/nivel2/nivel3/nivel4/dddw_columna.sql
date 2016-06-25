@@ -1,0 +1,1 @@
+SELECT Lower(COLUMN_NAME) columna FROM USER_TAB_COLUMNS WHERE TABLE_NAME = Upper(:rt_tabla)

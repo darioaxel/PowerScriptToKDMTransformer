@@ -116,7 +116,7 @@ public final class FileAccess {
 	 * @param listener
 	 * @param monitor
 	 */
-	public static void walkDirectoryRecursively(final File dir, final FileListener listener) {
+	public static void walkDirectoryRecursively(final File dir, final IFileListener listener) {
 		File[] test = dir.listFiles();
 		for (File file : dir.listFiles()) {			
 			if (file.isDirectory()) {

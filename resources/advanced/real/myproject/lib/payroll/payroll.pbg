@@ -1,0 +1,8 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "myproject\\lib\\payroll\\payroll.pbl" "";
+@end;
+@begin Objects
+ "myproject\\lib\\payroll\\m_payroll.srm" "myproject\\lib\\payroll\\payroll.pbl";
+ "myproject\\lib\\payroll\\w_payroll.srw" "myproject\\lib\\payroll\\payroll.pbl";
+@end;

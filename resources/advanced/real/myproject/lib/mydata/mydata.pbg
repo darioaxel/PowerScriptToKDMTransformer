@@ -1,0 +1,8 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "myproject\\lib\\mydata\\mydata.pbl" "";
+@end;
+@begin Objects
+ "myproject\\lib\\mydata\\m_mydata.srm" "myproject\\lib\\mydata\\mydata.pbl";
+ "myproject\\lib\\mydata\\w_mydata.srw" "myproject\\lib\\mydata\\mydata.pbl"; 
+@end;

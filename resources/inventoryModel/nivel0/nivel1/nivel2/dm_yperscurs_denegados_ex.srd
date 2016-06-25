@@ -1,0 +1,68 @@
+HA$PBExportHeader$dm_yperscurs_denegados_ex.srd
+$PBExportComments$Cursos denegados de los empleados
+release 11;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no showbackcoloronxp=no )
+header(height=96 color="553648127" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="553648127" )
+table(column=(type=long updatewhereclause=yes name=frplan_anio_plan dbname="anio_plan" )
+ column=(type=char(400) updatewhereclause=yes name=frcurso_curso_des dbname="curso_des" )
+ column=(type=date updatewhereclause=yes name=frconvocat_fecha_inicio_curso dbname="fecha_inicio_curso" )
+ column=(type=date updatewhereclause=yes name=frconvocat_fecha_fin_curso dbname="fecha_fin_curso" )
+ column=(type=decimal(2) updatewhereclause=yes name=frsolicitu_horas_asistencia dbname="horas_asistencia" )
+ column=(type=char(1) updatewhereclause=yes name=frsolicitu_finalizado dbname="finalizado" values="	S/	N" )
+ retrieve="SELECT frplan.anio anio_plan,
+            frcurso.desccur curso_des,
+            frconvocat.finicurs fecha_inicio_curso,
+            frconvocat.ffincurs fecha_fin_curso,
+            frsolicitu.horasist horas_asistencia,
+            frsolicitu.finalizado
+
+  FROM frplan, frcurso, frconvocat, frsolicitu, personal, personal_v, xentidad
+
+ WHERE personal.codiempl = :rt_codiempl
+			and xentidad.codienti = :rt_codienti
+             and personal_v.versempl = (SELECT MAX(v.versempl) FROM personal_v v
+                                                         WHERE v.codienti = personal.codienti
+													    and v.codiempl = personal.codiempl)
+			and frplan.codiplan   = frcurso.codiplan
+			and frcurso.codiplan    = frconvocat.codiplan
+			and frcurso.codicur     = frconvocat.codicur
+			and frconvocat.codiplan = frcurso.codiplan
+			and frconvocat.codicur  = frcurso.codicur
+			and frsolicitu.codiplan = frconvocat.codiplan
+			and frsolicitu.codicur  = frconvocat.codicur
+			and frsolicitu.versconv = frconvocat.versconv
+			and frsolicitu.codienti = personal.codienti 
+			and frsolicitu.codiempl = personal.codiempl 
+			and personal.codienti   = xentidad.codienti
+			and personal.codienti   = personal_v.codienti
+			and personal.codiempl   = personal_v.codiempl
+			and frsolicitu.estadosoli = 'DE'
+			and (frsolicitu.finalizado = 'N' or frsolicitu.finalizado Is Null)
+	ORDER BY personal.codiempl ASC, frconvocat.finicurs DESC
+" arguments=(("rt_codienti", number),("rt_codiempl", string)) )
+text(band=header alignment="2" text="A$$HEX1$$f100$$ENDHEX$$o" border="0" color="134217737" x="27" y="28" height="52" width="137" html.valueishtml="0"  name=codititu_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217730" )
+text(band=header alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n del curso" border="0" color="134217737" x="183" y="28" height="52" width="1998" html.valueishtml="0"  name=desctitu_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217730" )
+text(band=header alignment="2" text="Fec.Inicio" border="0" color="134217737" x="2199" y="28" height="52" width="274" html.valueishtml="0"  name=finititu_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217730" )
+text(band=header alignment="2" text="Fec.Fin" border="0" color="134217737" x="2491" y="28" height="52" width="274" html.valueishtml="0"  name=notatitu_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217730" )
+text(band=header alignment="2" text="Horas" border="0" color="134217737" x="2784" y="28" height="52" width="160" html.valueishtml="0"  name=entititu_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217730" )
+text(band=header alignment="1" text="y" border="0" color="0" x="2999" y="20" height="52" width="23" html.valueishtml="0"  name=y  tag="1000" visible="0"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="1" text="s" border="0" color="0" x="2962" y="20" height="52" width="23" html.valueishtml="0"  name=x  tag="3229" visible="0"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="5" color="0" x="27" y="4" height="64" width="137" format="[general]" html.valueishtml="0"  name=frplan_anio_plan  tag="A$$HEX1$$f100$$ENDHEX$$o del plan." visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="31514848" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="183" y="4" height="64" width="1998" format="[general]" html.valueishtml="0"  name=frcurso_curso_des  tag="Descripci$$HEX1$$f300$$ENDHEX$$n de curso." visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="31514848" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="2199" y="4" height="64" width="274" format="[shortdate] [time]" html.valueishtml="0"  name=frconvocat_fecha_inicio_curso  tag="Fecha de inicio de la convocator$$HEX1$$ed00$$ENDHEX$$a." visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="31514848" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="2491" y="4" height="64" width="274" format="[shortdate] [time]" html.valueishtml="0"  name=frconvocat_fecha_fin_curso  tag="Fecha fin de la convocator$$HEX1$$ed00$$ENDHEX$$a." visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="31514848" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="5" color="0" x="2784" y="4" height="64" width="160" format="[general]" html.valueishtml="0"  name=frsolicitu_horas_asistencia  tag="Horas de asistencia" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="31514848" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

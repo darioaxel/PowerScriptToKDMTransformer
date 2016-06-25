@@ -1,0 +1,16 @@
+HA$PBExportHeader$coloradjustment.srs
+global type coloradjustment from structure
+	integer		casize
+	integer		caflags
+	integer		cailluminantindex
+	integer		caredgamma
+	integer		cagreengamma
+	integer		cabluegamma
+	integer		careferenceblack
+	integer		careferencewhite
+	integer		cacontrast
+	integer		cabrightness
+	integer		cacolorfulness
+	integer		caredgreentint
+end type
+

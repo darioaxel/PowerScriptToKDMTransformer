@@ -1,6 +1,6 @@
 global type w_confusua from sfc_nopfcwin
 integer width = 2615
-integer height = 1308
+integer height=1308
 string title = "Correo. Configuraci$$HEX1$$f300$$ENDHEX$$n personal de Mensajer$$HEX1$$ed00$$ENDHEX$$a"
 cb_2 cb_2
 cb_1 cb_1

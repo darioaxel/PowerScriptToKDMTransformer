@@ -1,0 +1,42 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl" "";
+@end;
+@begin Objects
+ "Ginpix7\\Lib\\advguiobjects\\m_shortcutoptions_blue.srm" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\m_shortcutoptions_olive.srm" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\m_shortcutoptions_classic.srm" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\m_shortcutoptions_silver.srm" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\n_cst_buttonlistbar_gradient.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\tabstrip.srs" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_canvas.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\n_cst_theme.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\buttons.srs" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\point.srs" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_icon.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\n_cst_tabstrip_gradient.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_tabstripclose.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\n_cst_tooltip.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_icontray.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_shortcutheader.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_tabstrip.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\coloradjustment.srs" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_shortcutitem.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_tabstripnavigate.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\trackmouseevent.srs" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_toolbarstripbutton.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_chevron.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\n_cst_toolbarstrip_gradient.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_toolbarstripseparator.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\n_cst_xpheader_gradient.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_xplistbargroup.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_xplistbarheader.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_xplistbarscroll.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_xplistbaritem.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_buttonlistbarscroll.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\n_cst_xplistbar_gradient.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_shortcutsplitbar.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\u_cst_toolbarstripitem.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\n_cst_shortcutbar_gradient.sru" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+ "Ginpix7\\Lib\\advguiobjects\\m_shortcutoptions.srm" "Ginpix7\\Lib\\advguiobjects\\advguiobjects.pbl";
+@end;

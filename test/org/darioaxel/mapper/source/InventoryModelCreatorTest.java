@@ -39,6 +39,18 @@ public class InventoryModelCreatorTest {
 	}
 	
 	@Test
+	public void saveInventoryModelToFileShouldWork2() {
+		File directory = new File("../PowerScriptGrammar/resources/advanced/real/myproject");
+		InventoryModel inventoryModel = new InventoryModelCreator().create(directory, new NullProgressMonitor());
+		try {
+			FileAccess.saveEcoreToXMI(inventoryModel, "../PowerScriptGrammar/result2.xmi", new NullProgressMonitor());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
 	public void searchInventoryModelCodeAssemblyShouldWork() {
 		File directory = new File("../PowerScriptGrammar/resources/inventoryModel/");
 		InventoryModel inventoryModel = new InventoryModelCreator().create(directory, new NullProgressMonitor());

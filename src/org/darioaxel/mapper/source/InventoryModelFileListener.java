@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.darioaxel.util.FileAccess;
-import org.darioaxel.util.FileListener;
+import org.darioaxel.util.IFileListener;
 import org.eclipse.gmt.modisco.omg.kdm.source.BinaryFile;
 import org.eclipse.gmt.modisco.omg.kdm.source.Configuration;
 import org.eclipse.gmt.modisco.omg.kdm.source.Directory;
@@ -18,7 +18,7 @@ import org.eclipse.gmt.modisco.omg.kdm.source.ResourceDescription;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFactory;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
-public class InventoryModelFileListener implements FileListener {
+public class InventoryModelFileListener implements IFileListener {
 
 	private InventoryContainer			parentContainer;
 	private final SourceFactory			sourceFactory;

@@ -1,0 +1,58 @@
+HA$PBExportHeader$gf_lee_ip.srf
+global type gf_lee_ip from function_object
+end type
+
+forward prototypes
+global subroutine gf_lee_ip ()
+end prototypes
+
+global subroutine gf_lee_ip ();//SDU 12/12/2012 56352  -->
+
+string ls_Emp_Input, ls_ip, ls_path
+long ll_FLength
+integer li_filenum
+
+ls_path = gnv_app.of_getfolderdirectoriotemporal() + "\ip.txt"
+
+ll_FLength = FileLength(ls_path)
+li_FileNum = FileOpen(ls_path, StreamMode!, Read!, Shared! )
+
+IF ll_FLength < 32767 THEN
+	FileRead(li_FileNum, ls_Emp_Input)
+END IF
+
+fileclose(li_FileNum)
+int i,j
+for i=1 to len(ls_Emp_Input)
+	
+	string ls_aux
+	
+	ls_aux = trim(mid(ls_Emp_Input, i, 16))
+	
+	if match(ls_aux,"[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:") then
+		
+			ls_ip = trim(mid(ls_Emp_Input, i, 16))
+			
+			for j =1 to len(ls_ip)
+			
+				
+				ls_aux = trim(mid(ls_ip, j, 1))
+				
+				if ls_aux = '1' then
+						
+						ls_ip = trim(mid(replace(ls_ip, pos(ls_ip, ':'), 1, ''), j,len(ls_ip) ))
+					
+						exit
+				end if
+				
+			next 
+		
+			exit
+	end if
+next 
+
+gnv_app.is_direip = ls_ip
+
+//--> SDU 12/12/2012 56352
+end subroutine
+

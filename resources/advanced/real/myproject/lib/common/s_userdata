@@ -1,0 +1,4 @@
+global type s_usuadato from structure
+	integer		codiusu
+	string		pass
+end type

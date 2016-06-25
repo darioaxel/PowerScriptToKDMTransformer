@@ -1,0 +1,47 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl" "";
+@end;
+@begin Objects
+ "Ginpix7\\Lib\\g7dwtabs\\dm_yperscurs_recibidos_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_yperscurs_solicitados_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_ypersocup_plaza_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_ypersocup_puesto_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_bancarios.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_aniadidos.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_aniadidos_l.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_fiscales_l.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_contabilidad_l.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_unifamitab.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_eva_evaluado_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_ausencias_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_eva_rrhh_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_gradpers_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_eva_evaluador_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_its_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_principales_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_antiguedad_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_organiza_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_principales.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_organizacion_l.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_otros_l.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_contrato_l.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_irpf.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_normsalarial_l.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_cotizacion_l.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_entregas_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\d_otros.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_ypersexpe_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_eva_resultado_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_revision_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_ypersidio_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_ypersmeri_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_situlabo_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_yperssanc_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_yperstitu_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_yperscurs_aportados_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_yperscurs_concedidos_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_yperscurs_denegados_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_yperscurs_enreserva_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+ "Ginpix7\\Lib\\g7dwtabs\\dm_srvprev2_ex.srd" "Ginpix7\\Lib\\g7dwtabs\\g7dwtabs.pbl";
+@end;

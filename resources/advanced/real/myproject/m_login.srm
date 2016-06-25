@@ -1,0 +1,26 @@
+forward
+global type m_login from menu
+end type
+end forward
+
+global type m_login from menu
+end type
+global m_login m_login
+
+on m_login.create
+m_login = this
+call super::create
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 67108864
+this.menuhighlightcolor = 134217728
+this.textsize = 8
+this.weight = 400
+this.facename = "MS Sans Serif"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+end on
+
+on m_login.destroy
+call super::destroy
+end on

@@ -1,0 +1,49 @@
+forward
+global type m_payroll from m_master
+end type
+type m_espera from m_master within m_payroll
+end type
+global type m_payroll from m_master
+m_espera m_espera
+end type
+end forward
+
+global type m_payroll from m_master
+m_espera m_espera
+end type
+global m_payroll m_payroll
+
+on m_payroll.create
+m_payroll=this
+call super::create
+this.m_masterstyle = contemporarym_master
+this.m_mastertextcolor = 134217735
+this.m_masterbackcolor = 67108864
+this.m_masterhighlightcolor = 134217728
+this.textsize = 8
+this.weight = 400
+end on
+
+on m_payroll.destroy
+call super::destroy
+destroy(this.m_espera)
+end on
+
+type m_espera from m_master within m_payroll
+end type
+
+on m_espera.create
+call super::create
+this.text = "Espere... configurando su entorno personalizado ..."
+this.microhelp = "Espere... configurando su entorno personalizado ..."
+this.m_masterstyle = contemporarym_master!
+this.m_mastertextcolor = 134217735
+this.m_masterbackcolor = 67108864
+this.m_masterhighlightcolor = 134217728
+this.textsize = 8
+this.weight = 400
+end on
+
+on m_espera.destroy
+call super::destroy
+end on

@@ -1,0 +1,96 @@
+SELECT DISTINCT ydotacion.codienti, 
+					ydotacion.coditrpt, 
+					ydotacion.codipues, 
+					ypuestrab.clavpues, 
+					ypuestrab_v.descpues, 
+					ydotacion_v.centtra1, 
+               ydotacion_v.centtra2, 
+               ydotacion_v.centtra3, 
+               ydotacion_v.centtra4, 
+               ydotacion_v.centtra5, 
+				   centtra1.desctra1, 
+				   centtra2.desctra2, 
+				   centtra3.desctra3, 
+				   centtra4.desctra4, 
+				   centtra5.desctra5, 
+					ypuestrab_v.codindes,
+					ypuestrab_v.codinesp, 
+					ypuestrab_v.codigrup, 
+              
+					COUNT(ydotacion.numedota) numedota    
+
+  FROM ypuestrab, ydotacion, tiposrpt, ypuestrab_v,
+		 ydotacion_v LEFT OUTER JOIN centtra1 ON ydotacion_v.codienti = centtra1.codienti
+														 AND ydotacion_v.centtra1 = centtra1.centtra1
+						 LEFT OUTER JOIN centtra2 ON ydotacion_v.codienti = centtra2.codienti 
+														 AND ydotacion_v.centtra1 = centtra2.centtra1 
+														 AND ydotacion_v.centtra2 = centtra2.centtra2
+						 LEFT OUTER JOIN centtra3 ON ydotacion_v.codienti = centtra3.codienti
+														 AND ydotacion_v.centtra1 = centtra3.centtra1
+														 AND ydotacion_v.centtra2 = centtra3.centtra2
+														 AND ydotacion_v.centtra3 = centtra3.centtra3
+						 LEFT OUTER JOIN centtra4 ON ydotacion_v.codienti = centtra4.codienti
+														 AND ydotacion_v.centtra1 = centtra4.centtra1
+														 AND ydotacion_v.centtra2 = centtra4.centtra2
+														 AND ydotacion_v.centtra3 = centtra4.centtra3
+														 AND ydotacion_v.centtra4 = centtra4.centtra4
+						 LEFT OUTER JOIN centtra5 ON ydotacion_v.codienti = centtra5.codienti
+														 AND ydotacion_v.centtra1 = centtra5.centtra1
+														 AND ydotacion_v.centtra2 = centtra5.centtra2
+														 AND ydotacion_v.centtra3 = centtra5.centtra3
+														 AND ydotacion_v.centtra4 = centtra5.centtra4
+														 AND ydotacion_v.centtra5 = centtra5.centtra5 
+
+ WHERE ypuestrab.codienti = :rt_codienti
+
+   AND ypuestrab.codienti = ydotacion.codienti
+   AND ypuestrab.coditrpt = ydotacion.coditrpt
+   AND ypuestrab.codipues = ydotacion.codipues
+
+   AND ypuestrab.codienti = ypuestrab_v.codienti 
+   AND ypuestrab.coditrpt = ypuestrab_v.coditrpt 
+   AND ypuestrab.codipues = ypuestrab_v.codipues 
+   AND ypuestrab_v.verspues = (select max(v.verspues) from ypuestrab_v v
+										  where v.codienti = ypuestrab.codienti
+											 and v.coditrpt = ypuestrab.coditrpt
+										    and v.codipues = ypuestrab.codipues
+									 AND ((v.finivers BETWEEN :rt_fechai AND :rt_fechaf) 
+									OR
+									(v.finivers <= :rt_fechai AND v.ffinvers BETWEEN :rt_fechai AND :rt_fechaf) 
+									OR
+									(v.finivers <= :rt_fechai AND v.ffinvers >= :rt_fechaf)
+									OR
+									(v.finivers <= :rt_fechai AND v.ffinvers IS NULL)))
+
+   AND ydotacion_v.codienti = ydotacion.codienti
+   AND ydotacion_v.coditrpt = ydotacion.coditrpt
+   AND ydotacion_v.codipues = ydotacion.codipues
+   AND ydotacion_v.numedota = ydotacion.numedota
+   AND ((ydotacion_v.finivers BETWEEN :rt_fechai AND :rt_fechaf) 
+	OR
+	(ydotacion_v.finivers <= :rt_fechai AND ydotacion_v.ffinvers BETWEEN :rt_fechai AND :rt_fechaf) 
+	OR
+	(ydotacion_v.finivers <= :rt_fechai AND ydotacion_v.ffinvers >= :rt_fechaf)
+	OR
+	(ydotacion_v.finivers <= :rt_fechai AND ydotacion_v.ffinvers IS NULL))
+
+   AND tiposrpt.coditrpt = ypuestrab.coditrpt 
+ 
+group by ydotacion.codienti, 
+					ydotacion.coditrpt, 
+					ydotacion.codipues, 
+					ypuestrab.clavpues, 
+					ypuestrab_v.descpues, 
+					ydotacion_v.centtra1, 
+               ydotacion_v.centtra2, 
+               ydotacion_v.centtra3, 
+               ydotacion_v.centtra4, 
+               ydotacion_v.centtra5, 
+				   centtra1.desctra1, 
+				   centtra2.desctra2, 
+				   centtra3.desctra3, 
+				   centtra4.desctra4, 
+				   centtra5.desctra5, 
+					ypuestrab_v.codindes,
+					ypuestrab_v.codinesp, 
+					ypuestrab_v.codigrup

@@ -52,34 +52,34 @@ public class CodeModelCreator {
 		// ensure there is a monitor of some sort
 		if (monitor == null) monitor = new NullProgressMonitor();
 
-//		final InventoryModelWalker walker = new InventoryModelWalker(inventoryModel);
+		final InventoryModelWalker walker = new InventoryModelWalker(inventoryModel);
 
 //		SourceFileCounter sourceFileCounter = new SourceFileCounter();
 //		walker.walk(sourceFileCounter);
 //		final int numSourceFiles = sourceFileCounter.getAmount();
 
 		// 3 passes + language detection
-//		monitor.beginTask("Extracting code model from inventory model...", 1 + toPhase * numSourceFiles);
-//		try {
-//			monitor.subTask("Searching for used programming languages...");
-//			languageUnitDetectorVisitor = new LanguageUnitDetectorVisitor();
-//			walker.walk(languageUnitDetectorVisitor);
-//			monitor.worked(1);
-//
-//			if (monitor.isCanceled()) throw new OperationCanceledException();
-//			// process inventory model
-//			buildCodeModels(walker, monitor);
+		monitor.beginTask("Extracting code model from inventory model...", 1 + toPhase * numSourceFiles);
+		try {
+			monitor.subTask("Searching for used programming languages...");
+			languageUnitDetectorVisitor = new LanguageUnitDetectorVisitor();
+			walker.walk(languageUnitDetectorVisitor);
+			monitor.worked(1);
+
+			if (monitor.isCanceled()) throw new OperationCanceledException();
+			// process inventory model
+			buildCodeModels(walker, monitor);
 //
 //			// internalCodeModel = sourceFileTransformer.getInternalCodeModel();
 //			// internalCodeModel.getCodeElement().addAll(necessaryLanguageUnits);
 //			//
 //			// externalCodeModel = sourceFileTransformer.getExternalCodeModel();
-//		} finally {
-//			monitor.done();
-//		}
+		} finally {
+			monitor.done();
+		}
 	}
 
-//	private void buildCodeModels(final InventoryModelWalker walker, final IProgressMonitor monitor) {
+	private void buildCodeModels(final InventoryModelWalker walker, final IProgressMonitor monitor) {
 		// external datatypeinfo repository
 //		DatatypeInfoCacheLoader datatypeInfoLoader = new DatatypeInfoCacheLoader(new DatatypeInfoFileSystemLoader());
 //		ExternalDatatypeInfoRepository externalDatatypeInfoRepository = new ExternalDatatypeInfoRepository(rootDir,
@@ -110,7 +110,7 @@ public class CodeModelCreator {
 //		buildSequentially(internalCodeModel, cSharpParser2, walker, monitor);
 
 		// buildConcurrently(cSharpParser, walker, monitor);
-//	}
+	}
 
 //	private CodeModel buildTypes(final CSharpTypeParser sourceFileTypeParser, final InventoryModelWalker walker,
 //			final IProgressMonitor monitor) {

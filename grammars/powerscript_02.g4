@@ -544,21 +544,21 @@ Identifier
 
 fragment
 PBLetter
-    :   [a-zA-Z$-_%] 
+    :   [a-zA-Z$_%] 
     ;
 
 fragment
 PBLetterOrDigit
-    :   [a-zA-Z0-9$-_%] 
+    :   [a-zA-Z0-9$_%] 
     ;
 
 // § COMMENTS & WHITESPACES
 COMMENT
-    :   '/*' .*? '*/' -> skip
+    :   '/*'.*?'*/' -> skip
     ;
 
 LINE_COMMENT
-    :   '//' ~[\r\n]* -> skip
+    :   '//'~[\r\n]* -> skip
     ;
 	
 WS: [ \t\r]+ -> skip;

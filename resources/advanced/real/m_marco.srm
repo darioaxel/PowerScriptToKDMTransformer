@@ -1,0 +1,20 @@
+forward
+global type m_marco from m_frame
+end type
+end forward
+
+global type m_marco from m_frame
+end type
+global m_marco m_marco
+
+on m_marco.create
+m_marco = this
+call super::create
+end on
+
+on m_marco.destroy
+call super::destroy
+end on
+
+type m_file from m_frame`m_file within m_marco_0
+end type

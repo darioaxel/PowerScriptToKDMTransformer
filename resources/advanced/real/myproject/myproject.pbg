@@ -1,0 +1,8 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "myproject\\myproject.pbl" "";
+@end;
+@begin Objects
+ "myproject\\m_login.srm" "myproject\\myproject.pbl";
+ "myproject\\w_login.srw" "myproject\\myproject.pbl";
+@end;

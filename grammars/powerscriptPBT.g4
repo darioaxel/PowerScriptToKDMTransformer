@@ -9,24 +9,72 @@ grammar powerscriptPBT;
 package org.darioaxel.grammar.powerscript.pbt;
 }
 
+prog: header libraries*? EOF;
 
-prog: header libraries objects EOF;
+libraries
+	: header
+	| projects
+	| appname
+	| applib
+	| listProjects
+	| liblist
+	| EndPbt
+	;	
 
-header: 'Save Format v3.0(' NUMBER ')' #headers;
+header
+	: 'Save Format v3.0(' NUMBER ')' #headers
+	;
 
-libraries: HEADER_BEGIN pathsFromTo+ ENDS SEMICOL  #Intolibrarires ;
+projects
+	: BeginProject listProjects+ EndProject 
+	;
 
-objects: OBJECTS_BEGIN pathsFromTo+ ENDS SEMICOL #Intoobjects;
+appname	
+	: APPNAME QUOTE ID QUOTE SEMICOL
+	;
 
-pathsFromTo: path path SEMICOL;
+applib
+	: APPLIB QUOTE path QUOTE SEMICOL
+	;
 
-path: '"' (( ID '\\\\')* file )* '"';
-file: ID '.' ID; 
+listProjects
+	: NUMBER QUOTE path QUOTE SEMICOL
+	;
+
+liblist
+	:  LIBLIST QUOTE (path SEMICOL)*?  QUOTE SEMICOL
+	;
+
+path
+	: (ID DOUBLESLASH)*? file
+	;
+
+file
+	: ID DOT ID
+	; 
+
+EndPbt	
+	: TYPEPB SEMICOL
+	;
+
+BeginProject
+	: '@begin Projects'
+	;
+
+EndProject
+	: '@end'SEMICOL
+	;
+
 HEADER_BEGIN : '@begin Libraries';
 OBJECTS_BEGIN : '@begin Objects';
-ENDS : '@end' ;
-
+APPNAME : 'appname';
+APPLIB: 'applib';
+TYPEPB: 'type "pb"';
+LIBLIST: 'LibList';
 NUMBER : [0-9]+;
 ID  :   [a-zA-Z0-9_]+ ;
+QUOTE : '"';
+DOT: '.';
+DOUBLESLASH : '\\\\';
 SEMICOL : ';' ;
 WS: [ \t\n\r]+ -> skip;

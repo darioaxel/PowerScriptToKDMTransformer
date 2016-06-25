@@ -36,6 +36,7 @@ import org.antlr.v4.runtime.TokenSource;
 import org.antlr.v4.runtime.TokenStream;
 import org.darioaxel.grammar.powerscript.powerscript_02Lexer;
 import org.darioaxel.grammar.powerscript.powerscript_02Parser;
+import org.darioaxel.powerscript.listeners.TokensNotSepparatedListener;
 
 import static org.junit.Assert.assertFalse;
 
@@ -64,7 +65,8 @@ public class TestPowerScript02 {
     private static final Path test_variablesDeclaration_02 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/members/variablesDeclaration/variablesDeclaration_02.sru");
     
     private static final Path test_typeDeclaration_01 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/members/typeDeclaration/typeDeclaration_01.sru");
-     
+    
+    private static final Path test_tokensNotSepparated01 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/tokensNotSepparated/test1.srw");
     @Test
     public void testPowerscript_forward_01() throws IOException {
 
@@ -168,16 +170,25 @@ public class TestPowerScript02 {
         powerscript_02Parser.CompilationUnitContext context03 = parsePowerscript_02(test_typeDeclaration_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }    
+    
+    @Test
+    public void testPowerscript_TokensNotSepparated_01() throws IOException {
+
+        TestErrorListener errorListener = new TestErrorListener();
+        powerscript_02Parser.CompilationUnitContext context03 = parsePowerscript_02(test_tokensNotSepparated01.toFile(), errorListener);
+        assertFalse(errorListener.isFail());    
+    }   
         
-    private powerscript_02Parser.CompilationUnitContext parsePowerscript_02(File program, 
-            TestErrorListener errorListener) throws IOException {
+    private powerscript_02Parser.CompilationUnitContext parsePowerscript_02(File program, TestErrorListener errorListener) throws IOException {
         
         TokenStream inputTokenStream = createInputTokenStream(program);
         powerscript_02Parser parser = new powerscript_02Parser(inputTokenStream);
 
-        parser.addErrorListener(errorListener);
+        parser.addErrorListener(errorListener);     
+        parser.addParseListener(new TokensNotSepparatedListener());
 
         powerscript_02Parser.CompilationUnitContext context = parser.compilationUnit();
+             
         return context;
     }
     

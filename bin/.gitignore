@@ -1,1 +1,9 @@
+/powerscript.tokens
+/powerscriptBaseListener.java
+/powerscriptBaseVisitor.java
+/powerscriptLexer.java
+/powerscriptLexer.tokens
+/powerscriptListener.java
+/powerscriptParser.java
+/powerscriptVisitor.java
 /org/

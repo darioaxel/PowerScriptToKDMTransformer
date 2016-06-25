@@ -1,0 +1,477 @@
+HA$PBExportHeader$m_shortcutoptions_silver.srm
+forward
+global type m_shortcutoptions_silver from m_shortcutoptions
+end type
+end forward
+
+global type m_shortcutoptions_silver from m_shortcutoptions
+end type
+global m_shortcutoptions_silver m_shortcutoptions_silver
+
+on m_shortcutoptions_silver.create
+m_shortcutoptions_silver=this
+call super::create
+this.text = "m_shortcutoptions_blue"
+this.bitmapbackcolor = 28414869
+end on
+
+on m_shortcutoptions_silver.destroy
+call super::destroy
+end on
+
+type m_options from m_shortcutoptions`m_options within m_shortcutoptions_silver
+end type
+
+on m_options.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_options.destroy
+call super::destroy
+end on
+
+type m_showallitems from m_shortcutoptions`m_showallitems within m_options
+end type
+
+on m_showallitems.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_showallitems.destroy
+call super::destroy
+end on
+
+type m_showmorebuttons from m_shortcutoptions`m_showmorebuttons within m_options
+end type
+
+on m_showmorebuttons.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_showmorebuttons.destroy
+call super::destroy
+end on
+
+type m_showfewerbuttons from m_shortcutoptions`m_showfewerbuttons within m_options
+end type
+
+on m_showfewerbuttons.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_showfewerbuttons.destroy
+call super::destroy
+end on
+
+type m_hideall from m_shortcutoptions`m_hideall within m_options
+end type
+
+on m_hideall.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_hideall.destroy
+call super::destroy
+end on
+
+type m_addorremovebuttons from m_shortcutoptions`m_addorremovebuttons within m_options
+end type
+
+on m_addorremovebuttons.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_addorremovebuttons.destroy
+call super::destroy
+end on
+
+type m_item1 from m_shortcutoptions`m_item1 within m_addorremovebuttons
+end type
+
+on m_item1.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item1.destroy
+call super::destroy
+end on
+
+type m_item2 from m_shortcutoptions`m_item2 within m_addorremovebuttons
+end type
+
+on m_item2.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item2.destroy
+call super::destroy
+end on
+
+type m_item3 from m_shortcutoptions`m_item3 within m_addorremovebuttons
+end type
+
+on m_item3.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item3.destroy
+call super::destroy
+end on
+
+type m_item4 from m_shortcutoptions`m_item4 within m_addorremovebuttons
+end type
+
+on m_item4.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item4.destroy
+call super::destroy
+end on
+
+type m_item5 from m_shortcutoptions`m_item5 within m_addorremovebuttons
+end type
+
+on m_item5.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item5.destroy
+call super::destroy
+end on
+
+type m_item from m_shortcutoptions`m_item within m_addorremovebuttons
+end type
+
+on m_item.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item.destroy
+call super::destroy
+end on
+
+type m_6 from m_shortcutoptions`m_6 within m_addorremovebuttons
+end type
+
+on m_6.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_6.destroy
+call super::destroy
+end on
+
+type m_item8 from m_shortcutoptions`m_item8 within m_addorremovebuttons
+end type
+
+on m_item8.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item8.destroy
+call super::destroy
+end on
+
+type m_item9 from m_shortcutoptions`m_item9 within m_addorremovebuttons
+end type
+
+on m_item9.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item9.destroy
+call super::destroy
+end on
+
+type m_item10 from m_shortcutoptions`m_item10 within m_addorremovebuttons
+end type
+
+on m_item10.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item10.destroy
+call super::destroy
+end on
+
+type m_item11 from m_shortcutoptions`m_item11 within m_addorremovebuttons
+end type
+
+on m_item11.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item11.destroy
+call super::destroy
+end on
+
+type m_item12 from m_shortcutoptions`m_item12 within m_addorremovebuttons
+end type
+
+on m_item12.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item12.destroy
+call super::destroy
+end on
+
+type m_item13 from m_shortcutoptions`m_item13 within m_addorremovebuttons
+end type
+
+on m_item13.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item13.destroy
+call super::destroy
+end on
+
+type m_item14 from m_shortcutoptions`m_item14 within m_addorremovebuttons
+end type
+
+on m_item14.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item14.destroy
+call super::destroy
+end on
+
+type m_item15 from m_shortcutoptions`m_item15 within m_addorremovebuttons
+end type
+
+on m_item15.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item15.destroy
+call super::destroy
+end on
+
+type m_item16 from m_shortcutoptions`m_item16 within m_addorremovebuttons
+end type
+
+on m_item16.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item16.destroy
+call super::destroy
+end on
+
+type m_item17 from m_shortcutoptions`m_item17 within m_addorremovebuttons
+end type
+
+on m_item17.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item17.destroy
+call super::destroy
+end on
+
+type m_item18 from m_shortcutoptions`m_item18 within m_addorremovebuttons
+end type
+
+on m_item18.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item18.destroy
+call super::destroy
+end on
+
+type m_item19 from m_shortcutoptions`m_item19 within m_addorremovebuttons
+end type
+
+on m_item19.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item19.destroy
+call super::destroy
+end on
+
+type m_item20 from m_shortcutoptions`m_item20 within m_addorremovebuttons
+end type
+
+on m_item20.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item20.destroy
+call super::destroy
+end on
+
+type m_item21 from m_shortcutoptions`m_item21 within m_addorremovebuttons
+end type
+
+on m_item21.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item21.destroy
+call super::destroy
+end on
+
+type m_item22 from m_shortcutoptions`m_item22 within m_addorremovebuttons
+end type
+
+on m_item22.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item22.destroy
+call super::destroy
+end on
+
+type m_item23 from m_shortcutoptions`m_item23 within m_addorremovebuttons
+end type
+
+on m_item23.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item23.destroy
+call super::destroy
+end on
+
+type m_item24 from m_shortcutoptions`m_item24 within m_addorremovebuttons
+end type
+
+on m_item24.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item24.destroy
+call super::destroy
+end on
+
+type m_item25 from m_shortcutoptions`m_item25 within m_addorremovebuttons
+end type
+
+on m_item25.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item25.destroy
+call super::destroy
+end on
+
+type m_item26 from m_shortcutoptions`m_item26 within m_addorremovebuttons
+end type
+
+on m_item26.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item26.destroy
+call super::destroy
+end on
+
+type m_item27 from m_shortcutoptions`m_item27 within m_addorremovebuttons
+end type
+
+on m_item27.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item27.destroy
+call super::destroy
+end on
+
+type m_item28 from m_shortcutoptions`m_item28 within m_addorremovebuttons
+end type
+
+on m_item28.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item28.destroy
+call super::destroy
+end on
+
+type m_item29 from m_shortcutoptions`m_item29 within m_addorremovebuttons
+end type
+
+on m_item29.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item29.destroy
+call super::destroy
+end on
+
+type m_item30 from m_shortcutoptions`m_item30 within m_addorremovebuttons
+end type
+
+on m_item30.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item30.destroy
+call super::destroy
+end on
+
+type m_item31 from m_shortcutoptions`m_item31 within m_addorremovebuttons
+end type
+
+on m_item31.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item31.destroy
+call super::destroy
+end on
+
+type m_item32 from m_shortcutoptions`m_item32 within m_addorremovebuttons
+end type
+
+on m_item32.create
+call super::create
+this.bitmapbackcolor = 28414869
+end on
+
+on m_item32.destroy
+call super::destroy
+end on
+

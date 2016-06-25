@@ -1,0 +1,9 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "myproject\\lib\\common\\common.pbl" "";
+@end;
+@begin Objects
+ "myproject\\lib\\common\\m_master.srm" "myproject\\lib\\common\\common.pbl";
+ "myproject\\lib\\common\\n_param.sru" "myproject\\lib\\common\\common.pbl";
+ "myproject\\lib\\common\\s_userdata.sru" "myproject\\lib\\common\\common.pbl"; 
+@end;
