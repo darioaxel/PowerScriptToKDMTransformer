@@ -45,7 +45,7 @@ import org.junit.Test;
  *
  * @author darioaxel
  */
-public class TestPowerScript01 {
+public class PowerScript01Test {
      
     private static final Path test_forward_01 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/members/forward/forward_01.sru");
     private static final Path test_forward_02 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/members/forward/forward_02.sru");
@@ -63,7 +63,7 @@ public class TestPowerScript01 {
     @Test
     public void testPowerscript_forward_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_01Parser.CompilationUnitContext context01 = parsePowerscript_01(test_forward_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -71,7 +71,7 @@ public class TestPowerScript01 {
     @Test
     public void testPowerscript_forward_02() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_01Parser.CompilationUnitContext context02 = parsePowerscript_01(test_forward_02.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -79,7 +79,7 @@ public class TestPowerScript01 {
     @Test
     public void testPowerscript_forward_03() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_01Parser.CompilationUnitContext context03 = parsePowerscript_01(test_forward_03.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -87,7 +87,7 @@ public class TestPowerScript01 {
      @Test
     public void testPowerscript_globaltype_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_01Parser.CompilationUnitContext context01 = parsePowerscript_01(test_globaltype_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -95,7 +95,7 @@ public class TestPowerScript01 {
     @Test
     public void testPowerscript_globaltype_02() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_01Parser.CompilationUnitContext context02 = parsePowerscript_01(test_globaltype_02.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -103,7 +103,7 @@ public class TestPowerScript01 {
     @Test
     public void testPowerscript_globaltype_03() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_01Parser.CompilationUnitContext context03 = parsePowerscript_01(test_globaltype_03.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -111,7 +111,7 @@ public class TestPowerScript01 {
     @Test
     public void testPowerscript_string_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_01Parser.CompilationUnitContext context03 = parsePowerscript_01(test_string_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -119,7 +119,7 @@ public class TestPowerScript01 {
     @Test
     public void testPowerscript_integer_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_01Parser.CompilationUnitContext context03 = parsePowerscript_01(test_integer_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -127,13 +127,13 @@ public class TestPowerScript01 {
      @Test
     public void testPowerscript_literalsArrays_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_01Parser.CompilationUnitContext context03 = parsePowerscript_01(test_literals_arrays_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
     
     private powerscript_01Parser.CompilationUnitContext parsePowerscript_01(File program, 
-            TestErrorListener errorListener) throws IOException {
+            ErrorListenerTest errorListener) throws IOException {
         
         TokenStream inputTokenStream = createInputTokenStream(program);
         powerscript_01Parser parser = new powerscript_01Parser(inputTokenStream);

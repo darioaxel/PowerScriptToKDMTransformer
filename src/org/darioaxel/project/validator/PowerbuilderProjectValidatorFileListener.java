@@ -1,4 +1,4 @@
-package org.darioaxel.util.project.validator;
+package org.darioaxel.project.validator;
 
 import java.io.File;
 
@@ -10,7 +10,10 @@ import org.darioaxel.util.FileAccess;
 public class PowerbuilderProjectValidatorFileListener implements IFileListener{
 
 	private  File pbtFile = null;
-		
+	
+	public File getPbtFile() {
+		return pbtFile;
+	}
 	@Override
 	public void updateFile(File dir, File file) {
 		

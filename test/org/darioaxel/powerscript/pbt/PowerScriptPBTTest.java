@@ -13,29 +13,45 @@ import org.antlr.v4.runtime.TokenSource;
 import org.antlr.v4.runtime.TokenStream;
 import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTLexer;
 import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTParser;
-import org.darioaxel.powerscript.TestErrorListener;
+import org.darioaxel.powerscript.ErrorListenerTest;
+import org.darioaxel.project.validator.pbt.PowerbuilderProjectPBTListener;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 /**
  *
  * @author darioaxel
  */
-public class TestPowerScriptPBT {
+public class PowerScriptPBTTest {
 
 	private static final Path test = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/real/myproject/myproject.pbt");
 
 	@Test
 	public void testPowerscriptPBT() throws IOException {
 
-		TestErrorListener errorListener = new TestErrorListener();
+		ErrorListenerTest errorListener = new ErrorListenerTest();
 		powerscriptPBTParser.ProgContext context = parsePowerscriptPBT(test.toFile(), errorListener);
+		assertFalse(errorListener.isFail());    
+	}
+	
+	@Test
+	public void testPowerscriptPBTListener() throws IOException {
+
+		ErrorListenerTest errorListener = new ErrorListenerTest();
+		PowerbuilderProjectPBTListener result = parsePowerscriptPBTListener(test.toFile(), errorListener);
+		
+		assertTrue(result.getAppname().equals("myproject"));
+	
+		assertTrue(result.getApplib().getName().equals("myproject.pbl"));
+		
+		assertTrue(result.getLiblist().size() == 5);
+		
 		assertFalse(errorListener.isFail());    
 	}
 
 	private powerscriptPBTParser.ProgContext parsePowerscriptPBT(File program, 
-			TestErrorListener errorListener) throws IOException {
+			ErrorListenerTest errorListener) throws IOException {
 
 		TokenStream inputTokenStream = createInputTokenStream(program);
 		powerscriptPBTParser parser = new powerscriptPBTParser(inputTokenStream);
@@ -44,6 +60,20 @@ public class TestPowerScriptPBT {
 
 		powerscriptPBTParser.ProgContext context = parser.prog();
 		return context;
+	}
+	
+	private PowerbuilderProjectPBTListener parsePowerscriptPBTListener(File program, 
+			ErrorListenerTest errorListener) throws IOException {
+
+		TokenStream inputTokenStream = createInputTokenStream(program);
+		powerscriptPBTParser parser = new powerscriptPBTParser(inputTokenStream);
+
+		parser.addErrorListener(errorListener);
+		PowerbuilderProjectPBTListener pbpPBTListener = new PowerbuilderProjectPBTListener();
+		parser.addParseListener(pbpPBTListener);
+
+		powerscriptPBTParser.ProgContext context = parser.prog();
+		return pbpPBTListener;
 	}
 
 	private TokenStream createInputTokenStream(File program) throws IOException {

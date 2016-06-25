@@ -35,7 +35,7 @@ import org.antlr.v4.runtime.dfa.DFA;
  *
  * @author darioaxel
  */
-public class TestErrorListener implements ANTLRErrorListener {
+public class ErrorListenerTest implements ANTLRErrorListener {
 
     private boolean fail = false;
 

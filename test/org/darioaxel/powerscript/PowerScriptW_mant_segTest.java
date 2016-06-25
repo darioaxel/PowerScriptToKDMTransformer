@@ -48,7 +48,7 @@ import org.junit.Test;
  *
  * @author darioaxel
  */
-public class TestPowerScriptW_mant_seg {
+public class PowerScriptW_mant_segTest {
 
 	private static final Path test_forward_01 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/w_mant_seg/part1.srw");
 	private static final Path test_forward_02 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/w_mant_seg/part2.srw");
@@ -56,7 +56,7 @@ public class TestPowerScriptW_mant_seg {
 	@Test
 	public void testPowerscript_part1() throws IOException {
 
-		TestErrorListener errorListener = new TestErrorListener();
+		ErrorListenerTest errorListener = new ErrorListenerTest();
 		powerscriptParser.CompilationUnitContext context01 = parsePowerscript(test_forward_01.toFile(), errorListener);
 		assertFalse(errorListener.isFail());    
 	}
@@ -64,13 +64,13 @@ public class TestPowerScriptW_mant_seg {
 	@Test
 	public void testPowerscript_part2() throws IOException {
 
-		TestErrorListener errorListener = new TestErrorListener();
+		ErrorListenerTest errorListener = new ErrorListenerTest();
 		powerscriptParser.CompilationUnitContext context02 = parsePowerscript(test_forward_02.toFile(), errorListener);
 		assertFalse(errorListener.isFail());    
 	}
 
 	private powerscriptParser.CompilationUnitContext parsePowerscript(File program, 
-			TestErrorListener errorListener) throws IOException {
+			ErrorListenerTest errorListener) throws IOException {
 
 		TokenStream inputTokenStream = createInputTokenStream(program);
 		powerscriptParser parser = new powerscriptParser(inputTokenStream);

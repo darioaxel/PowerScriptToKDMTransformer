@@ -9,7 +9,6 @@ grammar powerscriptPBG;
 package org.darioaxel.grammar.powerscript.pbg;
 }
 
-
 prog
 	: header libraries objects EOF
 	;
@@ -27,7 +26,12 @@ objects
 	;
 
 pathsFromTo
-	: path path SEMICOL
+	: quotedPath quotedPath SEMICOL
+	| quotedPath QUOTE QUOTE SEMICOL
+	;
+	
+quotedPath
+	: QUOTE path QUOTE
 	;
 	
 path

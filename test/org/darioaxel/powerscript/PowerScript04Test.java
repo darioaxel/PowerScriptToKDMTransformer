@@ -46,7 +46,7 @@ import org.junit.Test;
  *
  * @author darioaxel
  */
-public class TestPowerScript04 {
+public class PowerScript04Test {
      
     private static final Path test_forward_01 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/members/forward/forward_01.sru");
     private static final Path test_forward_02 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/members/forward/forward_02.sru");
@@ -77,7 +77,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_forward_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context01 = parsepowerscript_04(test_forward_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -85,7 +85,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_forward_02() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context02 = parsepowerscript_04(test_forward_02.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -93,7 +93,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_forward_03() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_forward_03.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -101,7 +101,7 @@ public class TestPowerScript04 {
      @Test
     public void testPowerscript_globaltype_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context01 = parsepowerscript_04(test_globaltype_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -109,7 +109,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_globaltype_02() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context02 = parsepowerscript_04(test_globaltype_02.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -117,7 +117,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_globaltype_03() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_globaltype_03.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -125,7 +125,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_string_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_string_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -133,7 +133,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_integer_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_integer_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -141,7 +141,7 @@ public class TestPowerScript04 {
      @Test
     public void testPowerscript_date_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_date_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -149,7 +149,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_literalsArrays_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_literals_arrays_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -157,7 +157,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_constants_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_constants_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -165,7 +165,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_variablesDeclaration_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_variablesDeclaration_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -173,7 +173,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_variablesDeclaration_02() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_variablesDeclaration_02.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -181,7 +181,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_typeDeclaration_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_typeDeclaration_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }    
@@ -189,7 +189,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_functionDeclaration_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_functionDeclaration_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -197,7 +197,7 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_functionBody_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_functionBody_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
@@ -205,28 +205,28 @@ public class TestPowerScript04 {
     @Test
     public void testPowerscript_onImplementation_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_onImplementation_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
     @Test
     public void testPowerscript_test_eventImplementation_01_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_eventImplementation_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
     @Test
     public void testPowerscript_test_eventDeclaration_01_01() throws IOException {
 
-        TestErrorListener errorListener = new TestErrorListener();
+        ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_04Parser.CompilationUnitContext context03 = parsepowerscript_04(test_eventDeclaration_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
  
     
     private powerscript_04Parser.CompilationUnitContext parsepowerscript_04(File program, 
-            TestErrorListener errorListener) throws IOException {
+            ErrorListenerTest errorListener) throws IOException {
         
         TokenStream inputTokenStream = createInputTokenStream(program);
         powerscript_04Parser parser = new powerscript_04Parser(inputTokenStream);

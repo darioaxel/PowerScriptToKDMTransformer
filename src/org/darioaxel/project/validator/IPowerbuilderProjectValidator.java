@@ -1,4 +1,4 @@
-package org.darioaxel.util.project.validator;
+package org.darioaxel.project.validator;
 
 import java.io.File;
 
