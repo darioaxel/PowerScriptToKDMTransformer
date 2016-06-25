@@ -72,7 +72,7 @@ public class PowerScriptPBTTest {
 		PowerbuilderProjectPBTListener pbpPBTListener = new PowerbuilderProjectPBTListener();
 		parser.addParseListener(pbpPBTListener);
 
-		powerscriptPBTParser.ProgContext context = parser.prog();
+		parser.prog();
 		return pbpPBTListener;
 	}
 

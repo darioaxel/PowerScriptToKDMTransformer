@@ -14,15 +14,15 @@ prog
 	;
 
 header
-	: 'Save Format v3.0(' NUMBER ')' #headers
+	: 'Save Format v3.0(' NUMBER ')' 
 	;
 
 libraries
-	: HEADER_BEGIN pathsFromTo+ ENDS SEMICOL  #Intolibrarires 
+	: HEADER_BEGIN pathsFromTo+ ENDS SEMICOL  
 	;
 
 objects
-	: OBJECTS_BEGIN pathsFromTo+ ENDS SEMICOL #Intoobjects
+	: OBJECTS_BEGIN pathsFromTo+ ENDS SEMICOL 
 	;
 
 pathsFromTo
