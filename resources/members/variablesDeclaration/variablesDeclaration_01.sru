@@ -29,8 +29,6 @@ constant string is_mod_R = "5.03.1"
 
 // Competencias (QCS)
 constant string is_mod_Q = "4.02.1"
-
-// Ayuda Social (SCS)
 constant string is_mod_S = "5.09.1"
 
 string	is_textversion , is_textfecversion

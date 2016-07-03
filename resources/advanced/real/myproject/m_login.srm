@@ -10,7 +10,7 @@ global m_login m_login
 on m_login.create
 m_login = this
 call super::create
-this.menustyle = contemporarymenu!
+this.menustyle = contemporarymenu
 this.menutextcolor = 134217735
 this.menubackcolor = 67108864
 this.menuhighlightcolor = 134217728

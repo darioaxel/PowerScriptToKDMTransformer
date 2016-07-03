@@ -30,24 +30,16 @@ public class InventoryModelCreatorTest {
 	public void saveInventoryModelToFileShouldWork() {
 		File directory = new File("../PowerScriptGrammar/resources/inventoryModel/");
 		InventoryModel inventoryModel = new InventoryModelCreator().create(directory, new NullProgressMonitor());
-		try {
-			FileAccess.saveEcoreToXMI(inventoryModel, "../PowerScriptGrammar/result.xmi", new NullProgressMonitor());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		FileAccess.saveEcoreToXMI(inventoryModel, "../PowerScriptGrammar/result.xmi", new NullProgressMonitor());		
 	}
 	
 	@Test
 	public void saveInventoryModelToFileShouldWork2() {
 		File directory = new File("../PowerScriptGrammar/resources/advanced/real/myproject");
 		InventoryModel inventoryModel = new InventoryModelCreator().create(directory, new NullProgressMonitor());
-		try {
-			FileAccess.saveEcoreToXMI(inventoryModel, "../PowerScriptGrammar/result2.xmi", new NullProgressMonitor());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		FileAccess.saveEcoreToXMI(inventoryModel, "../PowerScriptGrammar/result2.xmi", new NullProgressMonitor());
 	}
 	
 	@Test

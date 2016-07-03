@@ -10,6 +10,7 @@ import org.eclipse.gmt.modisco.omg.kdm.code.CodeFactory;
 import org.eclipse.gmt.modisco.omg.kdm.code.Package;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodePackage;
 import org.eclipse.gmt.modisco.omg.kdm.code.impl.PackageImpl;
+import org.eclipse.gmt.modisco.omg.kdm.core.KDMEntity;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFactory;
 import org.junit.Test;
 
@@ -21,6 +22,7 @@ public class PackageCreatorTest {
 	public void testingPackageCreator() {
 		
 		Package newPBG = CODE_FACTORY.createPackage();
-		newPBG.createAggregation(arg0);
+	//	KDMEntity arg0 = new KDMEntity();
+		newPBG.createAggregation(null);
 	}
 }

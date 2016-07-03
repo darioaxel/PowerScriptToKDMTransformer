@@ -1,6 +1,10 @@
 package org.darioaxel.mapper.source;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.darioaxel.mapper.code.MoDiscoKDM;
 import org.darioaxel.util.FileAccess;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -12,11 +16,13 @@ import org.eclipse.gmt.modisco.omg.kdm.source.SourceFactory;
 public final class InventoryModelCreator implements ModelCreator<InventoryModel> {
 
 	private final SourceFactory sourceFactory;
-
+	private Collection<String> languagesUsed;
+	
 	public InventoryModelCreator() {
 		this.sourceFactory = SourceFactory.eINSTANCE;
+		this.languagesUsed = new ArrayList<String>();
 	}
-
+	
 	@Override
 	public InventoryModel create(final File directory, IProgressMonitor monitor) {
 	
@@ -35,7 +41,7 @@ public final class InventoryModelCreator implements ModelCreator<InventoryModel>
 		monitor.beginTask("Scanning directory..." + directory.getAbsolutePath(), IProgressMonitor.UNKNOWN);
 
 		try {
-			FileAccess.walkDirectoryRecursively(directory, new InventoryModelFileListener(root));
+			FileAccess.walkDirectoryRecursively(directory, new InventoryModelFileListener(root, languagesUsed));
 		} finally {
 			monitor.done();
 		}
@@ -46,6 +52,10 @@ public final class InventoryModelCreator implements ModelCreator<InventoryModel>
 	@Override
 	public InventoryModel create(final String dirname, final IProgressMonitor monitor) {
 		return create(new File(dirname), monitor);
+	}
+	
+	public Collection<String> getLanguagesUsed(){
+		return languagesUsed;
 	}
 
 }

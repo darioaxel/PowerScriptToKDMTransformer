@@ -11,7 +11,7 @@ integer width = 4261
 integer height = 1872
 boolean maxbox = false
 boolean resizable = false
-event ue_get_employee ( )
+event ue_get_employee()
 string s_dni
 end type
 
@@ -23,7 +23,7 @@ end event
 
 on w_mydata.create
 call super::create
-this.payroll = n_p.of_read_employee ( s_dni )
+this.payroll = n_p.of_read_employee (s_dni )
 end on
 
 on w_mydata.destroy
@@ -32,5 +32,5 @@ destroy(this.s_payroll)
 end on
 
 event open;
-call super::open;
+call super::open
 end event

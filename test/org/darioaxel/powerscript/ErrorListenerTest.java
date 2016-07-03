@@ -62,12 +62,12 @@ public class ErrorListenerTest implements ANTLRErrorListener {
     @Override
     public void reportAttemptingFullContext(Parser arg0, DFA arg1, int arg2,
             int arg3, BitSet arg4, ATNConfigSet arg5) {
-        setFail(true);
+     setFail(false);
     }
 
     @Override
     public void reportAmbiguity(Parser arg0, DFA arg1, int arg2, int arg3,
             boolean arg4, BitSet arg5, ATNConfigSet arg6) {
-        setFail(true);
+        setFail(false);
     }
 }

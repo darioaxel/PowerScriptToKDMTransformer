@@ -1,32 +1,12 @@
 package org.darioaxel.mapper.code;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Properties;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
-//import mapping.KDMElementFactory;
-//import mapping.KDMElementFactory.GlobalKind;
-//import mapping.action.visitor.ActionSourceFileVisitor;
-//import mapping.code.extern.ExternalDatatypeInfoRepository;
-//import mapping.code.extern.loader.DatatypeInfoCacheLoader;
-//import mapping.code.extern.loader.DatatypeInfoFileSystemLoader;
-//import mapping.code.parser.CSharpMemberDeclarationParser;
-//import mapping.code.parser.CSharpSourceFileParser;
-//import mapping.code.parser.CSharpTypeParser;
-//import mapping.code.visitor.LanguageUnitDetectorVisitor;
-//import mapping.code.visitor.QueuingSourceFileVisitor;
-//import mapping.code.visitor.SequentialParseVisitor;
-//import mapping.source.InventoryModelWalker;
-//import mapping.source.visitor.SourceFileCounter;
-//import mapping.source.visitor.SourceFileVisitor;
-
+import org.darioaxel.mapper.source.InventoryModelWalker;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
-import org.eclipse.gmt.modisco.omg.kdm.code.LanguageUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.Module;
 import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
@@ -37,34 +17,25 @@ public class CodeModelCreator {
 
 	private CodeModel					internalCodeModel;
 	private CodeModel					externalCodeModel;
-	//private LanguageUnitDetectorVisitor	languageUnitDetectorVisitor;
-
+	
 	private Module						valueRepository;
 
 	private final int					toPhase;
 
 	public CodeModelCreator(final Properties prop, final int toPhase) {
 		this.toPhase = toPhase;
-		rootDir = prop.getProperty("ExternalDatatypeInfoRepository.rootDir");
+		rootDir = prop.getProperty("ExternalDatatypeInfoRepository.rootDir");		
 	}
 
 	public void create(final InventoryModel inventoryModel, IProgressMonitor monitor) {
-		// ensure there is a monitor of some sort
+	
 		if (monitor == null) monitor = new NullProgressMonitor();
-
 		final InventoryModelWalker walker = new InventoryModelWalker(inventoryModel);
-
-//		SourceFileCounter sourceFileCounter = new SourceFileCounter();
-//		walker.walk(sourceFileCounter);
-//		final int numSourceFiles = sourceFileCounter.getAmount();
-
-		// 3 passes + language detection
-		monitor.beginTask("Extracting code model from inventory model...", 1 + toPhase * numSourceFiles);
+		
+		monitor.beginTask("Extracting code model from inventory model...", 1);
 		try {
 			monitor.subTask("Searching for used programming languages...");
-			languageUnitDetectorVisitor = new LanguageUnitDetectorVisitor();
-			walker.walk(languageUnitDetectorVisitor);
-			monitor.worked(1);
+		
 
 			if (monitor.isCanceled()) throw new OperationCanceledException();
 			// process inventory model

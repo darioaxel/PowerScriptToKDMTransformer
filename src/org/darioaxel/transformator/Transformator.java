@@ -2,9 +2,13 @@ package org.darioaxel.transformator;
 
 import java.io.File;
 import java.nio.file.Path;
+import java.util.Collection;
 
+import org.eclipse.gmt.modisco.omg.kdm.code.LanguageUnit;
+import org.darioaxel.mapper.code.language.LanguageUnitDetector;
 import org.darioaxel.mapper.source.InventoryModelCreator;
 import org.darioaxel.mapper.source.SegmentCreator;
+import org.darioaxel.util.FileAccess;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.Segment;
 import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
@@ -29,11 +33,12 @@ public class Transformator {
 		
 		File directory = new File(this.directory);
 		
-		InventoryModel inventoryModel = new InventoryModelCreator().create(directory, new NullProgressMonitor());
+		InventoryModelCreator imc = new InventoryModelCreator();
+		InventoryModel inventoryModel = imc.create(directory, new NullProgressMonitor());
+		Collection<LanguageUnit> languages = LanguageUnitDetector.getLanguages(imc.getLanguagesUsed());
+		Segment segment = SegmentCreator.create(inventoryModel, null, null, 3, languages);
 
-		Segment segment = SegmentCreator.create(inventoryModel, null, new MyProperties(), 3);
-
-		//FileAccess.saveEcoreToXMI(segment, outputFilename, monitor);
+		FileAccess.saveEcoreToXMI(segment, null, null);
 	}
 	
 	public String getDirectory() {

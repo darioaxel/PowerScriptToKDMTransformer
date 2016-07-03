@@ -16,8 +16,7 @@ public class PowerscriptLanguageUnitCache  extends LanguageUnitCache{
 		setName("Powerscript types");
 
 		addDatatype("object", CODE_FACTORY.createDatatype());
-		addDatatype("dynamic", CODE_FACTORY.createDatatype());
-		addDatatype("String", CODE_FACTORY.createStringType());
+		addDatatype("dynamic", CODE_FACTORY.createDatatype());		
 		addDatatype("string", CODE_FACTORY.createStringType());
 		addDatatype("sbyte", CODE_FACTORY.createOctetType());
 		addDatatype("short", CODE_FACTORY.createIntegerType());

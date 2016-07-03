@@ -18,16 +18,11 @@ public class SegmentCreator {
 
 	private static final Logger LOGGER = LogManager.getLogger(ModelCreator.class);
 
-	private SegmentCreator() {	
-	}
-
-	public static Segment create(final InventoryModel inventoryModel, final IProgressMonitor monitor, 
-			final Properties prop, final int toPhase) {
+	public static Segment create(final InventoryModel inventoryModel, final IProgressMonitor monitor, final Properties prop, final int toPhase, Collection<LanguageUnit> languageUnits ) {
 
 		CodeModelCreator codeModelCreator = new CodeModelCreator(prop, toPhase);
 
 		try {
-
 			codeModelCreator.create(inventoryModel, monitor);
 
 		} catch (StackOverflowError e) {
@@ -38,7 +33,7 @@ public class SegmentCreator {
 
 		CodeModel internalCodeModel = codeModelCreator.getInternalCodeModel();
 		CodeModel externalCodeModel = codeModelCreator.getExternalCodeModel();
-		Collection<LanguageUnit> neccessaryLanguageUnits = codeModelCreator.getNeccessaryLanguageUnits();
+		Collection<LanguageUnit> neccessaryLanguageUnits = languageUnits;
 
 		internalCodeModel.getCodeElement().addAll(neccessaryLanguageUnits);
 

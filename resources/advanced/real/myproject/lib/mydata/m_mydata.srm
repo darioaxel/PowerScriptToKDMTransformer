@@ -36,7 +36,7 @@ on m_espera.create
 call super::create
 this.text = "Espere... configurando su entorno personalizado ..."
 this.microhelp = "Espere... configurando su entorno personalizado ..."
-this.m_masterstyle = contemporarym_master!
+this.m_masterstyle = contemporarym_master
 this.m_mastertextcolor = 134217735
 this.m_masterbackcolor = 67108864
 this.m_masterhighlightcolor = 134217728

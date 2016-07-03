@@ -29,13 +29,15 @@ public final class FileAccess {
 		// utility class
 	}
 
-	public static void saveEcoreToXMI(final EObject modelInstance, final String filename, final IProgressMonitor monitor)
-			throws IOException {
+	public static void saveEcoreToXMI(final EObject modelInstance, final String filename, final IProgressMonitor monitor) {
 		try {
 			FileAccess.saveEcoreToXMIUnsafe(modelInstance, filename, monitor);
 		} catch (StackOverflowError e) {
 			System.err.println("Could not save model due to StackOverflowError. "
 					+ "Increase the default stack size limit for threads by the JVM argument '-Xss'.");
+			e.printStackTrace();
+		} catch (IOException e ) {
+			System.err.println("Could not save model due to IOException");
 			e.printStackTrace();
 		}
 	}
@@ -55,11 +57,9 @@ public final class FileAccess {
 	public static <T extends EPackage> T loadEcoreFromXMIFile(final T modelClass, final String filename) throws IOException {
 
 		ResourceSet resourceSet = new ResourceSetImpl();
-		// register package in local resource registry
 		resourceSet.getPackageRegistry().put(modelClass.getNsURI(), modelClass);
 
 		Resource resource = resourceSet.createResource(URI.createFileURI(filename));
-		// load resource
 		resource.load(null);
 
 		EList<EObject> contents = resource.getContents();
@@ -110,14 +110,7 @@ public final class FileAccess {
 		}
 	}
 
-	/**
-	 * @param dir
-	 *            is not checked initially
-	 * @param listener
-	 * @param monitor
-	 */
-	public static void walkDirectoryRecursively(final File dir, final IFileListener listener) {
-		File[] test = dir.listFiles();
+	public static void walkDirectoryRecursively(final File dir, final FileListener listener) {
 		for (File file : dir.listFiles()) {			
 			if (file.isDirectory()) {
 				listener.enterDir(dir, file);
@@ -136,27 +129,7 @@ public final class FileAccess {
 		if (lastIndexOf == -1) {
 			return "";
 		}
-		// +1 absorb the dot
 		String fileExt = name.substring(lastIndexOf + 1).toLowerCase();
 		return fileExt;
-	}
-
-	public static String getNiceFileSize(double size) {
-		int run = 0;
-		String[] sizes = { "B", "KB", "MB", "GB", "TB", "PB", "EB" };
-		while (size >= 1024) {
-			size /= 1024;
-			run++;
-		}
-		DecimalFormat df = new DecimalFormat("0.00");
-		String zahl = df.format(size);
-		return zahl + " " + sizes[run];
-	}
-
-	public static boolean isFirstYounger(final String first, final String second) {
-
-		File firstFile = new File(first);
-		long firstTimestamp = Math.max(firstFile.lastModified(), firstFile.lastModified());
-		return firstTimestamp > new File(second).lastModified();
 	}
 }

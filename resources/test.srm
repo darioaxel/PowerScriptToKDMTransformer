@@ -1,0 +1,52 @@
+public function boolean of_licencia_correcta ( string as_modulo ) ;
+long i 
+
+istr_xlicmodu [i].s_codimodu = as_modulo
+
+			
+			integer li_valoinco
+
+FOR i = 1 TO UpperBound(istr_xlicmodu)
+	IF istr_xlicmodu[i].s_codimodu = as_modulo THEN
+		RETURN	istr_xlicmodu[i].b_licencia
+	END IF
+NEXT
+
+RETURN FALSE
+
+IF	gnv_app.ib_haypcs THEN
+
+			   s_zpuestrab ls_zpuestrab
+			   boolean lb_control_gcs_lcs
+			
+			   // Lee el puesto del empleado
+			   ls_zpuestrab.i_codienti = gnv_app.ii_codienti
+			   ls_zpuestrab.s_coditrpt = inv_calculo.of_GetDatoEmp("personal_v_zcoditrpt",li_err)
+			   ls_zpuestrab.s_codimica = inv_calculo.of_GetDatoEmp("personal_v_codimica",li_err)
+			   ls_zpuestrab.s_codicedi = inv_calculo.of_GetDatoEmp("personal_v_codicedi",li_err)
+			   ls_zpuestrab.s_codiclac = inv_calculo.of_GetDatoEmp("personal_v_codiclac",li_err)
+			   ls_zpuestrab.s_codicede = inv_calculo.of_GetDatoEmp("personal_v_codicede",li_err)
+			   ls_zpuestrab.i_provdest = Integer(inv_calculo.of_GetDatoEmp("personal_v_provdest",li_err))
+			   ls_zpuestrab.i_locadest = Integer(inv_calculo.of_GetDatoEmp("personal_v_locadest",li_err))
+			   ls_zpuestrab.l_numepues = Integer(inv_calculo.of_GetDatoEmp("personal_v_znumepues",li_err))
+
+		      IF IsNull(ls_zpuestrab.s_coditrpt) THEN
+			      inv_calculo.of_Error("ue_especifi:Empleado sin puesto de trabajo ",1,1)
+			      RETURN
+		      END IF
+			
+		      li_Nivel = SQLCA.of_Lee_EspecifiPuesto(ls_zpuestrab)
+		      IF gf_Nulo( li_nivel ) <= 0 THEN			RETURN END IF
+			   // Lee el complemento especifico del puesto
+				
+		END IF
+		
+		IF NOT lb_control_gcs_lcs THEN
+						li_nivel = 0
+		ELSE
+		 li_nivel = 0
+					inv_calculo.of_Error("AVISO. ue_especIFi: No existe nivel de complemento espec$$HEX1$$ed00$$ENDHEX$$fico.",1,1)
+						inv_calculo.il_avisos++
+					END IF
+
+end function

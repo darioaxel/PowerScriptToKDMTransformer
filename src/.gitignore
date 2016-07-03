@@ -6,3 +6,11 @@
 /powerscriptListener.java
 /powerscriptParser.java
 /powerscriptVisitor.java
+/powerscript_05.tokens
+/powerscript_05BaseListener.java
+/powerscript_05BaseVisitor.java
+/powerscript_05Lexer.java
+/powerscript_05Lexer.tokens
+/powerscript_05Listener.java
+/powerscript_05Parser.java
+/powerscript_05Visitor.java

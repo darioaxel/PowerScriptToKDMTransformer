@@ -35,7 +35,7 @@ destroy(this.s_payroll)
 end on
 
 event open;
-call super::open;
+call super::open
 
 end event
 

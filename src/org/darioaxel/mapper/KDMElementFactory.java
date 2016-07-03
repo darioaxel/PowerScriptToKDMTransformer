@@ -401,7 +401,7 @@ public final class KDMElementFactory {
 //		} else {
 //			variable = KDMElementFactory.createMemberUnit();
 //		}
-		return variable;
+		return null;
 	}
 
 	public static DataElement createIndexerUnit() {
