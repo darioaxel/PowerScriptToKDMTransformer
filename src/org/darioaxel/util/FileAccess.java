@@ -1,15 +1,18 @@
 package org.darioaxel.util;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DecimalFormat;
+
 import java.util.Collections;
 
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.TokenSource;
+import org.antlr.v4.runtime.TokenStream;
+import org.darioaxel.grammar.powerscript.powerscriptLexer;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -77,27 +80,13 @@ public final class FileAccess {
 		return (T) eObject;
 	}
 
-	public static String loadTextFile(final String filename) throws IOException {
+	public static TokenStream createPowerscriptInputTokenStream(File program) throws IOException {
 
-		byte[] buffer = new byte[BUFFER_SIZE];
-		int read;
-		StringBuilder stringBuilder = new StringBuilder();
-		FileInputStream fileInputStream = new FileInputStream(filename);
-		try {
-			while ((read = fileInputStream.read(buffer)) != -1) {
-				stringBuilder.append(new String(buffer, 0, read));
-			}
-		} finally {
-			fileInputStream.close();
-		}
-		return stringBuilder.toString();
-	}
-	
-	public static BufferedReader loadTextFileAsStream(final String filename) throws FileNotFoundException {
+		CharStream inputCharStream = new ANTLRInputStream(new FileReader(program));
+		TokenSource tokenSource = new powerscriptLexer(inputCharStream);
+		TokenStream inputTokenStream = new CommonTokenStream(tokenSource);
 
-		BufferedReader reader = new BufferedReader(new FileReader(filename));
-	
-		return reader;
+		return inputTokenStream;
 	}
 
 	public static void saveTextFile(final String filename, final String text) throws IOException {
