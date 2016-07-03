@@ -11,7 +11,6 @@ package org.darioaxel.grammar.powerscript;
 }
 
 
-
 compilationUnit
     :  memberDeclaration*? EOF
     ;
@@ -253,7 +252,7 @@ onImplementationEnd
 
 // 11. Event Declaration
 eventDeclaration
-    : 'event' Identifier parametersList (';')? delimiter?
+    : 'event' Identifier parametersList ';' delimiter?
     ;
 
 creatorType
@@ -271,6 +270,7 @@ eventImplementation
 eventImplementationHead
     : eventDeclaration
 	| 'event' creatorType ';' delimiter?
+	| 'event' Identifier ('::' Identifier)? ';' delimiter?
     ;
 
 eventImplementationBody 
@@ -430,15 +430,15 @@ chooseStatementEnd
 	;
 
 createStatement
-    : 'create' expression
+    : 'create' expression delimiter?
     ;
 	
 returnStatement
-	: 'RETURN' expression?
+	: 'RETURN' expression? delimiter?
 	;
 
 superStatement
-	: 'SUPER' expression?
+	: 'SUPER' expression? delimiter?
 	;
 
 throwStatement
@@ -447,6 +447,7 @@ throwStatement
 
 callStatement
 	: 'call' Identifier callStatementSubControl? '::' creatorType delimiter?
+	| 'call' Identifier callStatementSubControl? '::' Identifier delimiter?
 	;
 
 callStatementSubControl
@@ -550,7 +551,7 @@ expression
     |   expression delimiter
     |   expression '.' Identifier
     |   expression '.' creatorType
-    |   expression '[' expression ']'
+    |   expression '[' expression? ']'
 	|   expression '=' 'create' 'using'? Identifier	
     |   expression '(' expressionList? ')'
     |   '(' type ')' expression

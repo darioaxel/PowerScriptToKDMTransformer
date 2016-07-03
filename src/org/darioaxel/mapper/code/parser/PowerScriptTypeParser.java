@@ -1,16 +1,10 @@
 package org.darioaxel.mapper.code.parser;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import org.antlr.runtime.RecognitionException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
-
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
-
-public class PowerScriptTypeParser implements ISourceFileTypeParser {
+public class PowerScriptTypeParser implements SourceFileTypeParser {
 
 	@Override
 	public void readInto(final SourceFile sourceFile, final CodeModel internalCodeModel, final IProgressMonitor monitor) {
