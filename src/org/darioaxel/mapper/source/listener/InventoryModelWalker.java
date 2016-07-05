@@ -1,8 +1,8 @@
-package org.darioaxel.mapper.source;
+package org.darioaxel.mapper.source.listener;
 
 import java.util.List;
 
-import org.darioaxel.mapper.visitors.SourceFileVisitor;
+import org.darioaxel.mapper.source.visitors.SourceFileVisitor;
 import org.eclipse.gmt.modisco.omg.kdm.source.AbstractInventoryElement;
 import org.eclipse.gmt.modisco.omg.kdm.source.InventoryContainer;
 import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
@@ -10,7 +10,7 @@ import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
 public class InventoryModelWalker {
 
-	private final InventoryModel	inventoryModel;
+	private final InventoryModel inventoryModel;
 
 	public InventoryModelWalker(final InventoryModel inventoryModel) {
 		this.inventoryModel = inventoryModel;

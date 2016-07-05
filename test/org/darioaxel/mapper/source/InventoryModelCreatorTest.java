@@ -55,9 +55,9 @@ public class InventoryModelCreatorTest {
 	
 	@Test
 	public void otherTest() {
-		CodeAssembly cAss = KDMElementFactory.createCodeAssembly();
-		Package pac = KDMElementFactory.createPackage();
-		cAss.getCodeElement().add(pac);
+	//	CodeAssembly cAss = KDMElementFactory.createCodeAssembly();
+	//	Package pac = KDMElementFactory.createPackage();
+	//	cAss.getCodeElement().add(pac);
 	}
 	
 }

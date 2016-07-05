@@ -99,7 +99,7 @@ public final class FileAccess {
 		}
 	}
 
-	public static void walkDirectoryRecursively(final File dir, final FileListener listener) {
+	public static void walkDirectoryRecursively(final File dir, final IFileListener listener) {
 		for (File file : dir.listFiles()) {			
 			if (file.isDirectory()) {
 				listener.enterDir(dir, file);

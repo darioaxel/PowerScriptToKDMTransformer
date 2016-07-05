@@ -3,11 +3,11 @@ package org.darioaxel.project.validator;
 import java.io.File;
 
 
-import org.darioaxel.util.FileListener;
+import org.darioaxel.util.IFileListener;
 
 import org.darioaxel.util.FileAccess;
 
-public class PowerbuilderProjectValidatorFileListener implements FileListener{
+public class PowerbuilderProjectValidatorFileListener implements IFileListener{
 
 	private  File pbtFile = null;
 	

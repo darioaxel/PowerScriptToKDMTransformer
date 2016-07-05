@@ -11,6 +11,7 @@ package org.darioaxel.grammar.powerscript;
 }
 
 
+
 compilationUnit
     :  memberDeclaration*? EOF
     ;
@@ -44,7 +45,7 @@ forwardDeclarationEnd
 	;
 	
 forwardDeclarationBody
-	: variableDeclaration
+	: objectDeclaration
 	| typeDeclaration
 	;
 
@@ -131,12 +132,13 @@ variableDeclarators
     ;
 
 variableDeclarator
-    :   variableDeclaratorId ('=' expression)? 
+    :   Identifier ('=' expression)? 
+	|   Identifier arrayLengthDeclarator ('=' '{' literal (',' literal)*? '}')?
     ;
 
 variableDeclaratorId
     :   Identifier 
-	|   Identifier arrayLengthDeclarator
+	|   
     ;	
 
 // 6. Constants Declaration
@@ -537,8 +539,7 @@ variablesSelected
 	;
 
 variableSelected
-	: ':' Identifier delimiter?	
-	| ':' qualifiedName delimiter?
+	: ':' Identifier delimiter?		
 	;
 
 qualifiedName
@@ -602,8 +603,7 @@ literal
     :   IntegerLiteral
     |   BooleanLiteral
     |	StringLiteral
-    |   CharacterLiteral
-	// | 	DecimalLiteral
+    |   CharacterLiteral	
     | 	DateTimeLiteral
     |   'null'
     ;

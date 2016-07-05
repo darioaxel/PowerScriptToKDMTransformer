@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ASCII"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" name="source references">
+  <packagedElement xsi:type="uml:Package" name="myproject" visibility="public">
+    <packagedElement xsi:type="uml:Artifact" name="m_login.srm" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/m_login.srm"/>
+    <packagedElement xsi:type="uml:Artifact" name="euskera.lng" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/euskera.lng"/>
+    <packagedElement xsi:type="uml:Artifact" name="catala.lng" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/catala.lng"/>
+    <packagedElement xsi:type="uml:Artifact" name="myproject.pbt" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/myproject.pbt"/>
+    <packagedElement xsi:type="uml:Artifact" name="myproject.pbg" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/myproject.pbg"/>
+    <packagedElement xsi:type="uml:Package" name="lib" visibility="public">
+      <packagedElement xsi:type="uml:Package" name="common" visibility="public">
+        <packagedElement xsi:type="uml:Artifact" name="m_master.srm" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/lib/common/m_master.srm"/>
+        <packagedElement xsi:type="uml:Artifact" name="s_userdata" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/lib/common/s_userdata"/>
+        <packagedElement xsi:type="uml:Artifact" name="common.pbg" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/lib/common/common.pbg"/>
+        <packagedElement xsi:type="uml:Artifact" name="n_param.sru" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/lib/common/n_param.sru"/>
+      </packagedElement>
+      <packagedElement xsi:type="uml:Package" name="mydata" visibility="public">
+        <packagedElement xsi:type="uml:Artifact" name="mydata.pbg" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/mydata.pbg"/>
+        <packagedElement xsi:type="uml:Artifact" name="m_mydata.srm" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/m_mydata.srm"/>
+        <packagedElement xsi:type="uml:Artifact" name="w_mydata.srw" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/w_mydata.srw"/>
+      </packagedElement>
+      <packagedElement xsi:type="uml:Package" name="payroll" visibility="public">
+        <packagedElement xsi:type="uml:Artifact" name="w_payroll.srw" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/lib/payroll/w_payroll.srw"/>
+        <packagedElement xsi:type="uml:Artifact" name="payroll.pbg" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/lib/payroll/payroll.pbg"/>
+        <packagedElement xsi:type="uml:Artifact" name="m_payroll.srm" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/lib/payroll/m_payroll.srm"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Artifact" name="w_login.srw" visibility="public" fileName="/home/darioaxel/git/PowerScriptGrammar/../PowerScriptGrammar/resources/advanced/real/myproject/w_login.srw"/>
+  </packagedElement>
+</uml:Model>

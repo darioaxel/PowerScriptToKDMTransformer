@@ -1,4 +1,4 @@
-package org.darioaxel.mapper.source;
+package org.darioaxel.mapper.source.listener;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.darioaxel.util.FileAccess;
-import org.darioaxel.util.FileListener;
+import org.darioaxel.util.IFileListener;
 import org.eclipse.gmt.modisco.omg.kdm.source.BinaryFile;
 import org.eclipse.gmt.modisco.omg.kdm.source.Configuration;
 import org.eclipse.gmt.modisco.omg.kdm.source.Directory;
@@ -19,10 +19,10 @@ import org.eclipse.gmt.modisco.omg.kdm.source.ResourceDescription;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFactory;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
-public class InventoryModelFileListener implements FileListener {
+public class PowerscriptInventoryModelFileListener extends InventoryModelFileListener {
 
 	private InventoryContainer			parentContainer;
-	private Collection<String>				languagesUsed;
+	private Collection<String>			languagesUsed;
 	private final SourceFactory			sourceFactory;
 	private static final List<String>	IMAGE_EXTENSIONS		= new ArrayList<String>();
 	private static final List<String>	SOURCECODE_EXTENSIONS	= new ArrayList<String>();
@@ -37,10 +37,10 @@ public class InventoryModelFileListener implements FileListener {
 		RESOURCE_DESCRIPTIONS.addAll(Arrays.asList("pbt", "pbg"));
 	}
 
-	public InventoryModelFileListener(final InventoryContainer root, final Collection<String> languagesUsed2) {
+	public PowerscriptInventoryModelFileListener(final InventoryContainer root, final Collection<String> languagesUsed) {
 		this.parentContainer = root;
 		this.sourceFactory = SourceFactory.eINSTANCE;
-		this.languagesUsed = languagesUsed2;
+		this.languagesUsed = languagesUsed;
 	}
 	
 	public Collection<String> getLanguagesUsed() {

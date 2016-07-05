@@ -4,7 +4,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
-public class PowerScriptTypeParser implements SourceFileTypeParser {
+public class PowerScriptTypeParser implements ISourceFileTypeParser {
 
 	@Override
 	public void readInto(final SourceFile sourceFile, final CodeModel internalCodeModel, final IProgressMonitor monitor) {

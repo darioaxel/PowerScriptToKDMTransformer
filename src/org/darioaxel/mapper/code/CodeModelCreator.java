@@ -2,7 +2,7 @@ package org.darioaxel.mapper.code;
 
 import java.util.Properties;
 
-import org.darioaxel.mapper.source.InventoryModelWalker;
+import org.darioaxel.mapper.source.listener.InventoryModelWalker;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
