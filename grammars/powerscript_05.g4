@@ -123,23 +123,17 @@ globalVariableDeclarationBlockBody
 // 5. Variable Declaration
 variableDeclaration
     :   extendedAccessType? scopeModificator? type variableDeclarators delimiter? 
-	//need to end in delimiter, but expressions too, so 
-	// when a variable declarator get in conflicts ... no idea how to solve it
     ;
 
 variableDeclarators
-    :   variableDeclarator (',' variableDeclarator)*
+    :   variableDeclarator (',' variableDeclarator)* delimiter?
     ;
 
 variableDeclarator
-    :   Identifier ('=' expression)? 
-	|   Identifier arrayLengthDeclarator ('=' '{' literal (',' literal)*? '}')?
+    :   Identifier '=' literal delimiter?
+	|   Identifier arrayLengthDeclarator arrayValueInstantiation? delimiter?
+	|   Identifier delimiter?
     ;
-
-variableDeclaratorId
-    :   Identifier 
-	|   
-    ;	
 
 // 6. Constants Declaration
 constantDeclaration
@@ -147,13 +141,23 @@ constantDeclaration
     ;
 
 constantDeclarator
-    : Identifier '=' expression 
-	| Identifier arrayLengthDeclarator '=' expression
+    : Identifier '=' literal delimiter?
+	| Identifier arrayLengthDeclarator arrayValueInstantiation? delimiter?
     ;
+	
+arrayValueInstantiation
+	:  '=' '{' literal (',' literal)*? '}'
+	;
 
 // 6.1 Object Declaration
 objectDeclaration
-	:  scopeModificator Identifier Identifier delimiter?
+	:  Identifier Identifier objectValueInstantiation? delimiter?
+	|  'this' '.' Identifier objectValueInstantiation delimiter?
+	;
+	
+objectValueInstantiation
+	: '=' Identifier
+	| '=' literal
 	;
 
 // 8. Function Declaration Block
@@ -195,7 +199,6 @@ functionDeclarationEndLibrary
 functionDeclarationEndRPC
     : 'rpcfunc alias for' Identifier
     ;
-
   
 // 9. Function Implementation
 functionImplementation
@@ -546,47 +549,43 @@ qualifiedName
     :   Identifier ('.' Identifier)*
     ;
 
-expression
-    :   primary
-	|   variableSelected
-    |   expression delimiter
-    |   expression '.' Identifier
-    |   expression '.' creatorType
-    |   expression '[' expression? ']'
-	|   expression '=' 'create' 'using'? Identifier	
-    |   expression '(' expressionList? ')'
-    |   '(' type ')' expression
-    |   expression ('+=' | '-=')
-    |   ('+'|'-') expression
-    |   expression ( '++' | '--')
-    |   expression ('*'|'/'|'%') expression
-    |   expression ('+'|'-') expression
-    |   expression ('<' '<' | '>' '>' '>' | '>' '>') expression
-    |   expression ('<=' | '>=' | '>' | '<') expression
-    |   expression ('==' | '!=') expression
-    |   expression '&' expression
-    |   expression '^' expression
-    |   expression '|' expression
-    |   expression 'AND' expression
-    |   expression 'OR' expression
-	|   'NOT' expression
-    |   expression '?' expression ':' expression
-    |   <assoc=right> expression
-        (   '='
-        |   '+='
-        |   '-='
-        |   '*='
+expression 
+    :   primary delimiter? #literalEndExpression
+	|   variableSelected   #variableSelectedExpression
+	|   expression '.' Identifier delimiter? #objectVariableExpression
+    |   expression '.' creatorType #objectCreatorExpression
+    |   expression '[' expression? ']' #arrayValuesExpression
+	|   expression '=' 'create' 'using'? Identifier delimiter? #createUsingExpression	
+    |   expression '(' expressionList? ')' delimiter? #subParentExpression
+    |   expression ('+=' | '-=')  #AsingWithIncrementDecrementationExpression
+    |   ('+'|'-') expression 		#NegativePositiveValueExpression
+    |   expression ( '++' | '--') #PostIncrementDecrementExpression
+    |   expression ('*'|'/'|'%'|'+'|'-') expression # MathExpression
+    |   expression '<' expression     #LessThanExpression
+	|   expression '>' expression     #GreaterThanExpression
+	|   expression '<=' expression    #LessOrEqualThanExpression
+	|   expression '>=' expression    #BiggerThanExpression
+    |   expression ('==' | '!=') expression #EqualsDistintcExpression
+    |   expression 'AND' expression   #AndExpression
+    |   expression 'OR' expression	  #OrExpression
+	|   'NOT' expression              #NotExpression
+    |   expression '?' expression ':' expression #TriconditionalExpression
+    |   <assoc=right> expression 
+        (   '='     
+        |   '+='	
+        |   '-=' 
+        |   '*=' 
         |   '/='
-        |   '&='
-        |   '|='
-        |   '^='
-        |   '>>='
-        |   '>>>='
-        |   '<<='
-        |   '%=' 
+        |   '&=' 
+        |   '|=' 
+        |   '^=' 
+        |   '>>=' 
+        |   '>>>=' 
+        |   '<<=' 
+        |   '%='  
 		| 	
         )
-        expression
+        expression #rightAssocExpression
     ;
 	
 expressionList
@@ -606,6 +605,7 @@ literal
     |   CharacterLiteral	
     | 	DateTimeLiteral
     |   'null'
+	|   'this'
     ;
 
 modifier
@@ -681,6 +681,7 @@ arrayLengthDeclarator
 decimalLengthDeclarator
 	: '{' IntegerLiteral '}'
 	;
+	
 arrayLengthValue
     : arrayLengthRange (',' arrayLengthRange)*
     ;
@@ -713,17 +714,7 @@ primitiveType
 // Integer Literals
 
 IntegerLiteral
-    :   DecimalIntegerLiteral
-    ;
-
-fragment
-DecimalIntegerLiteral
-    :   DecimalNumeral IntegerTypeSuffix?
-    ;
-
-fragment
-IntegerTypeSuffix
-    :   [lL]
+    :   ('-')? DecimalNumeral 
     ;
 
 // Boolean Literals
@@ -767,12 +758,8 @@ EscapeSequence
 fragment
 DecimalNumeral
     :   '0'
-    |   NonZeroDigit (Digits? | Underscores Digits)
-    ;
-
-fragment
-Digits
-    :   Digit (DigitOrUnderscore* Digit)?
+    |   NonZeroDigit Digit+
+	|   NonZeroDigit
     ;
 
 fragment
@@ -827,12 +814,6 @@ OctalDigit
 fragment
 OctalDigitOrUnderscore
     :   OctalDigit
-    |   '_'
-    ;
-
-fragment
-DigitOrUnderscore
-    :   Digit
     |   '_'
     ;
 

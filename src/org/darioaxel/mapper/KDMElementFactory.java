@@ -1,8 +1,5 @@
 package org.darioaxel.mapper;
 
-import mapping.KDMElementFactory;
-import mapping.KDMElementFactory.GlobalKind;
-
 import org.darioaxel.mapper.code.MoDiscoKDM;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionElement;
@@ -81,19 +78,9 @@ public final class KDMElementFactory {
 	
 	// CodePackage Objects
 	public static CodeModel createGenericCodeModel(final String name, final GlobalKind kind) {
-		
-		Attribute qualifiedPathAttr = createFullyQualifiedNameAttribute("");
-
-		Namespace globalNamespace = KDMElementFactory.createGlobalNamespace(kind);
-		globalNamespace.getAttribute().add(qualifiedPathAttr);
-		
-		Stereotype stereotype = KDM_FACTORY.createStereotype();
-		stereotype.setName("global namespace container");
-	
+			
 		Module module = CODE_FACTORY.createModule();
-		module.setName(NAMESPACES_MODULE);
-		
-		module.getCodeElement().add(globalNamespace);
+		module.setName(NAMESPACES_MODULE);		
 
 		CodeModel codeModel = CODE_FACTORY.createCodeModel();
 		codeModel.setName(name);

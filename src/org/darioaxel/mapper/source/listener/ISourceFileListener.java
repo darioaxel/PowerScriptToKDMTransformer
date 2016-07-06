@@ -1,9 +1,9 @@
-package org.darioaxel.mapper.source.visitors;
+package org.darioaxel.mapper.source.listener;
 
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
-public interface ISourceFileVisitor {
+public interface ISourceFileListener {
 
 	void beforeWalk();
 

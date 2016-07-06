@@ -2,7 +2,8 @@ package org.darioaxel.mapper.code;
 
 import java.util.Properties;
 
-import org.darioaxel.mapper.source.listener.InventoryModelWalker;
+import org.darioaxel.mapper.source.walker.IInventoryModelWalker;
+import org.darioaxel.mapper.source.walker.PowerscriptInventoryModelWalker;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
@@ -30,7 +31,7 @@ public class CodeModelCreator {
 	public void create(final InventoryModel inventoryModel, IProgressMonitor monitor) {
 	
 		if (monitor == null) monitor = new NullProgressMonitor();
-		final InventoryModelWalker walker = new InventoryModelWalker(inventoryModel);
+		final IInventoryModelWalker walker = new PowerscriptInventoryModelWalker(inventoryModel);
 		
 		monitor.beginTask("Extracting code model from inventory model...", 1);
 		try {
@@ -45,7 +46,7 @@ public class CodeModelCreator {
 		}
 	}
 
-	private void buildCodeModels(final InventoryModelWalker walker, final IProgressMonitor monitor) {
+	private void buildCodeModels(final IInventoryModelWalker walker, final IProgressMonitor monitor) {
 		
 	}
 

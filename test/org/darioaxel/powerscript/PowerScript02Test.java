@@ -169,15 +169,7 @@ public class PowerScript02Test {
         ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_02Parser.CompilationUnitContext context03 = parsePowerscript_02(test_typeDeclaration_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
-    }    
-    
-    @Test
-    public void testPowerscript_TokensNotSepparated_01() throws IOException {
-
-        ErrorListenerTest errorListener = new ErrorListenerTest();
-        powerscript_02Parser.CompilationUnitContext context03 = parsePowerscript_02(test_tokensNotSepparated01.toFile(), errorListener);
-        assertFalse(errorListener.isFail());    
-    }   
+    }
         
     private powerscript_02Parser.CompilationUnitContext parsePowerscript_02(File program, ErrorListenerTest errorListener) throws IOException {
         

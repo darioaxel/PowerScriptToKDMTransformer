@@ -1,4 +1,3 @@
-HA$PBExportHeader$w_mant_seg_scs.srw
 forward
 global type w_mant_seg_scs from w_mant
 end type

@@ -111,13 +111,13 @@ integer taborder = 10
 boolean bringtotop = true
 integer textsize = -8
 integer weight = 400
-fontcharset fontcharset = ansi
-fontpitch fontpitch = variable
-fontfamily fontfamily = swiss
+fontcharset fontcharset = "ansi"
+fontpitch fontpitch = "variable"
+fontfamily fontfamily = "swiss"
 string facename = "MS Sans Serif"
 long textcolor = 33554432
 boolean autohscroll = false
-borderstyle borderstyle = stylelowered
+borderstyle borderstyle = "stylelowered"
 end type
 
 event constructor;
@@ -166,14 +166,14 @@ integer height = 68
 boolean bringtotop = true
 integer textsize = -8
 integer weight = 700
-fontcharset fontcharset = ansi
-fontpitch fontpitch = variable
-fontfamily fontfamily = swiss
+fontcharset fontcharset = "ansi"
+fontpitch fontpitch = "variable"
+fontfamily fontfamily = "swiss"
 string facename = "MS Sans Serif"
 long textcolor = 33554432
 long backcolor = 67108864
 string text = "Ejercicio"
-alignment alignment = right
+alignment alignment = "right"
 boolean focusrectangle = false
 end type
 

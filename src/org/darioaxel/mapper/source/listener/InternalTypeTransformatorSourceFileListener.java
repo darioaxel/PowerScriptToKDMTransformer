@@ -1,4 +1,4 @@
-package org.darioaxel.mapper.source.visitors;
+package org.darioaxel.mapper.source.listener;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -12,15 +12,14 @@ import org.darioaxel.mapper.KDMElementFactory.GlobalKind;
 import org.darioaxel.mapper.code.parser.SourceFileTypeParser;
 import org.darioaxel.util.Logger;
 
-public class InternalTypeTransformatorSourceFileVisitor extends SourceFileVisitor{
+public class InternalTypeTransformatorSourceFileListener extends SourceFileListener{
 
-	private static final org.darioaxel.util.Logger				LOGGER	= new Logger(InternalTypeTransformatorSourceFileVisitor.class);
-
+	private static final org.darioaxel.util.Logger				LOGGER	= new Logger(InternalTypeTransformatorSourceFileListener.class);
 	private final IProgressMonitor								monitor;
 	private final CodeModel										internalCodeModel;
 	private final ConcurrentMap<String, SourceFileTypeParser>	sourceFileParsers;
 
-	public InternalTypeTransformatorSourceFileVisitor(final IProgressMonitor monitor) {
+	public InternalTypeTransformatorSourceFileListener(final IProgressMonitor monitor) {
 		this.monitor = monitor;
 		this.internalCodeModel = KDMElementFactory.createGenericCodeModel("Internal CodeModel", GlobalKind.INTERNAL);
 		this.sourceFileParsers = new ConcurrentHashMap<String, SourceFileTypeParser>();		
