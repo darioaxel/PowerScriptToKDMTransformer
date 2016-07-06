@@ -1,6 +1,6 @@
-package org.darioaxel.powerscript;
+package org.darioaxel.util.enums;
 
-public enum PowerscriptFileTypes {
+public enum EPowerscriptFileTypes {
 	
     Menu("srm"),
     Window("srw"),
@@ -14,7 +14,7 @@ public enum PowerscriptFileTypes {
     
     private final String extension;
     
-    PowerscriptFileTypes (String extension) {
+    EPowerscriptFileTypes (String extension) {
     	this.extension = extension;
     }
    

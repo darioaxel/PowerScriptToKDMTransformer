@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.darioaxel.util.FileAccess;
 import org.darioaxel.util.IFileListener;
-import org.darioaxel.util.enums.ResourceDescriptionEnum;
+import org.darioaxel.util.enums.EResourceDescription;
 import org.eclipse.gmt.modisco.omg.kdm.source.BinaryFile;
 import org.eclipse.gmt.modisco.omg.kdm.source.Configuration;
 import org.eclipse.gmt.modisco.omg.kdm.source.Directory;
@@ -76,10 +76,10 @@ public class PowerscriptInventoryModelFileListener extends InventoryModelFileLis
 			ResourceDescription resourceDescription = sourceFactory.createResourceDescription();
 						
 			if (getLanguageFromFile(file).equals("Pbt")) {
-				resourceDescription.setVersion(ResourceDescriptionEnum.PROJECT.Description());
+				resourceDescription.setVersion(EResourceDescription.PROJECT.Description());
 			}
 			else if (getLanguageFromFile(file).equals("Pbg")) {
-				resourceDescription.setVersion(ResourceDescriptionEnum.LIBRARY.Description());
+				resourceDescription.setVersion(EResourceDescription.LIBRARY.Description());
 			}
 			inventoryItem = resourceDescription;			
 			
