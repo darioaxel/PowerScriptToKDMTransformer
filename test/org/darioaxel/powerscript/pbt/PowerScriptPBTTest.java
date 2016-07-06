@@ -42,8 +42,8 @@ public class PowerScriptPBTTest {
 		PowerbuilderProjectPBTListener result = parsePowerscriptPBTListener(test.toFile(), errorListener);
 		
 		assertTrue(result.getAppname().equals("myproject"));
-	
-		assertTrue(result.getApplib().getName().equals("myproject.pbl"));
+		
+		assertTrue(result.getApplib().toFile().getName().equals("myproject.pbl"));
 		
 		assertTrue(result.getLiblist().size() == 5);
 		

@@ -12,6 +12,7 @@ import org.eclipse.gmt.modisco.omg.kdm.code.CodePackage;
 import org.eclipse.gmt.modisco.omg.kdm.code.impl.PackageImpl;
 import org.eclipse.gmt.modisco.omg.kdm.core.KDMEntity;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFactory;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class PackageCreatorTest {
@@ -19,6 +20,7 @@ public class PackageCreatorTest {
 	private static final CodeFactory	CODE_FACTORY				= CodeFactory.eINSTANCE;
 
 	@Test
+	@Ignore
 	public void testingPackageCreator() {
 		
 		Package newPBG = CODE_FACTORY.createPackage();
