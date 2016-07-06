@@ -1,6 +1,7 @@
 package org.darioaxel.mapper.source.listener;
 
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
+import org.eclipse.gmt.modisco.omg.kdm.data.DataModel;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
 public interface ISourceFileListener {
@@ -11,8 +12,8 @@ public interface ISourceFileListener {
 
 	void afterWalk();
 
-	CodeModel getInternalCodeModel();
+	CodeModel getCodeModel();
 
-	CodeModel getExternalCodeModel();
+	DataModel getDataModel();
 }
 

@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.darioaxel.util.FileAccess;
 import org.darioaxel.util.IFileListener;
+import org.darioaxel.util.enums.ResourceDescriptionEnum;
 import org.eclipse.gmt.modisco.omg.kdm.source.BinaryFile;
 import org.eclipse.gmt.modisco.omg.kdm.source.Configuration;
 import org.eclipse.gmt.modisco.omg.kdm.source.Directory;
@@ -28,7 +29,7 @@ public class PowerscriptInventoryModelFileListener extends InventoryModelFileLis
 	private static final List<String>	SOURCECODE_EXTENSIONS	= new ArrayList<String>();
 	private static final List<String>	CONFIGURATIONS			= new ArrayList<String>();
 	private static final List<String>	RESOURCE_DESCRIPTIONS	= new ArrayList<String>();
-
+	
 	static {
 		IMAGE_EXTENSIONS.addAll(Arrays.asList("jpg", "jpeg", "png", "bmp", "tif", "gif", "svg"));
 		SOURCECODE_EXTENSIONS.addAll(Arrays.asList("srw", "srm", "srd", "sra", "sru", "srf", "srs",
@@ -56,20 +57,30 @@ public class PowerscriptInventoryModelFileListener extends InventoryModelFileLis
 
 			Image image = sourceFactory.createImage();
 			inventoryItem = image;
+			inventoryItem.setVersion(Long.toString(file.lastModified()));
 
 		} else if (isConfigurationFile(file)) {
 
 			Configuration configuration = sourceFactory.createConfiguration();
 			inventoryItem = configuration;
+			inventoryItem.setVersion(Long.toString(file.lastModified()));
 
 		} else if (isExecutableFile(file)) {
 			
 			ExecutableFile executableFile = sourceFactory.createExecutableFile();
 			inventoryItem = executableFile;
+			inventoryItem.setVersion(Long.toString(file.lastModified()));
 
 		} else if (isResourceDescriptionFile(file)) {
 			
 			ResourceDescription resourceDescription = sourceFactory.createResourceDescription();
+						
+			if (getLanguageFromFile(file).equals("Pbt")) {
+				resourceDescription.setVersion(ResourceDescriptionEnum.PROJECT.Description());
+			}
+			else if (getLanguageFromFile(file).equals("Pbg")) {
+				resourceDescription.setVersion(ResourceDescriptionEnum.LIBRARY.Description());
+			}
 			inventoryItem = resourceDescription;			
 			
 		} else if (isSourceFile(file)) {
@@ -80,17 +91,18 @@ public class PowerscriptInventoryModelFileListener extends InventoryModelFileLis
 			sourceFile.setLanguage(language);
 			this.languagesUsed.add(language);
 			inventoryItem = sourceFile;
+			inventoryItem.setVersion(Long.toString(file.lastModified()));
 			
 		} else { // fall back case: it's at least a binary file
 			
 			BinaryFile binaryFile = sourceFactory.createBinaryFile();
 			inventoryItem = binaryFile;
+			inventoryItem.setVersion(Long.toString(file.lastModified()));
 		}
 
 		// set common attributes
 		inventoryItem.setName(file.getName());
-		inventoryItem.setPath(file.getAbsolutePath());
-		inventoryItem.setVersion(Long.toString(file.lastModified()));
+		inventoryItem.setPath(file.getAbsolutePath());		
 
 		parentContainer.getInventoryElement().add(inventoryItem);	
 	}
@@ -142,7 +154,14 @@ public class PowerscriptInventoryModelFileListener extends InventoryModelFileLis
 	
 		if (fileExt.equals("sql")) {
 			return "SQL";
-		}		
+		} 
+		else if (fileExt.equals("pbt")) {
+			return "Pbt";
+		}
+		else if (fileExt.equals("pbg")) {
+			return "Pbg";
+		}
+		
 		return "Powerscript";
 	}
 

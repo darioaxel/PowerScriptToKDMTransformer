@@ -1,6 +1,7 @@
 package org.darioaxel.mapper.source.listener;
 
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
+import org.eclipse.gmt.modisco.omg.kdm.data.DataModel;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
 public class SourceFileListener implements ISourceFileListener {
@@ -21,14 +22,14 @@ public class SourceFileListener implements ISourceFileListener {
 	}
 
 	@Override
-	public CodeModel getInternalCodeModel() {
+	public CodeModel getCodeModel() {
 		// default implementation: return null
 		return null;
 	}
 
 	@Override
-	public CodeModel getExternalCodeModel() {
-		// default implementation: return null
+	public DataModel getDataModel() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

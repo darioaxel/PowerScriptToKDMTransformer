@@ -4,7 +4,7 @@ import java.io.File;
 
 import org.darioaxel.util.IFileListener;
 
-public class InventoryModelFileListener implements IFileListener{
+public abstract class InventoryModelFileListener implements IFileListener{
 
 	@Override
 	public void updateFile(File dir, File file) {
