@@ -50,4 +50,10 @@ public class PowerScriptTypeParser implements ISourceFileTypeParser {
 		return "PowerScript";
 	}
 
+	@Override
+	public void read() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

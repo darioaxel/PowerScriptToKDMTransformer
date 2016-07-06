@@ -120,5 +120,5 @@ public final class FileAccess {
 		}
 		String fileExt = name.substring(lastIndexOf + 1).toLowerCase();
 		return fileExt;
-	}
+	}	
 }
