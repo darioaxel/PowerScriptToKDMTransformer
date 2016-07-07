@@ -22,14 +22,14 @@ public class InventoryModelCreatorTest {
 	public void createInventoryModelCreatorFromShouldWork() {
 
 		File directory = new File("../PowerScriptGrammar/resources/inventoryModel/");
-		InventoryModel inventoryModel = new InventoryModelCreator().create(directory, new NullProgressMonitor());
+		InventoryModel inventoryModel = new InventoryModels().create(directory, new NullProgressMonitor());
 		assertEquals(inventoryModel.eContents().size(), 1);		
 	  }
 	
 	@Test
 	public void saveInventoryModelToFileShouldWork() {
 		File directory = new File("../PowerScriptGrammar/resources/inventoryModel/");
-		InventoryModel inventoryModel = new InventoryModelCreator().create(directory, new NullProgressMonitor());
+		InventoryModel inventoryModel = new InventoryModels().create(directory, new NullProgressMonitor());
 		
 		FileUtils.saveEcoreToXMI(inventoryModel, "../PowerScriptGrammar/result.xmi", new NullProgressMonitor());		
 	}
@@ -37,7 +37,7 @@ public class InventoryModelCreatorTest {
 	@Test
 	public void saveInventoryModelToFileShouldWork2() {
 		File directory = new File("../PowerScriptGrammar/resources/advanced/real/myproject");
-		InventoryModel inventoryModel = new InventoryModelCreator().create(directory, new NullProgressMonitor());
+		InventoryModel inventoryModel = new InventoryModels().create(directory, new NullProgressMonitor());
 		
 		FileUtils.saveEcoreToXMI(inventoryModel, "../PowerScriptGrammar/result2.xmi", new NullProgressMonitor());
 	}
@@ -45,7 +45,7 @@ public class InventoryModelCreatorTest {
 	@Test
 	public void searchInventoryModelCodeAssemblyShouldWork() {
 		File directory = new File("../PowerScriptGrammar/resources/inventoryModel/");
-		InventoryModel inventoryModel = new InventoryModelCreator().create(directory, new NullProgressMonitor());
+		InventoryModel inventoryModel = new InventoryModels().create(directory, new NullProgressMonitor());
 		
 		EList<Stereotype> e = inventoryModel.getStereotype();
 		for(Stereotype sType : e){

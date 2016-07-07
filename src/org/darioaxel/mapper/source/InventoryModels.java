@@ -14,18 +14,11 @@ import org.eclipse.gmt.modisco.omg.kdm.source.Directory;
 import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFactory;
 
-public final class InventoryModelCreator implements ModelCreator<InventoryModel> {
+public class InventoryModels {
 
-	private final SourceFactory sourceFactory;
-	private Collection<String> languagesUsed;
-	
-	public InventoryModelCreator() {
-		this.sourceFactory = SourceFactory.eINSTANCE;
-		this.languagesUsed = new ArrayList<String>();
-	}
-	
-	@Override
-	public InventoryModel create(final File directory, IProgressMonitor monitor) {
+	private final static SourceFactory sourceFactory = SourceFactory.eINSTANCE;
+		
+	public static InventoryModel create(final File directory, final Collection<String> languagesUsed, IProgressMonitor monitor) {
 	
 		if (monitor == null)
 			monitor = new NullProgressMonitor();
@@ -50,13 +43,13 @@ public final class InventoryModelCreator implements ModelCreator<InventoryModel>
 		return inventoryModel;
 	}
 
-	@Override
-	public InventoryModel create(final String dirname, final IProgressMonitor monitor) {
+	public static InventoryModel create(final String dirname, final IProgressMonitor monitor) {
 		return create(new File(dirname), monitor);
 	}
 	
-	public Collection<String> getLanguagesUsed(){
-		return languagesUsed;
+	public static InventoryModel create(File directory, IProgressMonitor progressMonitor) {
+		
+		return create(directory, new ArrayList<String>(), progressMonitor);
 	}
 
 }

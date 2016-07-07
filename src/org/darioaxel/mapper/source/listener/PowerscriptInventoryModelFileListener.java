@@ -80,6 +80,7 @@ public class PowerscriptInventoryModelFileListener extends InventoryModelFileLis
 			}
 			else if (getLanguageFromFile(file).equals("Pbg")) {
 				resourceDescription.setVersion(EResourceDescription.LIBRARY.Description());
+				
 			}
 			inventoryItem = resourceDescription;			
 			

@@ -24,7 +24,7 @@ public class InventoryModelLambdaTest {
 	public void testingPackageCreator() {
 		
 		File directory = new File("../PowerScriptGrammar/resources/inventoryModel/nivel0");
-		InventoryModel inventoryModel = new InventoryModelCreator().create(directory, new NullProgressMonitor());
+		InventoryModel inventoryModel = new InventoryModels().create(directory, new NullProgressMonitor());
 		EList<AbstractInventoryElement> e = inventoryModel.getInventoryElement();
 		
 		walk(e);

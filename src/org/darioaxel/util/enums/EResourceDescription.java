@@ -1,7 +1,7 @@
 package org.darioaxel.util.enums;
 
 public enum EResourceDescription { 
-	PROJECT(0, "ProjectDescriptor"), LIBRARY(1, "");
+	PROJECT(0, "ProjectDescriptor"), LIBRARY(1, "LibraryDescriptor");
 	
 	private int type;
 	private String description;

@@ -6,22 +6,22 @@
       <inventoryElement xsi:type="source:BinaryFile" name="euskera.lng" version="1403631220000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/euskera.lng"/>
       <inventoryElement xsi:type="source:BinaryFile" name="catala.lng" version="1403631220000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/catala.lng"/>
       <inventoryElement xsi:type="source:ResourceDescription" name="myproject.pbt" version="ProjectDescriptor" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/myproject.pbt"/>
-      <inventoryElement xsi:type="source:ResourceDescription" name="myproject.pbg" version="" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/myproject.pbg"/>
+      <inventoryElement xsi:type="source:ResourceDescription" name="myproject.pbg" version="LibraryDescriptor" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/myproject.pbg"/>
       <inventoryElement xsi:type="source:Directory" name="lib" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib">
         <inventoryElement xsi:type="source:Directory" name="common" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/common">
           <inventoryElement xsi:type="source:SourceFile" name="m_master.srm" version="1467534962000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/common/m_master.srm" language="Powerscript" encoding="not checked"/>
           <inventoryElement xsi:type="source:BinaryFile" name="s_userdata" version="1464621863000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/common/s_userdata"/>
-          <inventoryElement xsi:type="source:ResourceDescription" name="common.pbg" version="" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/common/common.pbg"/>
+          <inventoryElement xsi:type="source:ResourceDescription" name="common.pbg" version="LibraryDescriptor" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/common/common.pbg"/>
           <inventoryElement xsi:type="source:SourceFile" name="n_param.sru" version="1467535098000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/common/n_param.sru" language="Powerscript" encoding="not checked"/>
         </inventoryElement>
         <inventoryElement xsi:type="source:Directory" name="mydata" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata">
-          <inventoryElement xsi:type="source:ResourceDescription" name="mydata.pbg" version="" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/mydata.pbg"/>
+          <inventoryElement xsi:type="source:ResourceDescription" name="mydata.pbg" version="LibraryDescriptor" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/mydata.pbg"/>
           <inventoryElement xsi:type="source:SourceFile" name="m_mydata.srm" version="1467534918000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/m_mydata.srm" language="Powerscript" encoding="not checked"/>
           <inventoryElement xsi:type="source:SourceFile" name="w_mydata.srw" version="1467534938000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/w_mydata.srw" language="Powerscript" encoding="not checked"/>
         </inventoryElement>
         <inventoryElement xsi:type="source:Directory" name="payroll" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/payroll">
           <inventoryElement xsi:type="source:SourceFile" name="w_payroll.srw" version="1467534896000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/payroll/w_payroll.srw" language="Powerscript" encoding="not checked"/>
-          <inventoryElement xsi:type="source:ResourceDescription" name="payroll.pbg" version="" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/payroll/payroll.pbg"/>
+          <inventoryElement xsi:type="source:ResourceDescription" name="payroll.pbg" version="LibraryDescriptor" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/payroll/payroll.pbg"/>
           <inventoryElement xsi:type="source:SourceFile" name="m_payroll.srm" version="1467534908000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/payroll/m_payroll.srm" language="Powerscript" encoding="not checked"/>
         </inventoryElement>
       </inventoryElement>
