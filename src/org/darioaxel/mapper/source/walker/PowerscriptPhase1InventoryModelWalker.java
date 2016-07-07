@@ -1,5 +1,6 @@
 package org.darioaxel.mapper.source.walker;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -10,7 +11,9 @@ import org.darioaxel.util.enums.EResourceDescription;
 import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeAssembly;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
+import org.eclipse.gmt.modisco.omg.kdm.code.Module;
 import org.eclipse.gmt.modisco.omg.kdm.source.AbstractInventoryElement;
+import org.eclipse.gmt.modisco.omg.kdm.source.Directory;
 import org.eclipse.gmt.modisco.omg.kdm.source.InventoryContainer;
 import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
 import org.eclipse.gmt.modisco.omg.kdm.source.ResourceDescription;
@@ -20,7 +23,7 @@ import org.eclipse.gmt.modisco.omg.kdm.code.Package;
 public class PowerscriptPhase1InventoryModelWalker extends InventoryModelWalker {
 	
 	private static CodeModel codeModel;
-	private AbstractCodeElement parent = null;
+	private Module parentFirst = null;
 	
 	public PowerscriptPhase1InventoryModelWalker(final InventoryModel inventoryModel, final CodeModel codeModel) {
 		 super(inventoryModel);
@@ -35,29 +38,19 @@ public class PowerscriptPhase1InventoryModelWalker extends InventoryModelWalker 
 	
 	@Override
 	public void walk() {
-		
-		//If there is only an element and it is a container 
+	
 		List<AbstractInventoryElement> elements = inventoryModel.getInventoryElement();	
-		if (elements.size() == 1 && parent == null) {
+		if (elements.size() == 1 && parentFirst == null) {
 			if ( elements.get(0) instanceof InventoryContainer) {
 				walk((InventoryContainer) elements.get(0), null);
 			}
-		}
-				
-		Optional<AbstractInventoryElement> projectDescription = elements.stream().filter( e -> e instanceof ResourceDescription 
-				&& ((ResourceDescription) e).getVersion().equals(EResourceDescription.PROJECT.Type())).findFirst();
-		
-		Consumer<AbstractInventoryElement> visit = (pbt) -> super.resourceDescriptorFileVisitor.visit((ResourceDescription) pbt);
-		projectDescription.ifPresent(visit);
-		
-		Optional<AbstractInventoryElement> libraryDescription = elements.stream().filter( e -> e instanceof ResourceDescription 
-				&& ((ResourceDescription) e).getVersion().equals(EResourceDescription.LIBRARY.Type())).findFirst();
-		libraryDescription.ifPresent(visit);		
+		}			
 	}
 	
-	private void walk(InventoryContainer container, Package parent) {
+	private static InventoryContainer walk(InventoryContainer container, final Module parent) {
 		CodeAssembly project = null;
 		Package pack = null;
+		final Module newparent;
 		
 		List<AbstractInventoryElement> elements = container.getInventoryElement();
 		if (isAnyResourceDescriptionFile(elements)) {
@@ -70,20 +63,34 @@ public class PowerscriptPhase1InventoryModelWalker extends InventoryModelWalker 
 			Optional<AbstractInventoryElement> library = getFirstDescriptorOfType(elements, EResourceDescription.LIBRARY);
 			if( library.isPresent()) {
 				pack = KDMElementFactory.createPackageUnit((ResourceDescription)library.get());
-				if( pack != null) {
+				
+				if ( project != null && pack != null) {				
 					project.getCodeElement().add(pack);
-				} else if (parent != null) {
-					parent.getCodeElement().add(pack);
+					newparent = pack;					
+				} else {
+					if ( pack != null && parent != null ) {
+						parent.getCodeElement().add(pack);						
+					}
+					newparent = parent;
 				}
+			}
+			else {
+				newparent = parent;
 			}			
-		}	
+		} else {
+			newparent = parent;
+		}
 		
-		elements.stream().filter(e -> e instanceof SourceFile).map(e -> walk((SourceFile) e, parent));
+		elements.stream().filter(e -> e instanceof SourceFile).map(e -> (SourceFile) e).forEach(sf -> walk(sf, newparent));
+		elements.stream().filter(e -> e instanceof Directory).map(e -> (Directory) e).forEach( d -> walk(d , newparent));
+		
+		return container;
 	}
 	
-	private SourceFile walk(SourceFile e, Package parent) {
+	private static SourceFile walk(SourceFile e, Module parent) {
 	//	super.sourceFileListener.visit(e);
 	//	parent.getCodeElement().add((AbstractCodeElement) sourceFileListener.getCodeModel());
+		
 		return e;
 	}
 

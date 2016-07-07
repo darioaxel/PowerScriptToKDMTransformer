@@ -30,7 +30,11 @@
   </model>
   <model xsi:type="code:CodeModel" name="test">
     <codeElement xsi:type="code:CodeAssembly" name="myproject.pbt">
-      <codeElement xsi:type="code:Package" name="myproject.pbg"/>
+      <codeElement xsi:type="code:Package" name="myproject.pbg">
+        <codeElement xsi:type="code:Package" name="common.pbg"/>
+        <codeElement xsi:type="code:Package" name="mydata.pbg"/>
+        <codeElement xsi:type="code:Package" name="payroll.pbg"/>
+      </codeElement>
     </codeElement>
   </model>
 </kdm:Segment>
