@@ -44,4 +44,11 @@ public class SegmentCreator {
 
 		return segment;
 	}
+	
+	public static Segment create(final InventoryModel inventoryModel) {
+		
+		Segment segment = KDMElementFactory.createSegment();
+		segment.getModel().add(inventoryModel);
+		return segment;
+	}
 }
