@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.darioaxel.mapper.KDMElementFactory;
-import org.darioaxel.util.FileAccess;
+import org.darioaxel.util.FileUtils;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeAssembly;
@@ -31,7 +31,7 @@ public class InventoryModelCreatorTest {
 		File directory = new File("../PowerScriptGrammar/resources/inventoryModel/");
 		InventoryModel inventoryModel = new InventoryModelCreator().create(directory, new NullProgressMonitor());
 		
-		FileAccess.saveEcoreToXMI(inventoryModel, "../PowerScriptGrammar/result.xmi", new NullProgressMonitor());		
+		FileUtils.saveEcoreToXMI(inventoryModel, "../PowerScriptGrammar/result.xmi", new NullProgressMonitor());		
 	}
 	
 	@Test
@@ -39,7 +39,7 @@ public class InventoryModelCreatorTest {
 		File directory = new File("../PowerScriptGrammar/resources/advanced/real/myproject");
 		InventoryModel inventoryModel = new InventoryModelCreator().create(directory, new NullProgressMonitor());
 		
-		FileAccess.saveEcoreToXMI(inventoryModel, "../PowerScriptGrammar/result2.xmi", new NullProgressMonitor());
+		FileUtils.saveEcoreToXMI(inventoryModel, "../PowerScriptGrammar/result2.xmi", new NullProgressMonitor());
 	}
 	
 	@Test

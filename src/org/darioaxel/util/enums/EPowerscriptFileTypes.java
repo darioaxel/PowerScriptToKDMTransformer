@@ -8,9 +8,10 @@ public enum EPowerscriptFileTypes {
 	Functions("sru"),	
     Structure("srs"),
     GlobalFunctions("srf"),
-    Libraries("pbt"),
+    Libraries("pbg"),
     Language("lng"),
-    ImageJPG("jpg");
+    ImageJPG("jpg"),
+    ProjectDefinition("pbt");
     
     private final String extension;
     

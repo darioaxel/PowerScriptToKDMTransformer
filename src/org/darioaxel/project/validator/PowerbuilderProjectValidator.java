@@ -1,22 +1,18 @@
 package org.darioaxel.project.validator;
 
-import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
-
+import org.darioaxel.mapper.code.parser.LibraryDescriptorTypeParser;
 import org.darioaxel.mapper.code.parser.ProjectDescriptorTypeParser;
+import org.darioaxel.project.validator.pbg.PowerbuilderProjectPBGListener;
 import org.darioaxel.project.validator.pbt.PowerbuilderProjectPBTListener;
-import org.darioaxel.util.FileAccess;
+import org.darioaxel.util.FileUtils;
+import org.darioaxel.util.enums.EPowerscriptFileTypes;
 
 public class PowerbuilderProjectValidator implements IProjectValidator {
 	
 	private final Path root;
-	private boolean valid = false;
 	
 	public PowerbuilderProjectValidator(final Path root) {
 		this.root = root;
@@ -25,40 +21,47 @@ public class PowerbuilderProjectValidator implements IProjectValidator {
 	@Override
 	public boolean isValid() {
 
-		boolean test = Files.isDirectory(root);
-
-		Path pbta = getProjectDefinitionFile(root).get();
-
 		if (Files.isDirectory(root)) {
-			Optional<Path> pbt = getProjectDefinitionFile(root);
+			Optional<Path> pbt = FileUtils.getFirstFileOfType(root, EPowerscriptFileTypes.ProjectDefinition);
 
-			if (pbt.isPresent()) {
-				ProjectDescriptorTypeParser projectParser = new ProjectDescriptorTypeParser(pbt.get(), new PowerbuilderProjectPBTListener());
-				projectParser.parse();
-				PowerbuilderProjectPBTListener listener = projectParser.getListener();
-				Path rootLib = listener.getApplib();
-				rootLib = Paths.get(root.toString(), rootLib.getFileName().toString());
+			if (pbt.isPresent()) {			
 				
-				boolean exits = rootLib.toFile().exists();
+				PowerbuilderProjectPBTListener listenerPBT = new PowerbuilderProjectPBTListener();
+				ProjectDescriptorTypeParser projectParser = new ProjectDescriptorTypeParser(pbt.get(), listenerPBT);
+				projectParser.parse();				
+				listenerPBT = projectParser.getListener();			
 				
-				if( exits == false) return valid;
-
-				List<Path> pathsToLibs = listener.getLiblist();
+				for(Path lib : listenerPBT.getLiblist()) {
+					boolean valid = isLibraryValid(lib, pbt.get());
+					if (valid) return false;					
+				}
 				return true;
 			}
-		}			
+		}		
 
 		return false;
 	}	
 	
-	private Optional<Path> getProjectDefinitionFile(Path path) {		
-				 
-		try {
-			return Files.list(path).filter(p -> FileAccess.getFileExtension(p.toFile()).equals("pbt")).findFirst();			
+	static boolean isLibraryValid(Path pathToLib, final Path pbt ) {
+		
+		Path pbl = FileUtils.changeFileExtension(pathToLib.getFileName(), EPowerscriptFileTypes.Libraries.extension());		
+		Path pbg = pathToLib.resolveSibling(pbl.toString());
 			
-		} catch (IOException e) {
-			return null;
-		}	
-		//return pbtPath.get();
+		pbg = FileUtils.concatWithoutLast(pbt, pbg); 		
+						
+		if( pbg.toFile().exists()) {
+			
+			PowerbuilderProjectPBGListener listenerPBG = new PowerbuilderProjectPBGListener();
+			LibraryDescriptorTypeParser libraryParser = new LibraryDescriptorTypeParser(pbg, listenerPBG);
+			libraryParser.parse();
+			
+			for(Path f : listenerPBG.getFileNames()) {
+				Path file = FileUtils.concatWithoutLast(pbt, f);
+				if (file.toFile().exists() == false) return false;
+			}
+			return true;				
+		}		
+		
+		return false;
 	}	
 }

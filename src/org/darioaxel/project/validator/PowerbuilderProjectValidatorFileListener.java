@@ -5,7 +5,7 @@ import java.io.File;
 
 import org.darioaxel.util.IFileListener;
 
-import org.darioaxel.util.FileAccess;
+import org.darioaxel.util.FileUtils;
 
 public class PowerbuilderProjectValidatorFileListener implements IFileListener{
 
@@ -35,7 +35,7 @@ public class PowerbuilderProjectValidatorFileListener implements IFileListener{
 	}
 	
 	private boolean isPBTConfigurationFile(final File file) {
-		String fileExt = FileAccess.getFileExtension(file);
+		String fileExt = FileUtils.getFileExtension(file);
 		return fileExt.equals("pbt");
 	}		
 }

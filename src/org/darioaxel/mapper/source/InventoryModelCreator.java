@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.darioaxel.mapper.code.MoDiscoKDM;
 import org.darioaxel.mapper.source.listener.PowerscriptInventoryModelFileListener;
-import org.darioaxel.util.FileAccess;
+import org.darioaxel.util.FileUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.gmt.modisco.omg.kdm.source.Directory;
@@ -42,7 +42,7 @@ public final class InventoryModelCreator implements ModelCreator<InventoryModel>
 		monitor.beginTask("Scanning directory..." + directory.getAbsolutePath(), IProgressMonitor.UNKNOWN);
 
 		try {
-			FileAccess.walkDirectoryRecursively(directory, new PowerscriptInventoryModelFileListener(root, languagesUsed));
+			FileUtils.walkDirectoryRecursively(directory, new PowerscriptInventoryModelFileListener(root, languagesUsed));
 		} finally {
 			monitor.done();
 		}

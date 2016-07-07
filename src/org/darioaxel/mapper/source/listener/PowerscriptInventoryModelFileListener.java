@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.darioaxel.util.FileAccess;
+import org.darioaxel.util.FileUtils;
 import org.darioaxel.util.IFileListener;
 import org.darioaxel.util.enums.EResourceDescription;
 import org.eclipse.gmt.modisco.omg.kdm.source.BinaryFile;
@@ -125,12 +125,12 @@ public class PowerscriptInventoryModelFileListener extends InventoryModelFileLis
 	}
 
 	private boolean isImageFile(final File file) {
-		String fileExt = FileAccess.getFileExtension(file);
+		String fileExt = FileUtils.getFileExtension(file);
 		return IMAGE_EXTENSIONS.contains(fileExt);
 	}
 
 	private boolean isConfigurationFile(final File file) {
-		String fileExt = FileAccess.getFileExtension(file);
+		String fileExt = FileUtils.getFileExtension(file);
 		return CONFIGURATIONS.contains(fileExt);
 	}
 
@@ -139,18 +139,18 @@ public class PowerscriptInventoryModelFileListener extends InventoryModelFileLis
 	}
 
 	private boolean isResourceDescriptionFile(final File file) {
-		String fileExt = FileAccess.getFileExtension(file);
+		String fileExt = FileUtils.getFileExtension(file);
 		return RESOURCE_DESCRIPTIONS.contains(fileExt);
 	}
 
 	private boolean isSourceFile(final File file) {
-		String fileExt = FileAccess.getFileExtension(file);
+		String fileExt = FileUtils.getFileExtension(file);
 		return SOURCECODE_EXTENSIONS.contains(fileExt);
 	}
 
 	private String getLanguageFromFile(final File file) {
 
-		String fileExt = FileAccess.getFileExtension(file);
+		String fileExt = FileUtils.getFileExtension(file);
 	
 		if (fileExt.equals("sql")) {
 			return "SQL";
