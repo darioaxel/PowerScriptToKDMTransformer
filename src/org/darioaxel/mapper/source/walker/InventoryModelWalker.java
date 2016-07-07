@@ -5,12 +5,12 @@ import org.darioaxel.mapper.source.listener.SourceFileListener;
 import org.darioaxel.util.enums.EResourceDescription;
 import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
 
-public abstract class InventoryModelWalker implements IInventoryModelWalker{
+public class InventoryModelWalker implements IInventoryModelWalker{
 
 	protected final InventoryModel inventoryModel;
 	protected EResourceDescription resource;
 
-	protected SourceFileListener sourceFileVisitor;
+	protected SourceFileListener sourceFileListener;
 	protected ResourceDescriptionFileListener resourceDescriptorFileVisitor;
 	
 	public InventoryModelWalker(InventoryModel inventoryModel) {
@@ -18,15 +18,27 @@ public abstract class InventoryModelWalker implements IInventoryModelWalker{
 	}
 	
 	@Override
-	public void walk(final Object listener) {
-		// TODO Auto-generated method stub		
+	public void walk() {
+			
 	}
 	
-	public void setSourceFileListener(final SourceFileListener sourceFileVisitor){
-		this.sourceFileVisitor = sourceFileVisitor;
+	public void setSourceFileListener(final SourceFileListener sourceFileListener){
+		this.sourceFileListener = sourceFileListener;
 	}
 	
 	public void setResourceDescriptionFileListener(final ResourceDescriptionFileListener resourceDescriptorFileVisitor){
 		this.resourceDescriptorFileVisitor = resourceDescriptorFileVisitor;
+	}
+
+	@Override
+	public void beforeWalk() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void afterWalk() {
+		// TODO Auto-generated method stub
+		
 	}
 }

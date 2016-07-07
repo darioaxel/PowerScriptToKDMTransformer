@@ -51,11 +51,7 @@ import org.eclipse.gmt.modisco.omg.kdm.source.SourceRegion;
 
 
 public final class KDMElementFactory {
-
-	public static enum GlobalKind {
-		INTERNAL, EXTERNAL
-	}
-
+	
 	private static final KdmFactory		KDM_FACTORY					= KdmFactory.eINSTANCE;
 	private static final CodeFactory	CODE_FACTORY				= CodeFactory.eINSTANCE;
 	
@@ -66,10 +62,7 @@ public final class KDMElementFactory {
 	public static final String			USERFUNCTION_ANNOTATION		= "UserFunction object";
 	public static final String			NAMESPACES_MODULE			= "Namespaces";
 	public static final String			GLOBAL_NAMESPACE_NAME		= "global";
-	
-	private KDMElementFactory() {
-	}
-	
+		
 	// SourcePackage Objects
 	public static Segment createSegment() {
 		Segment segment = KDM_FACTORY.createSegment();
@@ -77,15 +70,10 @@ public final class KDMElementFactory {
 	}
 	
 	// CodePackage Objects
-	public static CodeModel createGenericCodeModel(final String name, final GlobalKind kind) {
+	public static CodeModel createCodeModel(final String name) {
 			
-		Module module = CODE_FACTORY.createModule();
-		module.setName(NAMESPACES_MODULE);		
-
 		CodeModel codeModel = CODE_FACTORY.createCodeModel();
 		codeModel.setName(name);
-		codeModel.getCodeElement().add(module);
-
 		return codeModel;
 	}
 	
@@ -148,5 +136,12 @@ public final class KDMElementFactory {
 		Annotation anno = KDM_FACTORY.createAnnotation();
 		anno.setText(text);
 		kdmEntity.getAnnotation().add(anno);
+	}
+
+	public static CodeAssembly createCodeAssembly(final String name) {
+		CodeAssembly assembly = CODE_FACTORY.createCodeAssembly();
+		assembly.setName(name);
+				
+		return assembly;
 	}
 }

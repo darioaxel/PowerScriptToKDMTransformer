@@ -22,9 +22,7 @@ import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
 public class PowerscriptInventoryModelFileListener extends InventoryModelFileListener {
 
-	private InventoryContainer			parentContainer;
-	private Collection<String>			languagesUsed;
-	private final SourceFactory			sourceFactory;
+	
 	private static final List<String>	IMAGE_EXTENSIONS		= new ArrayList<String>();
 	private static final List<String>	SOURCECODE_EXTENSIONS	= new ArrayList<String>();
 	private static final List<String>	CONFIGURATIONS			= new ArrayList<String>();
@@ -39,13 +37,9 @@ public class PowerscriptInventoryModelFileListener extends InventoryModelFileLis
 	}
 
 	public PowerscriptInventoryModelFileListener(final InventoryContainer root, final Collection<String> languagesUsed) {
-		this.parentContainer = root;
-		this.sourceFactory = SourceFactory.eINSTANCE;
-		this.languagesUsed = languagesUsed;
-	}
-	
-	public Collection<String> getLanguagesUsed() {
-		return languagesUsed;
+		super.parentContainer = root;
+		super.sourceFactory = SourceFactory.eINSTANCE;
+		super.languagesUsed = languagesUsed;
 	}
 
 	@Override

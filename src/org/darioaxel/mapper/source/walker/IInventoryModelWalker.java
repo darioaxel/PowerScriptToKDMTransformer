@@ -1,6 +1,9 @@
 package org.darioaxel.mapper.source.walker;
 
+import org.darioaxel.mapper.source.listener.FileListener;
+
 public interface IInventoryModelWalker {
-	
-	void walk(final Object listener);	
+	void beforeWalk();
+	void walk();	
+	void afterWalk();
 }

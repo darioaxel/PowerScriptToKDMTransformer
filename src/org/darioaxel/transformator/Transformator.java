@@ -4,7 +4,10 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
+
 import org.eclipse.gmt.modisco.omg.kdm.code.LanguageUnit;
+import org.darioaxel.mapper.IMapperElementRepository;
+import org.darioaxel.mapper.PowerscriptElementRepository;
 import org.darioaxel.mapper.code.language.LanguageUnitDetector;
 import org.darioaxel.mapper.source.InventoryModels;
 import org.darioaxel.mapper.source.Segments;
@@ -32,10 +35,11 @@ public class Transformator {
 	public void Transform() {
 		
 		File directory = new File(this.directory);
-		Collection<String> languagesUsed = new ArrayList<String>();		
-		InventoryModel inventoryModel = InventoryModels.create(directory, languagesUsed, new NullProgressMonitor());
+		Collection<String> languagesUsed = new ArrayList<String>();	
+		IMapperElementRepository elementRepository = new PowerscriptElementRepository();
+		InventoryModel inventoryModel = InventoryModels.create(elementRepository, directory, languagesUsed, new NullProgressMonitor());
 		Collection<LanguageUnit> languages = LanguageUnitDetector.getLanguages(languagesUsed);
-		Segment segment = Segments.create(inventoryModel, null, null, languages);
+		Segment segment = Segments.create(elementRepository, inventoryModel, null, null, languages);
 
 		FileUtils.saveEcoreToXMI(segment, null, null);
 	}

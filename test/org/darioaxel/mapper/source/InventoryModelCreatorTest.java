@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.darioaxel.mapper.KDMElementFactory;
+import org.darioaxel.mapper.PowerscriptElementRepository;
 import org.darioaxel.util.FileUtils;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
@@ -13,23 +14,25 @@ import org.eclipse.gmt.modisco.omg.kdm.code.CodeAssembly;
 import org.eclipse.gmt.modisco.omg.kdm.code.Package;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.Stereotype;
 import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
+import org.junit.Before;
 import org.junit.Test;
 
 public class InventoryModelCreatorTest {
 
+	private PowerscriptElementRepository elements = new PowerscriptElementRepository();	
 	
 	@Test
 	public void createInventoryModelCreatorFromShouldWork() {
 
 		File directory = new File("../PowerScriptGrammar/resources/inventoryModel/");
-		InventoryModel inventoryModel = new InventoryModels().create(directory, new NullProgressMonitor());
+		InventoryModel inventoryModel = new InventoryModels().create(elements, directory, new NullProgressMonitor());
 		assertEquals(inventoryModel.eContents().size(), 1);		
 	  }
 	
 	@Test
 	public void saveInventoryModelToFileShouldWork() {
 		File directory = new File("../PowerScriptGrammar/resources/inventoryModel/");
-		InventoryModel inventoryModel = new InventoryModels().create(directory, new NullProgressMonitor());
+		InventoryModel inventoryModel = new InventoryModels().create(elements, directory, new NullProgressMonitor());
 		
 		FileUtils.saveEcoreToXMI(inventoryModel, "../PowerScriptGrammar/result.xmi", new NullProgressMonitor());		
 	}
@@ -37,7 +40,7 @@ public class InventoryModelCreatorTest {
 	@Test
 	public void saveInventoryModelToFileShouldWork2() {
 		File directory = new File("../PowerScriptGrammar/resources/advanced/real/myproject");
-		InventoryModel inventoryModel = new InventoryModels().create(directory, new NullProgressMonitor());
+		InventoryModel inventoryModel = new InventoryModels().create(elements, directory, new NullProgressMonitor());
 		
 		FileUtils.saveEcoreToXMI(inventoryModel, "../PowerScriptGrammar/result2.xmi", new NullProgressMonitor());
 	}
@@ -45,7 +48,7 @@ public class InventoryModelCreatorTest {
 	@Test
 	public void searchInventoryModelCodeAssemblyShouldWork() {
 		File directory = new File("../PowerScriptGrammar/resources/inventoryModel/");
-		InventoryModel inventoryModel = new InventoryModels().create(directory, new NullProgressMonitor());
+		InventoryModel inventoryModel = new InventoryModels().create(elements, directory, new NullProgressMonitor());
 		
 		EList<Stereotype> e = inventoryModel.getStereotype();
 		for(Stereotype sType : e){

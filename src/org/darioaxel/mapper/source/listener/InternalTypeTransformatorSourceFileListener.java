@@ -7,25 +7,24 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 import org.darioaxel.mapper.KDMElementFactory;
-import org.darioaxel.mapper.KDMElementFactory.GlobalKind;
 import org.darioaxel.mapper.code.parser.SourceFileTypeParser;
 import org.darioaxel.util.Logger;
 
-public class InternalTypeTransformatorSourceFileListener extends SourceFileListener{
+public class InternalTypeTransformatorSourceFileListener extends FileListener{
 
 	private static final org.darioaxel.util.Logger				LOGGER	= new Logger(InternalTypeTransformatorSourceFileListener.class);
 	private final IProgressMonitor								monitor;
-	private final CodeModel										internalCodeModel;
+	private final CodeModel										codeModel;
 	private final ConcurrentMap<String, SourceFileTypeParser>	sourceFileParsers;
 
 	public InternalTypeTransformatorSourceFileListener(final IProgressMonitor monitor) {
 		this.monitor = monitor;
-		this.internalCodeModel = KDMElementFactory.createGenericCodeModel("Internal CodeModel", GlobalKind.INTERNAL);
+		this.codeModel = KDMElementFactory.createCodeModel("Internal CodeModel");
 		this.sourceFileParsers = new ConcurrentHashMap<String, SourceFileTypeParser>();		
 	}
 
 	public CodeModel geCodeModel() {
-		return this.internalCodeModel;
+		return this.codeModel;
 	}
 
 	public void addSourceFileParser(final SourceFileTypeParser sourceFileParser) {
@@ -40,7 +39,7 @@ public class InternalTypeTransformatorSourceFileListener extends SourceFileListe
 		}
 
 		try {
-			sourceFileParser.readInto(sourceFile, internalCodeModel, monitor);
+			sourceFileParser.readInto(sourceFile, codeModel, monitor);
 		} catch (RuntimeException e) {
 			LOGGER.warning("Exception while parsing " + sourceFile.getPath());
 			throw e;

@@ -32,12 +32,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 public final class FileUtils {
 
-	private static final int BUFFER_SIZE	= 1024;
-
-	private FileUtils() {
-		// utility class
-	}
-
 	public static void saveEcoreToXMI(final EObject modelInstance, final String filename, final IProgressMonitor monitor) {
 		try {
 			FileUtils.saveEcoreToXMIUnsafe(modelInstance, filename, monitor);

@@ -1,5 +1,6 @@
 package org.darioaxel.mapper.source;
 
+import org.darioaxel.mapper.PowerscriptElementRepository;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeFactory;
@@ -20,11 +21,13 @@ public class InventoryModelLambdaTest {
 
 	private static final CodeFactory CODE_FACTORY = CodeFactory.eINSTANCE;
 
+	private PowerscriptElementRepository elements = new PowerscriptElementRepository();	
+
 	@Test
 	public void testingPackageCreator() {
 		
 		File directory = new File("../PowerScriptGrammar/resources/inventoryModel/nivel0");
-		InventoryModel inventoryModel = new InventoryModels().create(directory, new NullProgressMonitor());
+		InventoryModel inventoryModel = new InventoryModels().create(elements, directory, new NullProgressMonitor());
 		EList<AbstractInventoryElement> e = inventoryModel.getInventoryElement();
 		
 		walk(e);

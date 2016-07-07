@@ -25,7 +25,7 @@ public class PowerscriptResourceDescriptionFileListener extends ResourceDescript
 	private final ProjectDescriptorErrorListener pDErrorListener = new ProjectDescriptorErrorListener();
 	
 	@Override
-	public void visitResourceDescriptor(ResourceDescription resourceDescriptionFile) {
+	public void visit(ResourceDescription resourceDescriptionFile) {
 		
 		TokenStream inputTokenStream;
 		try {
