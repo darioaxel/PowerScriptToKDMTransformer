@@ -7,6 +7,8 @@ import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 import org.darioaxel.mapper.KDMElementFactory;
+import org.darioaxel.mapper.code.parser.PowerscriptSourceFileTypeParser;
+import org.darioaxel.mapper.code.parser.SourceFileTypeParser;
 import org.darioaxel.util.enums.EResourceDescription;
 import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeAssembly;
@@ -88,7 +90,8 @@ public class PowerscriptPhase1InventoryModelWalker extends InventoryModelWalker 
 	}
 	
 	private static SourceFile walk(SourceFile e, Module parent) {
-	//	super.sourceFileListener.visit(e);
+		SourceFileTypeParser sourceParser = new SourceFileTypeParser();
+		//	super.sourceFileListener.visit(e);
 	//	parent.getCodeElement().add((AbstractCodeElement) sourceFileListener.getCodeModel());
 		
 		return e;

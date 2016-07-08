@@ -1,7 +1,7 @@
 package org.darioaxel.mapper.code.listener;
 
-import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTBaseListener;
+import org.darioaxel.grammar.powerscript.powerscriptBaseListener;
 
-public class PowerscriptPhase1Listener extends powerscriptPBTBaseListener {
+public class PowerscriptPhase1Listener extends powerscriptBaseListener {
 
 }

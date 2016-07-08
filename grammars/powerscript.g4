@@ -5,12 +5,15 @@
 
 grammar powerscript;
 
+
 @header {
 package org.darioaxel.grammar.powerscript;
 }
 
+
+
 compilationUnit
-    :  memberDeclaration* EOF
+    :  memberDeclaration*? EOF
     ;
 
 memberDeclaration
@@ -19,12 +22,12 @@ memberDeclaration
     | localVariableDeclarationBlock
     | globalVariableDeclarationBlock
     | variableDeclaration
+	| objectDeclaration
     | constantDeclaration
     | functionDeclaration
     | functionDeclarationBlock
     | functionImplementation
     | onImplementation
-    | eventDeclaration
     | eventImplementation
     ;
 
@@ -34,44 +37,40 @@ forwardDeclaration
 	;
 	
 forwardDeclarationBegin
-	: 'forward' delimiter
+	: 'forward' delimiter?
 	;
 	
 forwardDeclarationEnd
-	: 'end' 'forward' delimiter
+	:  'end forward' delimiter?
 	;
 	
 forwardDeclarationBody
-	: variableDeclaration
+	: objectDeclaration
 	| typeDeclaration
 	;
 
-// 2. Type Declaration	ejemplo: /Ginpix7/Lib/g7xCS_01/n_cst_gestoravisos.sru
+// 2. Type Declaration	
 typeDeclaration
-	: typeDeclarationBegin typeDeclarationBody? typeDeclarationEnd
+	: typeDeclarationBegin typeDeclarationBody*? typeDeclarationEnd
 	;
 
 typeDeclarationBegin
-	: scopeModificator? typeDeclarationBeginIdentifier  typeDeclarationParent delimiter
+	: scopeModificator? typeDeclarationBeginIdentifier typeDeclarationBeginParent? delimiter?
 	;
-
+	
 typeDeclarationBeginIdentifier
-	: 'type' Identifier 'from'
+	: 'type' Identifier 'from' Identifier
 	;
-
-typeDeclarationParent
-	: typeDeclarationParentExpecification? Identifier 
+	
+typeDeclarationBeginParent
+	: '`' Identifier typeDeclarationWithin?
+	| typeDeclarationWithin
 	;
-
-typeDeclarationParentExpecification
-	: typeDeclarationParentExpecificationId 'within' 
+	
+typeDeclarationWithin
+	: 'within' Identifier
 	;
-
-typeDeclarationParentExpecificationId
-	: Identifier '`' Identifier
-	| Identifier
-	;	
-
+	
 typeDeclarationBody							
 	: typeDeclarationDescriptor
 	| variableDeclaration
@@ -79,42 +78,41 @@ typeDeclarationBody
 	;
 
 typeDeclarationDescriptor
-	: 'descriptor' quotedIdentifier '=' quotedIdentifier delimiter
+	: 'descriptor' '"' Identifier '"' '=' '"' Identifier '"' delimiter
 	;
-
-quotedIdentifier
-	: QUOTE Identifier QUOTE
-	;
-
+	
 typeDeclarationEnd
-	: 'end' 'type' delimiter?
+	: 'end type' delimiter?
 	;
 
 // 3. Local Variable Declaration Block
 localVariableDeclarationBlock
-	: localVariableDeclarationBegin  localVariableDeclarationBody localVariableDeclarationEnd
+	: localVariableDeclarationBegin  localVariableDeclarationBody* variableDeclarationEnd
 	;
 
 localVariableDeclarationBody
 	: variableDeclaration
-        | constantDeclaration
+    | constantDeclaration  
+	| modifier delimiter?
 	;
 	
 localVariableDeclarationBegin
-	: 'type' 'variables' delimiter
+	: 'type variables' delimiter?
 	;
 
-localVariableDeclarationEnd
-	: 'end' 'variables' delimiter
+variableDeclarationEnd
+	: 'end variables' delimiter?
 	;
 
 // 4. Global Variable Declaration Block
 globalVariableDeclarationBlock
-    : globalVariableDeclarationBlockBegin globalVariableDeclarationBlockBody globalVariableDeclarationBlockEnd
+    : globalVariableDeclarationBlockBegin globalVariableDeclarationBlockBody*? variableDeclarationEnd
     ;
 
 globalVariableDeclarationBlockBegin
-    : globalScopeModificator 'variables' delimiter
+    : 'variables' delimiter?
+	| 'global variables' delimiter?
+	| 'shared variables' delimiter?
     ;
 
 globalVariableDeclarationBlockBody
@@ -122,38 +120,63 @@ globalVariableDeclarationBlockBody
     | constantDeclaration
     ;
 
-globalVariableDeclarationBlockEnd
-    : 'end' 'variables' delimiter
-    ;
-
 // 5. Variable Declaration
 variableDeclaration
-    :   extendedAccessType? type variableDeclarators delimiter
+    :   extendedAccessType? scopeModificator? type variableDeclarators delimiter? 
     ;
 
 variableDeclarators
-    :   variableDeclarator (',' variableDeclarator)*
+    :   variableDeclarator (',' variableDeclarator)* delimiter?
     ;
 
 variableDeclarator
-    :   variableDeclaratorId ('=' variableInitializer)? 
+    :   Identifier '=' literal delimiter?
+	|   Identifier arrayLengthDeclarator arrayValueInstantiation? delimiter?
+	|   Identifier delimiter?
     ;
-
-variableInitializer 
-    : expression
-    ;
-
-variableDeclaratorId
-    :   Identifier ('[' ']')*
-    ;	
 
 // 6. Constants Declaration
 constantDeclaration
-    :   'constant' type constantDeclarator (',' constantDeclarator)* delimiter
+    :   'constant' type constantDeclarator (',' constantDeclarator)* delimiter?
     ;
 
 constantDeclarator
-    :   Identifier arrayLengthDeclarator* '=' variableInitializer
+    : Identifier '=' literal delimiter?
+	| Identifier arrayLengthDeclarator arrayValueInstantiation? delimiter?
+    ;
+	
+arrayValueInstantiation
+	:  '=' '{' literal (',' literal)*? '}'
+	;
+
+// 6.1 Object Declaration
+objectDeclaration
+	:  Identifier Identifier objectValueInstantiation? delimiter?
+	|  'this' '.' Identifier objectValueInstantiation delimiter?
+	;
+	
+objectValueInstantiation
+	: '=' Identifier
+	| '=' literal
+	;
+
+// 8. Function Declaration Block
+functionDeclarationBlock
+    : functionDeclarationBlockHeader functionDeclaration* functionDeclarationBlockEnd
+    ;
+
+functionDeclarationBlockHeader
+    : 'forward prototypes' delimiter?
+	| 'type prototypes' delimiter?
+    ;
+	
+functionDeclarationBlockBody
+    : functionDeclaration
+	| eventDeclaration
+    ;
+
+functionDeclarationBlockEnd
+    : 'end prototypes' delimiter?
     ;
 
 // 7. Function Declaration
@@ -170,46 +193,25 @@ functionDeclarationEnd
     ;
 
 functionDeclarationEndLibrary
-    : 'library' Identifier ('alias' 'for' Identifier)?
+    : 'library' Identifier ('alias for' Identifier)?
     ;
 
 functionDeclarationEndRPC
-    : 'rpcfunc' 'alias' 'for' Identifier
-    ;
-
-// 8. Function Declaration Block
-functionDeclarationBlock
-    : functionDeclarationBlockHeader functionDeclaration* functionDeclarationBlockEnd
-    ;
-
-functionDeclarationBlockHeader
-    : functionBlockType 'prototypes' delimiter
-    ;
-
-functionDeclarationBlockBody
-    : functionDeclaration
-    ;
-
-functionDeclarationBlockEnd
-    : 'end' 'prototypes' delimiter
+    : 'rpcfunc alias for' Identifier
     ;
   
 // 9. Function Implementation
 functionImplementation
-    : functionImplementationHeader functionImplementationBody* functionImplementationEnd delimiter
+    : functionImplementationHeader functionImplementationBody* functionImplementationEnd delimiter?
     ;
 	
 functionImplementationHeader
-    : primaryAccessType scopeModificator? functionHeaderIdentification parametersList functionDeclarationEndThrows? ';'
+    : primaryAccessType scopeModificator? functionHeaderIdentification parametersList functionDeclarationEndThrows? ';' delimiter?
     ;
 
 functionHeaderIdentification
-    : functionHeaderDefinition Identifier
-    ;
-
-functionHeaderDefinition
-    : 'function' dataTypeName
-    | 'subroutine'
+    : 'function' dataTypeName Identifier
+	| 'subroutine' Identifier
     ;
 
 functionDeclarationEndThrows
@@ -221,13 +223,8 @@ functionImplementationBody
     ;
 
 functionImplementationEnd
-    : 'end' 'function'
-    | 'end' 'subroutine'
-    ;
-
-functionBlockType
-    : 'forward'
-    | 'type'
+    : 'end function'
+    | 'end subroutine'
     ;
 
 // 10. On Implementation
@@ -236,67 +233,57 @@ onImplementation
     ;
 
 onImplementationHead
-    : 'On' onImplementationIdentifier delimiter
+    : 'on' onImplementationIdentifier delimiter?
     ;
 
 onImplementationIdentifier
     : Identifier
+    | expression
     | 'open'
     | 'close'
     ;
 
 onImplementationBody
-    : statement*?
+    : onImplementationBodyStatement*
+    ;
+
+onImplementationBodyStatement
+    : statementBlock
     ;
 
 onImplementationEnd
-    : 'end' 'on' delimiter
+    : 'end on' delimiter?
     ;
 
 // 11. Event Declaration
 eventDeclaration
-    : 'event' eventTypeDeclaration Identifier? parametersList delimiter
-    ;
-
-eventTypeDeclaration
-    : 'type'
-    | creatorType
+    : 'event' Identifier parametersList ';' delimiter?
     ;
 
 creatorType
     : 'create'
     | 'destroy'
+	| 'open'
+	| 'close'
     ;
 
 // 12. Event Implementation
 eventImplementation
-    : eventImplementationHead eventImplementationBody eventImplementationEnd
+    : eventImplementationHead eventImplementationBody* eventImplementationEnd
     ;
 
 eventImplementationHead
-    : 'event' eventImplementationHeadType? eventImplementationHeadId? eventImplementationClosure parametersList?
-    ;
-
-eventImplementationHeadType
-    : 'type' dataTypeName
-    ;
-
-eventImplementationHeadId
-    : Identifier '::'
-    ;
-
-eventImplementationClosure
-    : Identifier
-    | 'open'
-    | 'close'
+    : eventDeclaration
+	| 'event' creatorType ';' delimiter?
+	| 'event' Identifier ('::' Identifier)? ';' delimiter?
     ;
 
 eventImplementationBody 
-    : statement*?
+    : statementBlock
     ;
 
 eventImplementationEnd
-    : 'end' 'event' delimiter
+    : 'end event' delimiter?
     ;    
 	
 parametersList
@@ -312,36 +299,36 @@ parameterDeclarator
     ;
 
 arrayType
-	: '[' ']'
+	: '[ ]'
 	;
 
 scopeModificator
     : 'global'
     | 'local'
-    ;
-
-globalScopeModificator
-    : 'global'
     | 'shared'
     ;
 	
 statementBlock
-    :   variableDeclaration
-    |   statement
+    : variableDeclaration
+	| objectDeclaration
+	| statement
     ;
-
+    
 statement
     : expression
-/*	| ifStatement
+	| ifStatement
 	| callStatement
 	| tryCatchStatement
 	| doLoopWhileStatement
 	| forStatement
 	| returnStatement
 	| destroyStatement
+	| superStatement
 	| throwStatement
 	| goToStatement
-	| basicStatement */
+	| excapeStatement
+	| chooseStatement
+	| sqlStatement
     ;
 
 doLoopWhileStatement
@@ -350,11 +337,11 @@ doLoopWhileStatement
     ;
 
 doWhileUntilLoop
-    :   'DO' ('UNTIL' | 'WHILE') expression delimiter statement* delimiter 'LOOP' delimiter
+    :   'DO' ('UNTIL' | 'WHILE') expression delimiter? statementBlock* delimiter 'LOOP' delimiter?
     ;
 
 doLoopWhileUntil
-    :   'DO' delimiter statement* delimiter 'LOOP' ('WHILE' | 'UNTIL') expression delimiter
+    :   'DO' delimiter statementBlock* delimiter? 'LOOP' ('WHILE' | 'UNTIL') expression delimiter?
     ;
 
 tryCatchStatement
@@ -362,19 +349,19 @@ tryCatchStatement
     ;
 
 tryStatement 
-    : 'TRY' delimiter statement* delimiter
+    : 'TRY' delimiter statementBlock* delimiter?
     ;
 
 catchStatement
-    : 'CATCH' '(' variableDeclaration ')' delimiter statement* delimiter
+    : 'CATCH' '(' variableDeclaration ')' delimiter? statementBlock* delimiter?
     ;
 
 finallyStatement
-    : 'FINALLY' delimiter statement* delimiter
+    : 'FINALLY' delimiter statementBlock* delimiter?
     ;
 
 endTryStatement
-    : 'END' 'TRY' delimiter
+    : 'END TRY' delimiter?
     ;
 
 forStatement
@@ -382,19 +369,19 @@ forStatement
 	;
 
 forStatementBody
-	: statement* delimiter
+	: statementBlock* delimiter?
 	;
 
 forStatementEnd
-	: 'NEXT' delimiter
+	: 'NEXT' delimiter?
 	;
 
 forStatementBegin
-	: 'FOR' expression delimiter forStatementBeginTo?
+	: 'FOR' expression delimiter? forStatementBeginTo?
 	;
 
 forStatementBeginTo
-	: 'TO' expression forStatementBeginToStep delimiter
+	: 'TO' expression forStatementBeginToStep? delimiter?
 	;
 
 forStatementBeginToStep
@@ -402,25 +389,24 @@ forStatementBeginToStep
 	;
 
 ifStatement
-	: 'IF' expression ifStatementThen ifStatementBody+? ifStatementEnd 
+	: 'IF' expression ifStatementThen ifStatementEnd 
 	;
 
 ifStatementBody
-	: statement
-	| ifStatementElseIf
+	: statementBlock*
 	;
 
 ifStatementElseIf
-	: 'ELSEIF' expression ifStatementThen 
-	| 'ELSE' statement+?
+	: 'ELSEIF' expression ifStatementThen ifStatementEnd
+	| 'ELSE' delimiter? ifStatementBody
 	;
 
 ifStatementEnd
-	: 'END' 'IF' delimiter
+	: 'END IF' delimiter?
 	;
 	
 ifStatementThen
-	: 'THEN' delimiter
+	: 'THEN' delimiter? ifStatementBody ifStatementElseIf*
 	;
 
 goToStatement
@@ -428,11 +414,36 @@ goToStatement
 	;
 
 destroyStatement
-	: 'DESTROY' Identifier
+	: 'destroy' expression
 	;
 	
+chooseStatement
+	: chooseStatementBegin chooseStatementCase+ chooseStatementEnd delimiter?
+	;
+	
+chooseStatementBegin
+	: 'CHOOSE CASE' expression delimiter?
+	;
+
+chooseStatementCase
+	: 'CASE' literal statementBlock*
+	| 'CASE ELSE' statementBlock*
+	;
+
+chooseStatementEnd
+	: 'END CHOOSE' delimiter?
+	;
+
+createStatement
+    : 'create' expression delimiter?
+    ;
+	
 returnStatement
-	: 'RETURN' expression
+	: 'RETURN' expression? delimiter?
+	;
+
+superStatement
+	: 'SUPER' expression? delimiter?
 	;
 
 throwStatement
@@ -440,58 +451,141 @@ throwStatement
 	;
 
 callStatement
-	: 'CALL' Identifier callStatementSubControl? '::' Identifier 
+	: 'call' Identifier callStatementSubControl? '::' creatorType delimiter?
+	| 'call' Identifier callStatementSubControl? '::' Identifier delimiter?
 	;
 
 callStatementSubControl
 	: '`' Identifier
 	;	
 
-basicStatement
+excapeStatement
 	: 'EXIT'
 	| 'HALT'
 	| 'CONTINUE'
+	;
+
+sqlStatement
+	: commitStatement
+	| connectStatement
+	| rollbackStatement
+	| disconnectStatement
+	| selectStatement
+	| updateStatement
+	| insertStatement
+	| deleteStatement	
+	| openCursorStatement
+	| closeCursorStatement
+	| declareCursorStatement
+	| fetchCursorStatement
+	;
+
+openCursorStatement
+	: 'OPEN' Identifier ';' delimiter?
+	;
+
+closeCursorStatement
+	: 'CLOSE' Identifier ';' delimiter?
+	;
+
+declareCursorStatement
+	: 'DECLARE' expression 'CURSOR FOR' selectStatement delimiter?
+	;
+	
+commitStatement
+	: 'COMMIT;' delimiter?
+	;
+
+updateStatement
+	: 'UPDATE' Identifier 'SET' expression+ 'WHERE' expression+ sqlUsingStatement? ';' delimiter?
+	;
+
+deleteStatement
+	: 'DELETE FROM' Identifier 'WHERE' expression+ sqlUsingStatement? ';' delimiter?
+	;
+
+insertStatement
+	: 'INSERT INTO' Identifier '(' tableFields ')' 'VALUES' '(' variablesSelected ')' sqlUsingStatement? ';' delimiter?
+	;
+
+sqlUsingStatement
+	: 'USING' expression
+	;
+
+fetchCursorStatement
+	: 'FETCH' Identifier 'INTO' variablesSelected ';' delimiter?
+	;
+	
+connectStatement
+	: 'CONNECT USING' expression ';' delimiter?
+	| 'CONNECT' ';' delimiter? 
+	;
+
+disconnectStatement
+	: 'DISCONNECT' expression ';' delimiter?
+	;
+
+rollbackStatement
+	: 'ROLLBACK;' delimiter
+	;
+
+selectStatement
+	: 'SELECT' tableFields 'INTO' variablesSelected 'FROM' tableFields 'WHERE' expression+ sqlUsingStatement? ';' 
+	;
+
+tableFields
+	: qualifiedName qualifiedName? (',' qualifiedName qualifiedName?)*? delimiter?
+	;
+
+variablesSelected
+	: variableSelected (',' variableSelected)*? delimiter?
+	;
+
+variableSelected
+	: ':' Identifier delimiter?		
 	;
 
 qualifiedName
     :   Identifier ('.' Identifier)*
     ;
 
-expression
-    :   primary
-    |   expression '.' Identifier
-	|   expression '=' 'CREATE' 'USING'? Identifier	
-    |   expression '(' expressionList? ')'
-    |   '(' type ')' expression
-    |   expression ('+=' | '-=')
-    |   ('+'|'-'|'++'|'--') expression
-    |   ('~'|'!') expression
-    |   expression ('*'|'/'|'%') expression
-    |   expression ('+'|'-') expression
-    |   expression ('<' '<' | '>' '>' '>' | '>' '>') expression
-    |   expression ('<=' | '>=' | '>' | '<') expression
-    |   expression ('==' | '!=') expression
-    |   expression '&' expression
-    |   expression '^' expression
-    |   expression '|' expression
-    |   expression 'AND' expression
-    |   expression 'OR' expression
-    |   expression '?' expression ':' expression
-    |   <assoc=right> expression
-        (   '='
-        |   '+='
-        |   '-='
-        |   '*='
+expression 
+    :   primary delimiter? #literalEndExpression
+	|   variableSelected   #variableSelectedExpression
+	|   expression '.' Identifier delimiter? #objectVariableExpression
+    |   expression '.' creatorType #objectCreatorExpression
+    |   expression '[' expression? ']' #arrayValuesExpression
+	|   expression '=' 'create' 'using'? Identifier delimiter? #createUsingExpression	
+    |   expression '(' expressionList? ')' delimiter? #subParentExpression
+    |   expression ('+=' | '-=')  #AsingWithIncrementDecrementationExpression
+    |   ('+'|'-') expression 		#NegativePositiveValueExpression
+    |   expression ( '++' | '--') #PostIncrementDecrementExpression
+    |   expression ('*'|'/'|'%'|'+'|'-') expression # MathExpression
+    |   expression '<' expression     #LessThanExpression
+	|   expression '>' expression     #GreaterThanExpression
+	|   expression '<=' expression    #LessOrEqualThanExpression
+	|   expression '>=' expression    #BiggerThanExpression
+    |   expression ('==' | '!=') expression #EqualsDistintcExpression
+    |   expression 'AND' expression   #AndExpression
+    |   expression 'OR' expression	  #OrExpression
+	|   'NOT' expression              #NotExpression
+    |   expression '?' expression ':' expression #TriconditionalExpression
+    |   <assoc=right> expression 
+        (   '='     
+        |   '+='	
+        |   '-=' 
+        |   '*=' 
         |   '/='
-        |   '&='
-        |   '|='
-        |   '^='
-        |   '>>='
-        |   '>>>='
-        |   '<<='
-        |   '%='
+        |   '&=' 
+        |   '|=' 
+        |   '^=' 
+        |   '>>=' 
+        |   '>>>=' 
+        |   '<<=' 
+        |   '%='  
+		| 	
         )
-        expression
+        expression #rightAssocExpression
     ;
 	
 expressionList
@@ -508,16 +602,16 @@ literal
     :   IntegerLiteral
     |   BooleanLiteral
     |	StringLiteral
-    |   CharacterLiteral
-	// | 	DecimalLiteral
+    |   CharacterLiteral	
     | 	DateTimeLiteral
     |   'null'
+	|   'this'
     ;
 
 modifier
-    :   'PUBLIC' ':'
-    |   'PRIVATE' ':'
-    |   'PROTECTED' ':'
+    :   'PUBLIC'':'
+    |   'PRIVATE'':'
+    |   'PROTECTED'':'
     ;
 
 accessType
@@ -584,6 +678,10 @@ arrayLengthDeclarator
     : '[' arrayLengthValue* ']'
     ;
 
+decimalLengthDeclarator
+	: '{' IntegerLiteral '}'
+	;
+	
 arrayLengthValue
     : arrayLengthRange (',' arrayLengthRange)*
     ;
@@ -608,33 +706,24 @@ primitiveType
     |   'real'
 	|	'string'
 	| 	'date'
+    |   'int'
+    |   'long'
+	|   'decimal' decimalLengthDeclarator
     ;
 
 // Integer Literals
 
 IntegerLiteral
-    :   DecimalIntegerLiteral
-    ;
-
-fragment
-DecimalIntegerLiteral
-    :   DecimalNumeral IntegerTypeSuffix?
-    ;
-
-fragment
-IntegerTypeSuffix
-    :   [lL]
+    :   ('-')? DecimalNumeral 
     ;
 
 // Boolean Literals
-
 BooleanLiteral
     :   'true'
     |   'false'
     ;
 
 // Character Literals
-
 CharacterLiteral
     :   '\'' SingleCharacter '\''
     |   '\'' EscapeSequence '\''
@@ -646,7 +735,6 @@ SingleCharacter
     ;
 	
 // String Literals
-
 StringLiteral
     :   '"' StringCharacters? '"'
     ;
@@ -670,12 +758,8 @@ EscapeSequence
 fragment
 DecimalNumeral
     :   '0'
-    |   NonZeroDigit (Digits? | Underscores Digits)
-    ;
-
-fragment
-Digits
-    :   Digit (DigitOrUnderscore* Digit)?
+    |   NonZeroDigit Digit+
+	|   NonZeroDigit
     ;
 
 fragment
@@ -734,12 +818,6 @@ OctalDigitOrUnderscore
     ;
 
 fragment
-DigitOrUnderscore
-    :   Digit
-    |   '_'
-    ;
-
-fragment
 Underscores
     :   '_'+
     ;
@@ -791,7 +869,6 @@ RBRACK          : ']';
 SEMI            : ';';
 COMMA           : ',';
 DOT             : '.';
-QUOTE			: '"';
 
 // §3.12 OPERATORS
 
@@ -831,22 +908,6 @@ LSHIFT_ASSIGN   : '<<=';
 RSHIFT_ASSIGN   : '>>=';
 URSHIFT_ASSIGN  : '>>>=';
 
-// § INDENTIFIERS (must appear after all keywords in the grammar)
-
-Identifier
-    :   PBLetter PBLetterOrDigit*
-    ;
-
-fragment
-PBLetter
-    :   [a-zA-Z$-_%] 
-    ;
-
-fragment
-PBLetterOrDigit
-    :   [a-zA-Z0-9$-_%] 
-    ;
-
 // § COMMENTS & WHITESPACES
 COMMENT
     :   '/*' .*? '*/' -> skip
@@ -856,4 +917,21 @@ LINE_COMMENT
     :   '//' ~[\r\n]* -> skip
     ;
 	
-WS: [ \n\t\r]+ -> skip;
+WS  : [ \n\t\r]+ -> skip;
+
+// § INDENTIFIERS (must appear after all keywords in the grammar)
+
+Identifier
+    :   PBLetter PBLetterOrDigit*
+    ;
+
+fragment
+PBLetter
+    :   [a-zA-Z$_%] 
+    ;
+
+fragment
+PBLetterOrDigit
+    :   [a-zA-Z0-9$_%] // these are the "java letters or digits" below 0xFF
+    ;
+
