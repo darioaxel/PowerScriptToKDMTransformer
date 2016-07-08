@@ -6,7 +6,6 @@ import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
 public interface ISourceFileTypeParser {
 
-	void read();
-	void readInto(SourceFile sourceFile, CodeModel internalCodeModel, IProgressMonitor monitor);
-	String getLanguageString();
+	void parse();
+	Object getListener();
 }

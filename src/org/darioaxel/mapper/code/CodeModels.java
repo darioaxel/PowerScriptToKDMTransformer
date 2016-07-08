@@ -1,6 +1,8 @@
 package org.darioaxel.mapper.code;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Properties;
 
 import org.darioaxel.mapper.IMapperElementRepository;
@@ -16,20 +18,20 @@ import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
 
 public class CodeModels {	
 				
-	public static CodeModel create(IMapperElementRepository elementRepository, final InventoryModel inventoryModel, final Properties prop, Collection<LanguageUnit> languageUnits, IProgressMonitor monitor) {
+	public static CodeModel create(IMapperElementRepository elementRepository, final InventoryModel inventoryModel, final Properties prop, IProgressMonitor monitor) {
 		
 		int toPhase = Integer.valueOf(prop.getProperty("PhasesToGenerate"));
 		final CodeModel codeModel = KDMElementFactory.createCodeModel("");
+		final List<LanguageUnit> languagesUsed = new ArrayList<LanguageUnit>();
 		
 		if (monitor == null) monitor = new NullProgressMonitor();
-
 	
 		monitor.beginTask("Extracting code model from inventory model...", 1);
 		try {
 			if (monitor.isCanceled()) throw new OperationCanceledException();
 			
 			if (toPhase > 1)
-				phase1(elementRepository, inventoryModel, codeModel, monitor);
+				phase1(elementRepository, inventoryModel, codeModel, languagesUsed, monitor);
 			if (toPhase > 2)
 				phase2(elementRepository, inventoryModel, codeModel, monitor);
 
@@ -45,7 +47,7 @@ public class CodeModels {
 		
 	}
 
-	private static void phase1(IMapperElementRepository elementRepository, final InventoryModel inventoryModel, final CodeModel codeModel, IProgressMonitor monitor) {
+	private static void phase1(IMapperElementRepository elementRepository, final InventoryModel inventoryModel, final CodeModel codeModel, final List<LanguageUnit> languages, IProgressMonitor monitor) {
 		
 		final InventoryModelWalker phase1walker = elementRepository.getPhase1InventoryModelWalker(inventoryModel, codeModel);
 		

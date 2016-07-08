@@ -6,24 +6,16 @@ import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
 public class SourceFileTypeParser implements ISourceFileTypeParser
 {
-
 	@Override
-	public void readInto(SourceFile sourceFile, CodeModel internalCodeModel,
-			IProgressMonitor monitor) {
+	public void parse() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public String getLanguageString() {
+	public Object getListener() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void read() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

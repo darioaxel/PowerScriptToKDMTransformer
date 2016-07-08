@@ -25,7 +25,7 @@ public class PowerscriptSourceFileTypeParser extends SourceFileTypeParser {
 		this.path = path;
 	}
 	
-	public powerscriptBaseListener getListener() {
+	public Object getListener() {
 		return listener;
 	}
 	

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kdm:Segment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:code="http://www.eclipse.org/MoDisco/kdm/code" xmlns:kdm="http://www.eclipse.org/MoDisco/kdm/kdm" xmlns:source="http://www.eclipse.org/MoDisco/kdm/source">
+<kdm:Segment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:kdm="http://www.eclipse.org/MoDisco/kdm/kdm" xmlns:source="http://www.eclipse.org/MoDisco/kdm/source">
   <model xsi:type="source:InventoryModel" name="source references">
     <inventoryElement xsi:type="source:Directory" name="myproject" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject">
       <inventoryElement xsi:type="source:SourceFile" name="m_login.srm" version="1467536741000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/m_login.srm" language="Powerscript" encoding="not checked"/>
@@ -27,10 +27,5 @@
       </inventoryElement>
       <inventoryElement xsi:type="source:SourceFile" name="w_login.srw" version="1464623323000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/w_login.srw" language="Powerscript" encoding="not checked"/>
     </inventoryElement>
-  </model>
-  <model xsi:type="code:CodeModel" name="test">
-    <codeElement xsi:type="code:CodeAssembly" name="myproject.pbt">
-      <codeElement xsi:type="code:Package" name="myproject.pbg"/>
-    </codeElement>
   </model>
 </kdm:Segment>

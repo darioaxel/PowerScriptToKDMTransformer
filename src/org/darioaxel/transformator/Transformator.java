@@ -35,11 +35,9 @@ public class Transformator {
 	public void Transform() {
 		
 		File directory = new File(this.directory);
-		Collection<String> languagesUsed = new ArrayList<String>();	
 		IMapperElementRepository elementRepository = new PowerscriptElementRepository();
-		InventoryModel inventoryModel = InventoryModels.create(elementRepository, directory, languagesUsed, new NullProgressMonitor());
-		Collection<LanguageUnit> languages = LanguageUnitDetector.getLanguages(languagesUsed);
-		Segment segment = Segments.create(elementRepository, inventoryModel, null, null, languages);
+		InventoryModel inventoryModel = InventoryModels.create(elementRepository, directory, new NullProgressMonitor());
+		Segment segment = Segments.create(elementRepository, inventoryModel, null, null);
 
 		FileUtils.saveEcoreToXMI(segment, null, null);
 	}

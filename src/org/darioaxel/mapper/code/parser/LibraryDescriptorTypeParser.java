@@ -25,7 +25,7 @@ public class LibraryDescriptorTypeParser {
 		this.path = path;
 	}
 	
-	public PowerbuilderProjectPBGListener getListener() {
+	public Object getListener() {
 		return listener;
 	}
 	

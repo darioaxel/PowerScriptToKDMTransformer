@@ -20,12 +20,12 @@ public class Segments {
 
 	private static final Logger LOGGER = LogManager.getLogger();
 
-	public static Segment create(IMapperElementRepository elementRepository, final InventoryModel inventoryModel, final IProgressMonitor monitor, final Properties prop, Collection<LanguageUnit> languageUnits ) {
+	public static Segment create(IMapperElementRepository elementRepository, final InventoryModel inventoryModel, final IProgressMonitor monitor, final Properties prop ) {
 
 		Segment segment = KDMElementFactory.createSegment();
 		
 		try {
-			CodeModel model = CodeModels.create(elementRepository, inventoryModel, prop, languageUnits, monitor);
+			CodeModel model = CodeModels.create(elementRepository, inventoryModel, prop, monitor);
 			segment.getModel().add(model);
 
 		} catch (StackOverflowError e) {

@@ -1,16 +1,12 @@
 package org.darioaxel.mapper.source.walker;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 import org.darioaxel.mapper.KDMElementFactory;
-import org.darioaxel.mapper.code.parser.PowerscriptSourceFileTypeParser;
 import org.darioaxel.mapper.code.parser.SourceFileTypeParser;
 import org.darioaxel.util.enums.EResourceDescription;
-import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeAssembly;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
 import org.eclipse.gmt.modisco.omg.kdm.code.Module;
