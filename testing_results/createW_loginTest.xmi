@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kdm:Segment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:code="http://www.eclipse.org/MoDisco/kdm/code" xmlns:kdm="http://www.eclipse.org/MoDisco/kdm/kdm">
+  <model xsi:type="code:CodeModel" name="test w_login">
+    <codeElement xsi:type="code:CompilationUnit" name="w_login.srw">
+      <source>
+        <region path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/w_login.srw"/>
+      </source>
+      <codeElement xsi:type="code:ClassUnit" name="w_login">
+        <annotation text="Window Type"/>
+      </codeElement>
+    </codeElement>
+  </model>
+</kdm:Segment>

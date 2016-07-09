@@ -1,4 +1,4 @@
-package org.darioaxel.mapper.source.listener;
+package org.darioaxel.mapper.code.listener;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,9 +14,11 @@ import org.darioaxel.grammar.powerscript.pbg.powerscriptPBGLexer;
 import org.darioaxel.grammar.powerscript.pbg.powerscriptPBGParser;
 import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTLexer;
 import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTParser;
+import org.darioaxel.mapper.source.listener.ResourceDescriptionFileListener;
 import org.darioaxel.mapper.source.listener.error.ProjectDescriptorErrorListener;
 import org.darioaxel.project.validator.pbt.PowerbuilderProjectPBTListener;
 import org.darioaxel.util.enums.EResourceDescription;
+import org.eclipse.gmt.modisco.omg.kdm.source.AbstractInventoryElement;
 import org.eclipse.gmt.modisco.omg.kdm.source.ResourceDescription;
 
 public class PowerscriptResourceDescriptionFileListener extends ResourceDescriptionFileListener {
@@ -25,7 +27,9 @@ public class PowerscriptResourceDescriptionFileListener extends ResourceDescript
 	private final ProjectDescriptorErrorListener pDErrorListener = new ProjectDescriptorErrorListener();
 	
 	@Override
-	public void visit(ResourceDescription resourceDescriptionFile) {
+	public void visit(AbstractInventoryElement inventoryElement) {
+		
+		ResourceDescription resourceDescriptionFile = (ResourceDescription) inventoryElement;
 		
 		TokenStream inputTokenStream;
 		try {

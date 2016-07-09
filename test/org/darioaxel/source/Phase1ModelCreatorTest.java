@@ -7,6 +7,9 @@ import java.nio.file.Paths;
 
 import org.darioaxel.mapper.KDMElementFactory;
 import org.darioaxel.mapper.PowerscriptElementRepository;
+import org.darioaxel.mapper.code.listener.PowerscriptPhase1Listener;
+import org.darioaxel.mapper.code.parser.PowerscriptSourceFileTypeParser;
+import org.darioaxel.mapper.code.parser.TypeParser;
 import org.darioaxel.mapper.source.InventoryModels;
 import org.darioaxel.mapper.source.walker.PowerscriptPhase1InventoryModelWalker;
 import org.darioaxel.util.FileUtils;
@@ -29,7 +32,12 @@ public class Phase1ModelCreatorTest {
 		Segment segment = KDMElementFactory.createSegment();
 		segment.getModel().add(inventoryModel);
 		final CodeModel codeModel = KDMElementFactory.createCodeModel("test");
+				
+		TypeParser parser = new PowerscriptSourceFileTypeParser();
+		PowerscriptPhase1Listener listener = new PowerscriptPhase1Listener();
+		parser.addListener(listener);
 		PowerscriptPhase1InventoryModelWalker walker = new PowerscriptPhase1InventoryModelWalker(inventoryModel, codeModel);
+		walker.setSourceFileParser(parser);
 		walker.walk();
 		segment.getModel().add(codeModel);
 		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());

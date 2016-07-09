@@ -22,10 +22,7 @@ public abstract class FileListener implements IFileListener{
 	}
 
 	@Override
-	public void visit(AbstractInventoryElement element) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void visit(AbstractInventoryElement element); 
 
 	public CodeModel getCodeModel() {
 		// default implementation: return null

@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.darioaxel.mapper.KDMElementFactory;
-import org.darioaxel.mapper.code.parser.SourceFileTypeParser;
+import org.darioaxel.mapper.code.listener.PowerscriptPhase1Listener;
 import org.darioaxel.util.enums.EResourceDescription;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeAssembly;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
@@ -45,7 +45,7 @@ public class PowerscriptPhase1InventoryModelWalker extends InventoryModelWalker 
 		}			
 	}
 	
-	private static InventoryContainer walk(InventoryContainer container, final Module parent) {
+	private void walk(InventoryContainer container, final Module parent) {
 		CodeAssembly project = null;
 		Package pack = null;
 		final Module newparent;
@@ -78,19 +78,26 @@ public class PowerscriptPhase1InventoryModelWalker extends InventoryModelWalker 
 		} else {
 			newparent = parent;
 		}
+	
+		for(AbstractInventoryElement e : elements) {
+			if (e instanceof SourceFile) {
+				walk((SourceFile) e, newparent);
+			}
+		}
 		
-		elements.stream().filter(e -> e instanceof SourceFile).map(e -> (SourceFile) e).forEach(sf -> walk(sf, newparent));
-		elements.stream().filter(e -> e instanceof Directory).map(e -> (Directory) e).forEach( d -> walk(d , newparent));
+		for(AbstractInventoryElement e : elements) {
+			if (e instanceof Directory) {
+				walk((Directory)e, newparent);
+			}
+		}
 		
-		return container;
+	//	elements.stream().filter(e -> e instanceof SourceFile).map(e -> (SourceFile) e).forEach(sf -> walk(sf, newparent));
+	//	elements.stream().filter(e -> e instanceof Directory).map(e -> (Directory) e).forEach( d -> walk(d , newparent));
 	}
 	
-	private static SourceFile walk(SourceFile e, Module parent) {
-		SourceFileTypeParser sourceParser = new SourceFileTypeParser();
-		//	super.sourceFileListener.visit(e);
-	//	parent.getCodeElement().add((AbstractCodeElement) sourceFileListener.getCodeModel());
-		
-		return e;
+	private void walk(SourceFile e, Module parent) {
+		super.sourceParser.parse(e);
+	  	parent.getCodeElement().add(((PowerscriptPhase1Listener) sourceParser.getListener()).getCompilationUnit());		
 	}
 
 	private static boolean isAnyResourceDescriptionFile (List<AbstractInventoryElement> elements) {
@@ -105,6 +112,5 @@ public class PowerscriptPhase1InventoryModelWalker extends InventoryModelWalker 
 		return resources.filter(r -> r instanceof ResourceDescription 
 				&& ((ResourceDescription) r).getVersion().equals(projectdefinition.Description()))
 				.findFirst();
-	}	
-	
+	}		
 }

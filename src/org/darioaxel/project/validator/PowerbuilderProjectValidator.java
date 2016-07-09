@@ -27,8 +27,9 @@ public class PowerbuilderProjectValidator implements IProjectValidator {
 			if (pbt.isPresent()) {			
 				
 				PowerbuilderProjectPBTListener listenerPBT = new PowerbuilderProjectPBTListener();
-				ProjectDescriptorTypeParser projectParser = new ProjectDescriptorTypeParser(pbt.get(), listenerPBT);
-				projectParser.parse();				
+				ProjectDescriptorTypeParser projectParser = new ProjectDescriptorTypeParser();
+				projectParser.addListener(listenerPBT);
+				projectParser.parse(pbt.get());				
 				listenerPBT = projectParser.getListener();			
 				
 				for(Path lib : listenerPBT.getLiblist()) {

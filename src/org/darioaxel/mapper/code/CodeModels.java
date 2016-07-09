@@ -7,6 +7,7 @@ import java.util.Properties;
 
 import org.darioaxel.mapper.IMapperElementRepository;
 import org.darioaxel.mapper.KDMElementFactory;
+import org.darioaxel.mapper.code.parser.TypeParser;
 import org.darioaxel.mapper.source.listener.SourceFileListener;
 import org.darioaxel.mapper.source.walker.InventoryModelWalker;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -41,20 +42,21 @@ public class CodeModels {
 		
 		return null;
 	}	
-	
-	private static void phase2(IMapperElementRepository elementRepository,	InventoryModel inventoryModel, CodeModel codeModel, IProgressMonitor monitor) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	private static void phase1(IMapperElementRepository elementRepository, final InventoryModel inventoryModel, final CodeModel codeModel, final List<LanguageUnit> languages, IProgressMonitor monitor) {
 		
 		final InventoryModelWalker phase1walker = elementRepository.getPhase1InventoryModelWalker(inventoryModel, codeModel);
-		
-		SourceFileListener sourceFileListener = elementRepository.getPhase1SourceFileListener();
-		phase1walker.setSourceFileListener(sourceFileListener);
+		TypeParser parser = elementRepository.getSouceFileParser();
+		parser.addListener(elementRepository.getPhase1SourceFileListener());
+		phase1walker.setSourceFileParser(parser);
+	
 		monitor.subTask("Beggining phase 1 ...");		
 		phase1walker.walk();
 		monitor.subTask("Ending phase 1 ..");
+	}
+	
+	private static void phase2(IMapperElementRepository elementRepository,	InventoryModel inventoryModel, CodeModel codeModel, IProgressMonitor monitor) {
+		// TODO Auto-generated method stub
+		
 	}
 }

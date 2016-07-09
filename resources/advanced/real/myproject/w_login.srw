@@ -82,8 +82,8 @@ end type
 event ue_control();
 Boolean	lb_acceso = False
 
-IF Lower(GetApplication().AppName) = 'myproject' THEN 
-	IF UPPER(sle_clave.text) = "PASSWORD" THEN lb_acceso = True
+IF Lower(GetApplication().AppName) = "myproject" THEN 
+	IF UPPER(sle_clave.text) = "PASSWORD" THEN lb_acceso = True END IF
 END IF
 
 IF lb_acceso THEN 

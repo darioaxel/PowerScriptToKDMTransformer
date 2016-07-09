@@ -14,7 +14,7 @@ public abstract class InventoryModelFileListener implements IFileListener{
 	protected SourceFactory				    sourceFactory;
 
 	@Override
-	public void updateFile(File dir, File file) {
+	public void updateFile(File file) {
 		// TODO Auto-generated method stub
 		
 	}

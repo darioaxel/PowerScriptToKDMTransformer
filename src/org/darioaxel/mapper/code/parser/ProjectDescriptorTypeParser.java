@@ -14,22 +14,28 @@ import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTLexer;
 import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTParser;
 import org.darioaxel.project.validator.pbt.PowerbuilderProjectPBTListener;
 
-public class ProjectDescriptorTypeParser {
+public class ProjectDescriptorTypeParser extends TypeParser{
 	
-	private final PowerbuilderProjectPBTListener listener;
-	private final Path path;
-	
-	
-	public ProjectDescriptorTypeParser(Path path, PowerbuilderProjectPBTListener listener) {
-		this.listener = listener;
-		this.path = path;
+	private PowerbuilderProjectPBTListener listener;
+		
+	public ProjectDescriptorTypeParser() {
 	}
 	
+	@Override
+	public void addListener(Object object) {
+		PowerbuilderProjectPBTListener listener = (PowerbuilderProjectPBTListener) object;
+		this.listener = listener;
+	}
+	
+	@Override
 	public PowerbuilderProjectPBTListener getListener() {
 		return listener;
 	}
 	
-	public void parse(){
+	@Override
+	public void parse(Object object){
+		
+		Path path = (Path) object;
 		
 		TokenStream inputTokenStream = null;
 		try {

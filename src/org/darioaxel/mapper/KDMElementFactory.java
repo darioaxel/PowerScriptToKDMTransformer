@@ -1,6 +1,7 @@
 package org.darioaxel.mapper;
 
 import org.darioaxel.mapper.code.MoDiscoKDM;
+import org.darioaxel.util.enums.EPowerscriptFileTypes;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionElement;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionFactory;
@@ -97,41 +98,21 @@ public final class KDMElementFactory {
 		
 		Package packageElement = CODE_FACTORY.createPackage();
 		packageElement.setName(resourceDescriptor.getName());
+		
 			
 		return packageElement;
 	}
 	
 	// Powerbuilder type classes
-	public static ClassUnit createDatawindow(final SourceFile sourceFile) {
-		ClassUnit struct = CODE_FACTORY.createClassUnit();
-		addAnnotation(DATAWINDOW_ANNOTATION, struct);
-		return struct;
-	}
 	
-	public static ClassUnit createMenu(final SourceFile sourceFile) {
-		ClassUnit menu = CODE_FACTORY.createClassUnit();
-		addAnnotation(MENU_ANNOTATION, menu);
-		return menu;
+	public static ClassUnit createClass(String name, EPowerscriptFileTypes type) {
+
+		ClassUnit classUnit = CODE_FACTORY.createClassUnit();
+		classUnit.setName(name);
+		addAnnotation(type.description(), classUnit);
+		return classUnit;
 	}
-	
-	public static ClassUnit createStructure(final SourceFile sourceFile) {
-		ClassUnit struct = CODE_FACTORY.createClassUnit();
-		addAnnotation(STRUCT_ANNOTATION, struct);
-		return struct;
-	}
-	
-	public static ClassUnit createUserFunctionClass(final SourceFile sourceFile) {
-		ClassUnit functionClass = CODE_FACTORY.createClassUnit();
-		addAnnotation(USERFUNCTION_ANNOTATION, functionClass);
-		return functionClass;
-	}
-	
-	public static ClassUnit createMainClass(final SourceFile sourceFile) {
-		ClassUnit mainClass = CODE_FACTORY.createClassUnit();
-		addAnnotation(MAINCLASS_ANNOTATION, mainClass);
-		return mainClass;
-	}
-	
+
 	private static void addAnnotation(final String text, final KDMEntity kdmEntity) {
 		Annotation anno = KDM_FACTORY.createAnnotation();
 		anno.setText(text);
@@ -143,5 +124,9 @@ public final class KDMElementFactory {
 		assembly.setName(name);
 				
 		return assembly;
+	}
+
+	public static CompilationUnit createCompilationUnit() {
+		return CODE_FACTORY.createCompilationUnit();
 	}
 }

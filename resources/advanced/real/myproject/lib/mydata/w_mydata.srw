@@ -11,7 +11,7 @@ integer width = 4261
 integer height = 1872
 boolean maxbox = false
 boolean resizable = false
-event ue_get_employee()
+event ue_get_employee();
 string s_dni
 end type
 

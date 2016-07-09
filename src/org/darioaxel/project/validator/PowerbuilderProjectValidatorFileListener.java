@@ -15,7 +15,7 @@ public class PowerbuilderProjectValidatorFileListener implements IFileListener{
 		return pbtFile;
 	}
 	@Override
-	public void updateFile(File dir, File file) {
+	public void updateFile(File file) {
 		
 		if (isPBTConfigurationFile(file)) {
 			pbtFile = file;

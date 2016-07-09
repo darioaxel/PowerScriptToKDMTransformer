@@ -43,7 +43,7 @@ public class PowerscriptInventoryModelFileListener extends InventoryModelFileLis
 	}
 
 	@Override
-	public void updateFile(final File dir, final File file) {
+	public void updateFile(final File file) {
 
 		InventoryItem inventoryItem;
 		// TODO for content type, see IContentTypeManager

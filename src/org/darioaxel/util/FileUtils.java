@@ -106,7 +106,7 @@ public final class FileUtils {
 				walkDirectoryRecursively(file, listener);
 				listener.exitDir(dir, file);
 			} else {
-				listener.updateFile(dir, file);
+				listener.updateFile(file);
 			}
 		}
 	}

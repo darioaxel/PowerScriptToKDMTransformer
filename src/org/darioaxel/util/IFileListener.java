@@ -5,7 +5,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 
 public interface IFileListener {
 
-	void updateFile(File dir, File file);
+	void updateFile(File file);
 	void enterDir(File parent, File dir);
 	void exitDir(File parent, File dir);
 }
