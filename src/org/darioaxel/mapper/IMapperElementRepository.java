@@ -17,6 +17,8 @@ public interface IMapperElementRepository {
 	 PowerscriptPhase1Listener getPhase1SourceFileListener();
 	 SourceFileListener getPhase2SourceFileListener();
 	 InventoryModelFileListener getInventoryModelFileListener(Directory root, Collection<String> languagesUsed);
-	 InventoryModelWalker getPhase1InventoryModelWalker(InventoryModel inventoryModel, CodeModel codeModel);
+	 InventoryModelWalker getPhase1InventoryModelWalker(InventoryModel inventoryModel);
 	 TypeParser getSouceFileParser();
+	 InventoryModelWalker getPhase2InventoryModelWalker(InventoryModel inventoryModel);
+	 PowerscriptPhase1Listener getPhase1SourceFileListener(CodeModel codeModel);
 }

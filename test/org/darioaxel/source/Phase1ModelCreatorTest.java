@@ -12,6 +12,7 @@ import org.darioaxel.mapper.code.parser.PowerscriptSourceFileTypeParser;
 import org.darioaxel.mapper.code.parser.TypeParser;
 import org.darioaxel.mapper.source.InventoryModels;
 import org.darioaxel.mapper.source.walker.PowerscriptPhase1InventoryModelWalker;
+import org.darioaxel.mapper.source.walker.PowerscriptPhase1WithPackageRelationshipsInventoryModelWalker;
 import org.darioaxel.util.FileUtils;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
@@ -43,5 +44,16 @@ public class Phase1ModelCreatorTest {
 		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());
 		
 		assertTrue(result.toFile().exists());
+	}
+	
+	@Test
+	public void newPhase1Test() {
+		
+		InventoryModel inventoryModel = InventoryModels.create(elements, root.toFile(), new NullProgressMonitor());
+		Segment segment = KDMElementFactory.createSegment();
+		segment.getModel().add(inventoryModel);
+		final CodeModel codeModel = KDMElementFactory.createCodeModel("test");
+		PowerscriptPhase1WithPackageRelationshipsInventoryModelWalker walker = new PowerscriptPhase1WithPackageRelationshipsInventoryModelWalker(inventoryModel, codeModel);
+		walker.walk();
 	}
 }

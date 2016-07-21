@@ -45,7 +45,7 @@ import org.junit.Test;
  *
  * @author darioaxel
  */
-public class PowerScript01Test {
+public class PowerScript_OwnStructuresTest {
      
     private static final Path test_forward_01 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/members/forward/forward_01.sru");
     private static final Path test_forward_02 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/members/forward/forward_02.sru");
@@ -123,7 +123,7 @@ public class PowerScript01Test {
         powerscript_01Parser.CompilationUnitContext context03 = parsePowerscript_01(test_integer_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
+ /*   
      @Test
     public void testPowerscript_literalsArrays_01() throws IOException {
 
@@ -131,7 +131,7 @@ public class PowerScript01Test {
         powerscript_01Parser.CompilationUnitContext context03 = parsePowerscript_01(test_literals_arrays_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
+  */  
     private powerscript_01Parser.CompilationUnitContext parsePowerscript_01(File program, 
             ErrorListenerTest errorListener) throws IOException {
         

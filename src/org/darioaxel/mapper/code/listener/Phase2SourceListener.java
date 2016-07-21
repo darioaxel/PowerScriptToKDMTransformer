@@ -12,39 +12,46 @@ import org.eclipse.gmt.modisco.omg.kdm.code.MethodKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.MethodUnit;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
-public class PowerscriptPhase2Listener extends powerscriptBaseListener{
+public class Phase2SourceListener extends powerscriptBaseListener implements PowerscriptListener{
 
 	private CodeModel codeModel;
 	private Stack<String> stack = new Stack<String>();
 	private String unitClassName;
 	
-	public PowerscriptPhase2Listener () {
+	public Phase2SourceListener (final CodeModel codeModel) {
+		this.codeModel = codeModel;
 	}	
 	
-	public void setUnitClassName(String name) {
+	@Override
+	public void setClassUnitName(String name) {
 		unitClassName = name;
+	}
+	
+	@Override
+	public void setCompilationUnit(SourceFile source) {
+		String compilationUnitName = source.getName();
+		unitClassName = CodeModelUtil.getClassUnitName(codeModel, source);		
 	}
 	
 	@Override
 	public void enterForwardDeclaration(powerscriptParser.ForwardDeclarationContext ctx) { 
 		System.out.println("enterForward");
 	}	
-	
-	
-	
-	@Override public void exitOnImplementationIdentifier(powerscriptParser.OnImplementationIdentifierContext ctx) {
+		
+	@Override 
+	public void exitOnImplementationIdentifier(powerscriptParser.OnImplementationIdentifierContext ctx) {
 			
 			String creatorType = ctx.getChild(2).getText();			
 			MethodUnit method= KDMElementFactory.createMethodUnit(getMethodKind(creatorType), KDMElementFactory.ON_METHOD);
 	}
 	
-	@Override public void enterEventDeclarationWithCreator(powerscriptParser.EventDeclarationWithCreatorContext ctx) {
+	@Override 
+	public void enterEventDeclarationWithCreator(powerscriptParser.EventDeclarationWithCreatorContext ctx) {
 			String creatorType = ctx.getChild(1).getText();
 			MethodUnit method = KDMElementFactory.createMethodUnit(getMethodKind(creatorType), KDMElementFactory.EVEN_METHOD);	
 			CodeModelUtil.addMethodToClassUnit(unitClassName, method, codeModel);
 	}
-	
-	
+		
 	private MethodKind getMethodKind(String creatorType) {
 		
 		switch(creatorType) {
@@ -55,5 +62,5 @@ public class PowerscriptPhase2Listener extends powerscriptBaseListener{
 		default:  return MethodKind.UNKNOWN;
 		}
 		
-	}	
+	}			
 }

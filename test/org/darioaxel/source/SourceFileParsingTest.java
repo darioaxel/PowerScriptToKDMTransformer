@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import org.darioaxel.mapper.KDMElementFactory;
 import org.darioaxel.mapper.code.listener.PowerscriptPhase1Listener;
+import org.darioaxel.mapper.code.listener.PowerscriptPhase2Listener;
 import org.darioaxel.mapper.code.parser.PowerscriptSourceFileTypeParser;
 import org.darioaxel.mapper.source.listener.PowerscriptInventoryModelFileListener;
 import org.darioaxel.util.FileUtils;
@@ -43,6 +44,11 @@ public class SourceFileParsingTest {
 		Segment segment = KDMElementFactory.createSegment();
 		CodeModel code = KDMElementFactory.createCodeModel("test w_login");
 		code.getCodeElement().add( ((PowerscriptPhase1Listener)typeParser.getListener()).getCompilationUnit());
+		
+		PowerscriptPhase2Listener listener2 = new PowerscriptPhase2Listener();
+		typeParser.addListener(listener2);
+		typeParser.parse(source, code);
+		
 		segment.getModel().add(code);
 		
 		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());

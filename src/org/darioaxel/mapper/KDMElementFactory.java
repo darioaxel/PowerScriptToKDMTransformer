@@ -12,6 +12,7 @@ import org.eclipse.gmt.modisco.omg.kdm.action.Reads;
 import org.eclipse.gmt.modisco.omg.kdm.action.Writes;
 import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.ClassUnit;
+import org.eclipse.gmt.modisco.omg.kdm.code.MethodKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.Package;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeAssembly;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeFactory;
@@ -63,6 +64,8 @@ public final class KDMElementFactory {
 	public static final String			USERFUNCTION_ANNOTATION		= "UserFunction object";
 	public static final String			NAMESPACES_MODULE			= "Namespaces";
 	public static final String			GLOBAL_NAMESPACE_NAME		= "global";
+	public static final String			ON_METHOD					= "On method";
+	public static final String			EVEN_METHOD					= "Event method";
 		
 	// SourcePackage Objects
 	public static Segment createSegment() {
@@ -90,7 +93,7 @@ public final class KDMElementFactory {
 		CompilationUnit compilationUnit = CODE_FACTORY.createCompilationUnit();
 		compilationUnit.setName(sourceFile.getName());
 		compilationUnit.getSource().add(sourceRef);
-		
+				
 		return compilationUnit;
 	}
 	
@@ -128,5 +131,12 @@ public final class KDMElementFactory {
 
 	public static CompilationUnit createCompilationUnit() {
 		return CODE_FACTORY.createCompilationUnit();
+	}
+
+	public static MethodUnit createMethodUnit(MethodKind methodKind, String annotation) {
+		MethodUnit method = CODE_FACTORY.createMethodUnit();
+		method.setKind(methodKind);
+		addAnnotation(annotation, method);
+		return method;
 	}
 }

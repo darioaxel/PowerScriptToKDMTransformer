@@ -9,28 +9,33 @@ import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
 import org.eclipse.gmt.modisco.omg.kdm.code.CompilationUnit;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
-public class PowerscriptPhase1Listener extends powerscriptBaseListener {
+public class Phase1SourceListener extends powerscriptBaseListener implements PowerscriptListener {
 	
-	private final CodeModel internalModel = KDMElementFactory.createCodeModel("");
+	private final CodeModel codeModel;
 	private ClassUnit classUnit = null;
 	private String compilationUnitName = "";
 	private CompilationUnit compilationUnit = null;
 	private boolean inForward = false;
 	
-	public CompilationUnit getCompilationUnit() {
-		return (CompilationUnit) internalModel.getCodeElement().get(0);
+	public Phase1SourceListener(CodeModel codeModel) {
+		this.codeModel = codeModel;
 	}
 	
+	@Override
+	public void setClassUnitName(String name) {
+		// TODO Auto-generated method stub
+	}
+	
+	@Override
 	public void setCompilationUnit(SourceFile source) {
 		compilationUnitName = source.getName();
 		compilationUnit = KDMElementFactory.createCompilationUnit(source);
-		internalModel.getCodeElement().add(compilationUnit);		
+		codeModel.getCodeElement().add(compilationUnit);		
 	}
 	
 	@Override
 	public void enterForwardDeclaration(powerscriptParser.ForwardDeclarationContext ctx) { 
-		inForward = true;
-		System.out.println("enterForward");
+		inForward = true;		
 	}
 	
 	@Override
@@ -60,4 +65,6 @@ public class PowerscriptPhase1Listener extends powerscriptBaseListener {
 		
 		return EPowerscriptFileTypes.Unknown;
 	}
+
+	
 }

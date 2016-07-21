@@ -19,7 +19,7 @@ import org.darioaxel.grammar.powerscript.pbg.powerscriptPBGParser.PathsFromToCon
 import org.darioaxel.grammar.powerscript.pbg.powerscriptPBGParser.ProgContext;
 import org.darioaxel.grammar.powerscript.pbg.powerscriptPBGParser.QuotedPathContext;
 
-public class PowerbuilderProjectPBGListener extends powerscriptPBGBaseListener{
+public class Phase1LibraryListener extends powerscriptPBGBaseListener{
 
 	private List<Path> fileNames = new ArrayList<Path>();
 	

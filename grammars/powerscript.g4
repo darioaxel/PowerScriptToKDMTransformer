@@ -10,8 +10,6 @@ grammar powerscript;
 package org.darioaxel.grammar.powerscript;
 }
 
-
-
 compilationUnit
     :  memberDeclaration*? EOF
     ;
@@ -237,10 +235,7 @@ onImplementationHead
     ;
 
 onImplementationIdentifier
-    : Identifier
-    | expression
-    | 'open'
-    | 'close'
+    : expression '.' creatorType delimiter?
     ;
 
 onImplementationBody
@@ -257,7 +252,7 @@ onImplementationEnd
 
 // 11. Event Declaration
 eventDeclaration
-    : 'event' Identifier parametersList ';' delimiter?
+    : 'event' Identifier parametersList? delimiter? 
     ;
 
 creatorType
@@ -273,9 +268,9 @@ eventImplementation
     ;
 
 eventImplementationHead
-    : eventDeclaration
-	| 'event' creatorType ';' delimiter?
-	| 'event' Identifier ('::' Identifier)? ';' delimiter?
+    : eventDeclaration  #eventDeclarationBasic
+	| 'event' creatorType ';' delimiter? #eventDeclarationWithCreator
+	| 'event' Identifier ('::' Identifier)? ';' delimiter? #eventDeclarationParent
     ;
 
 eventImplementationBody 
@@ -553,7 +548,6 @@ expression
     :   primary delimiter? #literalEndExpression
 	|   variableSelected   #variableSelectedExpression
 	|   expression '.' Identifier delimiter? #objectVariableExpression
-    |   expression '.' creatorType #objectCreatorExpression
     |   expression '[' expression? ']' #arrayValuesExpression
 	|   expression '=' 'create' 'using'? Identifier delimiter? #createUsingExpression	
     |   expression '(' expressionList? ')' delimiter? #subParentExpression

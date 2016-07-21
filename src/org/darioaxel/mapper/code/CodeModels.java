@@ -19,7 +19,8 @@ import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
 
 public class CodeModels {	
 				
-	public static CodeModel create(IMapperElementRepository elementRepository, final InventoryModel inventoryModel, final Properties prop, IProgressMonitor monitor) {
+	public static CodeModel create(IMapperElementRepository elementRepository, final InventoryModel inventoryModel, final Properties prop,
+			IProgressMonitor monitor) {
 		
 		int toPhase = Integer.valueOf(prop.getProperty("PhasesToGenerate"));
 		final CodeModel codeModel = KDMElementFactory.createCodeModel("");
@@ -43,9 +44,10 @@ public class CodeModels {
 		return null;
 	}	
 
-	private static void phase1(IMapperElementRepository elementRepository, final InventoryModel inventoryModel, final CodeModel codeModel, final List<LanguageUnit> languages, IProgressMonitor monitor) {
+	private static void phase1(IMapperElementRepository elementRepository, final InventoryModel inventoryModel, final CodeModel codeModel,
+			final List<LanguageUnit> languages, IProgressMonitor monitor) {
 		
-		final InventoryModelWalker phase1walker = elementRepository.getPhase1InventoryModelWalker(inventoryModel, codeModel);
+		final InventoryModelWalker phase1walker = elementRepository.getPhase1InventoryModelWalker(inventoryModel);
 		TypeParser parser = elementRepository.getSouceFileParser();
 		parser.addListener(elementRepository.getPhase1SourceFileListener());
 		phase1walker.setSourceFileParser(parser);
@@ -55,8 +57,16 @@ public class CodeModels {
 		monitor.subTask("Ending phase 1 ..");
 	}
 	
-	private static void phase2(IMapperElementRepository elementRepository,	InventoryModel inventoryModel, CodeModel codeModel, IProgressMonitor monitor) {
-		// TODO Auto-generated method stub
+	private static void phase2(IMapperElementRepository elementRepository,	InventoryModel inventoryModel, CodeModel codeModel,
+			IProgressMonitor monitor) {
 		
+		final InventoryModelWalker phase2walker = elementRepository.getPhase2InventoryModelWalker(inventoryModel);
+		TypeParser parser = elementRepository.getSouceFileParser();
+		parser.addListener(elementRepository.getPhase1SourceFileListener());
+		phase2walker.setSourceFileParser(parser);
+	
+		monitor.subTask("Beggining phase 2 ...");		
+		phase2walker.walk();
+		monitor.subTask("Ending phase 2 ..");
 	}
 }

@@ -3,7 +3,7 @@ package org.darioaxel.mapper;
 import java.util.Collection;
 
 import org.darioaxel.mapper.code.listener.PowerscriptPhase1Listener;
-import org.darioaxel.mapper.code.parser.PowerscriptSourceFileTypeParser;
+//import org.darioaxel.mapper.code.parser.PowerscriptSourceFileTypeParser;
 import org.darioaxel.mapper.code.parser.TypeParser;
 import org.darioaxel.mapper.source.listener.InventoryModelFileListener;
 import org.darioaxel.mapper.source.listener.PowerscriptInventoryModelFileListener;
@@ -33,13 +33,27 @@ public final class PowerscriptElementRepository implements IMapperElementReposit
 	}
 
 	@Override
-	public InventoryModelWalker getPhase1InventoryModelWalker(InventoryModel inventoryModel, CodeModel codeModel) {
+	public InventoryModelWalker getPhase1InventoryModelWalker(InventoryModel inventoryModel) {
 		// TODO Auto-generated method stub
-		return new PowerscriptPhase1InventoryModelWalker(inventoryModel, codeModel);
+		return new PowerscriptPhase1InventoryModelWalker(inventoryModel, null);
 	}
 
 	@Override
 	public TypeParser getSouceFileParser() {
-		return new PowerscriptSourceFileTypeParser();
+	//TODO Dario	return new PowerscriptSourceFileTypeParser();
+		return null;
+	}
+
+	@Override
+	public InventoryModelWalker getPhase2InventoryModelWalker(InventoryModel inventoryModel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PowerscriptPhase1Listener getPhase1SourceFileListener(
+			CodeModel codeModel) {
+		// TODO Auto-generated method stub
+		return null;
 	} 
 }

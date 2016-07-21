@@ -11,27 +11,33 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.TokenSource;
 import org.antlr.v4.runtime.TokenStream;
-import org.darioaxel.grammar.powerscript.powerscriptBaseListener;
+import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.darioaxel.grammar.powerscript.powerscriptLexer;
 import org.darioaxel.grammar.powerscript.powerscriptParser;
-import org.darioaxel.mapper.code.listener.PowerscriptPhase1Listener;
+import org.darioaxel.mapper.code.listener.Phase1SourceListener;
+import org.darioaxel.mapper.code.listener.PowerscriptListener;
+import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
-public class PowerscriptSourceFileTypeParser extends TypeParser {
+
+public class SourceFileTypeParserNew extends TypeParser {
 	
-	private powerscriptBaseListener listener;
-	
-	public PowerscriptSourceFileTypeParser() {
+	private PowerscriptListener listener;
+		
+	public SourceFileTypeParserNew() {
 	}
 	
 	@Override
-	public powerscriptBaseListener getListener() {
+	public Object getListener() {
 		return listener;
 	}
 	
-	@Override
-	public void addListener(Object object) {
-		this.listener = (powerscriptBaseListener) object;
+	public void addListener(final PowerscriptListener object) {
+		this.listener = object;
+	}
+	
+	public void removeListener() {
+		this.listener = null;
 	}
 	
 	@Override
@@ -41,23 +47,22 @@ public class PowerscriptSourceFileTypeParser extends TypeParser {
 		
 		TokenStream inputTokenStream = null;
 		Path path = Paths.get(sourceFile.getPath());
+		
 		try {
 			inputTokenStream = createPowerscriptSourceFileTypeParser(path.toFile());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		powerscriptParser parser = new powerscriptParser(inputTokenStream);		
 		
-		if (listener instanceof PowerscriptPhase1Listener) {
-			((PowerscriptPhase1Listener) listener).setCompilationUnit(sourceFile);
-		}
+		listener.setCompilationUnit(sourceFile);		
 		
-		parser.addParseListener(listener);
-		parser.compilationUnit();
+		if (listener != null){
+			parser.addParseListener((ParseTreeListener) listener);
+			parser.compilationUnit();
+		}		
 	}	
-	
-		
+			
 	private TokenStream createPowerscriptSourceFileTypeParser(File program) throws IOException {
 
 		CharStream inputCharStream = new ANTLRInputStream(new FileReader(program));
@@ -65,5 +70,11 @@ public class PowerscriptSourceFileTypeParser extends TypeParser {
 		TokenStream inputTokenStream = new CommonTokenStream(tokenSource);
 
 		return inputTokenStream;
+	}
+
+	@Override
+	public void parse(SourceFile e, CodeModel codeModel) {
+		// TODO Auto-generated method stub
+		
 	}	
 }

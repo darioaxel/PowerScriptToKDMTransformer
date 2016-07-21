@@ -14,7 +14,7 @@ import org.antlr.v4.runtime.TokenStream;
 import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTLexer;
 import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTParser;
 import org.darioaxel.powerscript.ErrorListenerTest;
-import org.darioaxel.project.validator.pbt.PowerbuilderProjectPBTListener;
+import org.darioaxel.project.validator.pbt.Phase1ProjectListener;
 
 import static org.junit.Assert.*;
 
@@ -39,7 +39,7 @@ public class PowerScriptPBTTest {
 	public void testPowerscriptPBTListener() throws IOException {
 
 		ErrorListenerTest errorListener = new ErrorListenerTest();
-		PowerbuilderProjectPBTListener result = parsePowerscriptPBTListener(test.toFile(), errorListener);
+		Phase1ProjectListener result = parsePowerscriptPBTListener(test.toFile(), errorListener);
 		
 		assertTrue(result.getAppname().equals("myproject"));
 		
@@ -62,14 +62,14 @@ public class PowerScriptPBTTest {
 		return context;
 	}
 	
-	private PowerbuilderProjectPBTListener parsePowerscriptPBTListener(File program, 
+	private Phase1ProjectListener parsePowerscriptPBTListener(File program, 
 			ErrorListenerTest errorListener) throws IOException {
 
 		TokenStream inputTokenStream = createInputTokenStream(program);
 		powerscriptPBTParser parser = new powerscriptPBTParser(inputTokenStream);
 
 		parser.addErrorListener(errorListener);
-		PowerbuilderProjectPBTListener pbpPBTListener = new PowerbuilderProjectPBTListener();
+		Phase1ProjectListener pbpPBTListener = new Phase1ProjectListener();
 		parser.addParseListener(pbpPBTListener);
 
 		parser.prog();

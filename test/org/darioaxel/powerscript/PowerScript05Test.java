@@ -107,7 +107,7 @@ public class PowerScript05Test {
         powerscript_05Parser.CompilationUnitContext context01 = parsepowerscript_05(test_m_master.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
+    /*    
     @Test
     @Ignore
     public void test_n_param() throws IOException {
@@ -116,7 +116,7 @@ public class PowerScript05Test {
         powerscript_05Parser.CompilationUnitContext context01 = parsepowerscript_05(test_n_param.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
+  
     @Test
     public void test_s_userdata() throws IOException {
 
@@ -124,7 +124,7 @@ public class PowerScript05Test {
         powerscript_05Parser.CompilationUnitContext context01 = parsepowerscript_05(test_s_userdata.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
+   */ 
     @Test
     public void test_m_mydata() throws IOException {
 
@@ -204,7 +204,7 @@ public class PowerScript05Test {
         powerscript_05Parser.CompilationUnitContext context01 = parsepowerscript_05(test_onImplementation_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
+ /*   
     @Test
     public void test_eventImplementation_01() throws IOException {
 
@@ -212,7 +212,7 @@ public class PowerScript05Test {
         powerscript_05Parser.CompilationUnitContext context01 = parsepowerscript_05(test_eventImplementation_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
+ */   
     @Test
     public void test_eventDeclaration_01() throws IOException {
 

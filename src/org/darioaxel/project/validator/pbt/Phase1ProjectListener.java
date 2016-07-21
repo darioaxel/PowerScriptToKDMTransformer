@@ -11,13 +11,14 @@ import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTParser.ApplibContext;
 import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTParser.AppnameContext;
 import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTParser.LiblistContext;
 import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTParser.PathContext;
+import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
 
-public class PowerbuilderProjectPBTListener extends powerscriptPBTBaseListener{
+public class Phase1ProjectListener extends powerscriptPBTBaseListener{
 
 	private String appname;
 	private Path applib;
 	private List<Path> liblist = new ArrayList<Path>();
-	
+		
 	public String getAppname() {
 		return appname;
 	}

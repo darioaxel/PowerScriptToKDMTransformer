@@ -5,11 +5,9 @@
 
 grammar powerscript_05;
 
-
 @header {
 package org.darioaxel.grammar.powerscript;
 }
-
 
 
 compilationUnit
@@ -237,10 +235,7 @@ onImplementationHead
     ;
 
 onImplementationIdentifier
-    : Identifier
-    | expression
-    | 'open'
-    | 'close'
+    : expression '.' creatorType delimiter?
     ;
 
 onImplementationBody
@@ -553,7 +548,6 @@ expression
     :   primary delimiter? #literalEndExpression
 	|   variableSelected   #variableSelectedExpression
 	|   expression '.' Identifier delimiter? #objectVariableExpression
-    |   expression '.' creatorType #objectCreatorExpression
     |   expression '[' expression? ']' #arrayValuesExpression
 	|   expression '=' 'create' 'using'? Identifier delimiter? #createUsingExpression	
     |   expression '(' expressionList? ')' delimiter? #subParentExpression
@@ -934,4 +928,5 @@ fragment
 PBLetterOrDigit
     :   [a-zA-Z0-9$_%] // these are the "java letters or digits" below 0xFF
     ;
+
 

@@ -46,7 +46,7 @@ import org.junit.Test;
  *
  * @author darioaxel
  */
-public class PowerScript03Test {
+public class PowerScript_LiteralsConstantTest {
      
     private static final Path test_forward_01 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/members/forward/forward_01.sru");
     private static final Path test_forward_02 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/members/forward/forward_02.sru");
@@ -96,7 +96,7 @@ public class PowerScript03Test {
     }
     
      @Test
-    public void testPowerscript_globaltype_01() throws IOException {
+    public void testPowerscript_loops_if() throws IOException {
 
         ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_03Parser.CompilationUnitContext context01 = parsePowerscript_03(test_globaltype_01.toFile(), errorListener);
@@ -104,7 +104,7 @@ public class PowerScript03Test {
     }
     
     @Test
-    public void testPowerscript_globaltype_02() throws IOException {
+    public void testPowerscript_loops_for() throws IOException {
 
         ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_03Parser.CompilationUnitContext context02 = parsePowerscript_03(test_globaltype_02.toFile(), errorListener);
@@ -112,7 +112,7 @@ public class PowerScript03Test {
     }
     
     @Test
-    public void testPowerscript_globaltype_03() throws IOException {
+    public void testPowerscript_loops_do_while() throws IOException {
 
         ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_03Parser.CompilationUnitContext context03 = parsePowerscript_03(test_globaltype_03.toFile(), errorListener);
@@ -142,7 +142,7 @@ public class PowerScript03Test {
         powerscript_03Parser.CompilationUnitContext context03 = parsePowerscript_03(test_date_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
+  /*  
     @Test
     public void testPowerscript_literalsArrays_01() throws IOException {
 
@@ -190,7 +190,7 @@ public class PowerScript03Test {
         powerscript_03Parser.CompilationUnitContext context03 = parsePowerscript_03(test_functionDeclaration_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
+  /*  
     @Test
     public void testPowerscript_functionBody_01() throws IOException {
 
@@ -198,7 +198,7 @@ public class PowerScript03Test {
         powerscript_03Parser.CompilationUnitContext context03 = parsePowerscript_03(test_functionBody_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-        
+  */      
     private powerscript_03Parser.CompilationUnitContext parsePowerscript_03(File program, 
             ErrorListenerTest errorListener) throws IOException {
         
