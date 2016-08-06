@@ -54,6 +54,12 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="m_login">
         <annotation text="Menu Type"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="m_master.srm">
@@ -148,6 +154,12 @@
             <parameterUnit name="" type="//@model.1/@codeElement.3/@codeElement.0/@codeElement.2" kind="return"/>
           </codeElement>
         </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="m_mydata.srm">
@@ -175,7 +187,19 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="m_mydata">
         <annotation text="Menu Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="m_espera" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="w_mydata.srw">
@@ -203,7 +227,13 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="w_mydata">
         <annotation text="Window Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="n_p" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="w_payroll.srw">
@@ -231,7 +261,13 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="w_payroll">
         <annotation text="Window Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="n_p" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="m_payroll.srm">
@@ -259,7 +295,19 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="m_payroll">
         <annotation text="Menu Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="m_espera" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="w_login.srw">
@@ -287,9 +335,15 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="w_login">
         <annotation text="Window Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="st_1" export="protected"/>
-        <codeElement xsi:type="code:MemberUnit" name="cb_aceptar" export="protected"/>
-        <codeElement xsi:type="code:MemberUnit" name="sle_clave" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
   </model>

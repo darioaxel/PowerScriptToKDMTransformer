@@ -47,7 +47,6 @@ public class Phase2SourceListener extends powerscriptBaseListener implements Pow
 	public void setCompilationUnit(SourceFile source) {
 		languageCache = new LanguageUnitCache(CodeModelUtil.getLanguageUnit(codeModel, source));
 		unitClassName = CodeModelUtil.getClassUnitName(codeModel, source);	
-		System.out.println(unitClassName);
 	}
 	
 	@Override
@@ -80,10 +79,10 @@ public class Phase2SourceListener extends powerscriptBaseListener implements Pow
 	}	
 		
 	@Override 
-	public void exitOnImplementationIdentifier(powerscriptParser.OnImplementationIdentifierContext ctx) {
-			
-			String creatorType = ctx.getChild(2).getText();			
+	public void exitOnImplementationIdentifier(powerscriptParser.OnImplementationIdentifierContext ctx) {			
+			String creatorType = ctx.creatorType().getText();			
 			MethodUnit method= KDMElementFactory.createMethodUnit(getMethodKind(creatorType), KDMElementFactory.ON_METHOD);
+			CodeModelUtil.addMethodToClassUnit(unitClassName, method, codeModel);
 	}
 	
 	@Override 
@@ -91,18 +90,6 @@ public class Phase2SourceListener extends powerscriptBaseListener implements Pow
 			String creatorType = ctx.getChild(1).getText();
 			MethodUnit method = KDMElementFactory.createMethodUnit(getMethodKind(creatorType), KDMElementFactory.EVEN_METHOD);	
 			CodeModelUtil.addMethodToClassUnit(unitClassName, method, codeModel);
-	}
-		
-	private MethodKind getMethodKind(String creatorType) {
-		
-		switch(creatorType) {
-		case "method": return MethodKind.METHOD;
-		case "create": return MethodKind.CONSTRUCTOR;
-		case "destroy": return MethodKind.DESTRUCTOR;
-		case "open":
-		case "close": return MethodKind.OPERATOR;
-		default:  return MethodKind.UNKNOWN;
-		}		
 	}	
 	
 	@Override 
@@ -168,5 +155,17 @@ public class Phase2SourceListener extends powerscriptBaseListener implements Pow
 	@Override 
 	public void exitFunctionDeclarationBlock(powerscriptParser.FunctionDeclarationBlockContext ctx) { 
 		insideFunctionDeclarationBlock = false;
+	}
+		
+	private MethodKind getMethodKind(String creatorType) {
+		
+		switch(creatorType) {
+		case "method": return MethodKind.METHOD;
+		case "create": return MethodKind.CONSTRUCTOR;
+		case "destroy": return MethodKind.DESTRUCTOR;
+		case "open":
+		case "close": return MethodKind.OPERATOR;
+		default:  return MethodKind.UNKNOWN;
+		}		
 	}	
 }

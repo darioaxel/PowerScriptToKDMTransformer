@@ -48,6 +48,12 @@
             <parameterUnit name="" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.2" kind="return"/>
           </codeElement>
         </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="n_param_criterio.sru">
@@ -87,6 +93,12 @@
             <parameterUnit name="as_criterio" type="//@model.1/@codeElement.1/@codeElement.0/@codeElement.2"/>
             <parameterUnit name="" type="//@model.1/@codeElement.1/@codeElement.0/@codeElement.16" kind="return"/>
           </codeElement>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <annotation text="On method"/>
         </codeElement>
       </codeElement>
     </codeElement>

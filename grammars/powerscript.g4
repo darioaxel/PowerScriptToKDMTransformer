@@ -61,7 +61,14 @@ typeDeclarationBegin
 	;
 	
 typeDeclarationBeginIdentifier
-	: 'type' Identifier 'from' Identifier
+	: 'type' typeIdentifier 'from' typeParentIdentifier
+	;
+typeIdentifier
+	: Identifier
+	;
+
+typeParentIdentifier
+	: Identifier
 	;
 	
 typeDeclarationBeginParent
@@ -70,9 +77,13 @@ typeDeclarationBeginParent
 	;
 	
 typeDeclarationWithin
-	: 'within' Identifier
+	: 'within' typeSuperParentIdentifier
 	;
-	
+
+typeSuperParentIdentifier
+	: Identifier
+	;
+
 typeDeclarationBody							
 	: typeDeclarationDescriptor
 	| variableDeclaration
@@ -243,7 +254,7 @@ onImplementationHead
     ;
 
 onImplementationIdentifier
-    : expression '.' creatorType delimiter?
+    : expression '.' creatorType 
     ;
 
 onImplementationBody

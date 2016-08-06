@@ -43,8 +43,8 @@ public class Phase1SourceListener extends powerscriptBaseListener implements Pow
 	@Override
 	public void exitTypeDeclarationBegin(powerscriptParser.TypeDeclarationBeginContext ctx) { 
 		if (inForward == true) {
-			if(ctx.getChild(0).getText().equals("global")) {
-				String className = ctx.getChild(1).getChild(1).toString();
+			if(ctx.scopeModificator().getText().equals("global")) {
+				String className = ctx.typeDeclarationBeginIdentifier().typeIdentifier().getText();
 				if (!compilationUnit.equals(null)) {
 					classUnit = KDMElementFactory.createClass(className, typePowerscriptObjectIdentification(compilationUnitName));
 					compilationUnit.getCodeElement().add(classUnit);
