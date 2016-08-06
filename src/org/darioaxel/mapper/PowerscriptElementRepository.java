@@ -29,7 +29,7 @@ public final class PowerscriptElementRepository implements IMapperElementReposit
 
 	@Override
 	public InventoryModelFileListener getInventoryModelFileListener(Directory root, Collection<String> languagesUsed) {
-		return new PowerscriptInventoryModelFileListener(root,languagesUsed);		
+		return null;		
 	}
 
 	@Override

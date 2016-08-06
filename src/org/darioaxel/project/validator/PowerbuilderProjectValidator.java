@@ -53,14 +53,14 @@ public class PowerbuilderProjectValidator implements IProjectValidator {
 		if( pbg.toFile().exists()) {
 			
 			Phase1LibraryListener listenerPBG = new Phase1LibraryListener();
-			LibraryDescriptorTypeParser libraryParser = new LibraryDescriptorTypeParser(pbg, listenerPBG);
+	/*		LibraryDescriptorTypeParser libraryParser = new LibraryDescriptorTypeParser(pbg, listenerPBG);
 			libraryParser.parse();
 			
 			for(Path f : listenerPBG.getFileNames()) {
 				Path file = FileUtils.concatWithoutLast(pbt, f);
 				if (file.toFile().exists() == false) return false;
 			}
-			return true;				
+		*/	return true;				
 		}		
 		
 		return false;

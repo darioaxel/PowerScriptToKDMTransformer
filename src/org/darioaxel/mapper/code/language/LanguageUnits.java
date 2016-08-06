@@ -5,7 +5,7 @@ import java.util.Collection;
 
 import org.eclipse.gmt.modisco.omg.kdm.code.LanguageUnit;
 
-public final class LanguageUnitDetector {
+public class LanguageUnits {
 	
 	
 	public static Collection<LanguageUnit> getLanguages(Collection<String> languagesIds) {
@@ -20,4 +20,11 @@ public final class LanguageUnitDetector {
 		
         return languages;
     }
+	
+	public static LanguageUnit getLanguage(String languageName) {
+		if (languageName.equals("Powerscript")) {
+		return new PowerscriptLanguageUnitCache().getLanguageUnit();
+		}
+		else return null;
+	}
 }

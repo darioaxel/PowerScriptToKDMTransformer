@@ -57,7 +57,7 @@ public class PowerscriptInventoryModelFileListener extends InventoryModelFileLis
 
 			Configuration configuration = sourceFactory.createConfiguration();
 			inventoryItem = configuration;
-			inventoryItem.setVersion(Long.toString(file.lastModified()));
+	    	inventoryItem.setVersion(Long.toString(file.lastModified()));
 
 		} else if (isExecutableFile(file)) {
 			

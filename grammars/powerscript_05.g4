@@ -179,7 +179,7 @@ functionDeclarationBlockEnd
 
 // 7. Function Declaration
 functionDeclaration
-    : functionDeclarationHeader parametersList functionDeclarationEnd delimiter
+    : functionDeclarationHeader parametersList functionDeclarationEnd delimiter?
     ;
 
 functionDeclarationHeader
@@ -208,9 +208,13 @@ functionImplementationHeader
     ;
 
 functionHeaderIdentification
-    : 'function' dataTypeName Identifier
-	| 'subroutine' Identifier
+    : 'function' dataTypeName functionIdentifier
+	| 'subroutine' functionIdentifier
     ;
+
+functionIdentifier
+	: Identifier
+	;
 
 functionDeclarationEndThrows
     : 'throws' Identifier
@@ -252,7 +256,7 @@ onImplementationEnd
 
 // 11. Event Declaration
 eventDeclaration
-    : 'event' Identifier parametersList ';' delimiter?
+    : 'event' Identifier parametersList? delimiter? 
     ;
 
 creatorType
@@ -268,9 +272,9 @@ eventImplementation
     ;
 
 eventImplementationHead
-    : eventDeclaration
-	| 'event' creatorType ';' delimiter?
-	| 'event' Identifier ('::' Identifier)? ';' delimiter?
+    : eventDeclaration  #eventDeclarationBasic
+	| 'event' creatorType ';' delimiter? #eventDeclarationWithCreator
+	| 'event' Identifier ('::' Identifier)? ';' delimiter? #eventDeclarationParent
     ;
 
 eventImplementationBody 
@@ -559,7 +563,7 @@ expression
 	|   expression '>' expression     #GreaterThanExpression
 	|   expression '<=' expression    #LessOrEqualThanExpression
 	|   expression '>=' expression    #BiggerThanExpression
-    |   expression ('==' | '!=') expression #EqualsDistintcExpression
+    |   expression ('==' | '<>') expression #EqualsDistintcExpression
     |   expression 'AND' expression   #AndExpression
     |   expression 'OR' expression	  #OrExpression
 	|   'NOT' expression              #NotExpression
@@ -657,6 +661,7 @@ dataTypeName
     |   'UNSIGNEDLONG'
     |   'ULONG'
     |	'WINDOW'
+	|   'void'
     ;
 
 type

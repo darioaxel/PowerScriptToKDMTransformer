@@ -9,6 +9,10 @@ grammar powerscript;
 @header {
 package org.darioaxel.grammar.powerscript;
 }
+/**
+*	Original Author: Darío Ureña
+*	E-Mail: darioaxel@gmail.com
+*/
 
 compilationUnit
     :  memberDeclaration*? EOF
@@ -179,7 +183,7 @@ functionDeclarationBlockEnd
 
 // 7. Function Declaration
 functionDeclaration
-    : functionDeclarationHeader parametersList functionDeclarationEnd delimiter
+    : functionDeclarationHeader parametersList functionDeclarationEnd delimiter?
     ;
 
 functionDeclarationHeader
@@ -208,9 +212,13 @@ functionImplementationHeader
     ;
 
 functionHeaderIdentification
-    : 'function' dataTypeName Identifier
-	| 'subroutine' Identifier
+    : 'function' dataTypeName functionIdentifier
+	| 'subroutine' functionIdentifier
     ;
+
+functionIdentifier
+	: Identifier
+	;
 
 functionDeclarationEndThrows
     : 'throws' Identifier
@@ -290,8 +298,12 @@ parametersDeclarators
     ;
 
 parameterDeclarator
-    : 'readonly'? 'ref'? primitiveType Identifier arrayType?
+    : 'readonly'? 'ref'? primitiveType parameterIdentifier arrayType?
     ;
+    
+parameterIdentifier
+	: Identifier
+	;
 
 arrayType
 	: '[ ]'
@@ -559,7 +571,7 @@ expression
 	|   expression '>' expression     #GreaterThanExpression
 	|   expression '<=' expression    #LessOrEqualThanExpression
 	|   expression '>=' expression    #BiggerThanExpression
-    |   expression ('==' | '!=') expression #EqualsDistintcExpression
+    |   expression ('==' | '<>') expression #EqualsDistintcExpression
     |   expression 'AND' expression   #AndExpression
     |   expression 'OR' expression	  #OrExpression
 	|   'NOT' expression              #NotExpression
@@ -657,6 +669,7 @@ dataTypeName
     |   'UNSIGNEDLONG'
     |   'ULONG'
     |	'WINDOW'
+	|   'void'
     ;
 
 type
@@ -928,4 +941,5 @@ fragment
 PBLetterOrDigit
     :   [a-zA-Z0-9$_%] // these are the "java letters or digits" below 0xFF
     ;
+
 

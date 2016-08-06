@@ -3,6 +3,7 @@ package org.darioaxel.mapper.code.listener;
 import org.darioaxel.grammar.powerscript.powerscriptBaseListener;
 import org.darioaxel.grammar.powerscript.powerscriptParser;
 import org.darioaxel.mapper.KDMElementFactory;
+import org.darioaxel.mapper.code.language.LanguageUnits;
 import org.darioaxel.util.enums.EPowerscriptFileTypes;
 import org.eclipse.gmt.modisco.omg.kdm.code.ClassUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
@@ -30,7 +31,8 @@ public class Phase1SourceListener extends powerscriptBaseListener implements Pow
 	public void setCompilationUnit(SourceFile source) {
 		compilationUnitName = source.getName();
 		compilationUnit = KDMElementFactory.createCompilationUnit(source);
-		codeModel.getCodeElement().add(compilationUnit);		
+		compilationUnit.getCodeElement().add(LanguageUnits.getLanguage("Powerscript"));
+		codeModel.getCodeElement().add(compilationUnit);	
 	}
 	
 	@Override

@@ -8,7 +8,7 @@ import java.util.Collection;
 import org.eclipse.gmt.modisco.omg.kdm.code.LanguageUnit;
 import org.darioaxel.mapper.IMapperElementRepository;
 import org.darioaxel.mapper.PowerscriptElementRepository;
-import org.darioaxel.mapper.code.language.LanguageUnitDetector;
+import org.darioaxel.mapper.code.language.LanguageUnits;
 import org.darioaxel.mapper.source.InventoryModels;
 import org.darioaxel.mapper.source.Segments;
 import org.darioaxel.util.FileUtils;
@@ -35,9 +35,8 @@ public class Transformator {
 	public void Transform() {
 		
 		File directory = new File(this.directory);
-		IMapperElementRepository elementRepository = new PowerscriptElementRepository();
-		InventoryModel inventoryModel = InventoryModels.create(elementRepository, directory, new NullProgressMonitor());
-		Segment segment = Segments.create(elementRepository, inventoryModel, null, null);
+		InventoryModel inventoryModel = InventoryModels.create(directory);
+		Segment segment = Segments.create(inventoryModel, null, null);
 
 		FileUtils.saveEcoreToXMI(segment, null, null);
 	}

@@ -1,5 +1,7 @@
 package org.darioaxel.mapper;
 
+import java.util.List;
+
 import org.darioaxel.mapper.code.MoDiscoKDM;
 import org.darioaxel.util.enums.EPowerscriptFileTypes;
 import org.eclipse.core.runtime.Assert;
@@ -12,6 +14,8 @@ import org.eclipse.gmt.modisco.omg.kdm.action.Reads;
 import org.eclipse.gmt.modisco.omg.kdm.action.Writes;
 import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.ClassUnit;
+import org.eclipse.gmt.modisco.omg.kdm.code.CodePackage;
+import org.eclipse.gmt.modisco.omg.kdm.code.ExportKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.MethodKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.Package;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeAssembly;
@@ -66,6 +70,7 @@ public final class KDMElementFactory {
 	public static final String			GLOBAL_NAMESPACE_NAME		= "global";
 	public static final String			ON_METHOD					= "On method";
 	public static final String			EVEN_METHOD					= "Event method";
+	public static final String			FUNCTION					= "Function method";
 		
 	// SourcePackage Objects
 	public static Segment createSegment() {
@@ -139,4 +144,38 @@ public final class KDMElementFactory {
 		addAnnotation(annotation, method);
 		return method;
 	}
+	
+	public static MethodUnit createMethodUnit(MethodKind methodKind, String annotation, String methodName) {
+		MethodUnit method = createMethodUnit(methodKind, annotation);
+		method.setName(methodName);
+		
+		return method;
+	}
+
+	public static ParameterUnit createParamUnit(Datatype type, ParameterKind kind, String parentId) {
+		ParameterUnit param = CODE_FACTORY.createParameterUnit();
+		param.setName(parentId);
+		param.setKind(kind);
+		param.setType(type);
+		
+		return param;
+	}
+	
+	public static MemberUnit createMember(String memberName, ClassUnit memberClass, ExportKind exportKind) {
+		
+		MemberUnit member = CODE_FACTORY.createMemberUnit();
+		member.setExport(exportKind);
+		member.setName(memberName);
+		member.setType(memberClass);
+				
+		return member;
+	}
+
+	public static Signature createSignature(List<ParameterUnit> params) {
+		
+		Signature sign = CODE_FACTORY.createSignature();
+		sign.getParameterUnit().addAll(params);
+		return sign;
+	}
+
 }

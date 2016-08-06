@@ -3,9 +3,6 @@ global type m_mydata from m_master
 end type
 type m_espera from m_master within m_mydata
 end type
-global type m_mydata from m_master
-m_espera m_espera
-end type
 end forward
 
 global type m_mydata from m_master
