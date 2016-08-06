@@ -7,6 +7,7 @@ import org.darioaxel.mapper.code.listener.Phase1LibraryListener;
 import org.darioaxel.mapper.code.listener.Phase1ProjectListener;
 import org.darioaxel.mapper.code.listener.Phase1SourceListener;
 import org.darioaxel.mapper.code.listener.Phase2SourceListener;
+import org.darioaxel.mapper.code.listener.Phase3SourceListener;
 import org.darioaxel.mapper.code.parser.LibraryDescriptorTypeParser;
 import org.darioaxel.mapper.code.parser.ProjectDescriptorTypeParser;
 import org.darioaxel.mapper.code.parser.SourceFileTypeParserNew;
@@ -23,10 +24,11 @@ public class CodeModels {
 		
 		phase1(inventoryModel, codeModel);
 		phase2(inventoryModel,codeModel);
-		
+		phase3(inventoryModel,codeModel);
 		
 		return codeModel;
-	}	
+	}
+	
 	public static CodeModel create(final InventoryModel inventoryModel, Properties prop) {
 		
 		int toPhase = Integer.valueOf(prop.getProperty("PhasesToGenerate"));
@@ -37,8 +39,7 @@ public class CodeModels {
 		if (toPhase > 2)
 				phase2(inventoryModel,codeModel);
 		if (toPhase == 3)			
-			phase3(inventoryModel,codeModel);
-		
+			phase3(inventoryModel,codeModel);		
 		
 		return codeModel;
 	}
@@ -76,12 +77,17 @@ public class CodeModels {
 		walker.setSourceFileParser(sourceParser);	
 		
 		walker.walk();
-	}
-	
+	}	
 
-	private static void phase3(InventoryModel inventoryModel,
-			CodeModel codeModel) {
-		// TODO Auto-generated method stub
+	private static void phase3(InventoryModel inventoryModel, CodeModel codeModel) {
 		
+		final InventoryModelWalkerNew walker = new InventoryModelWalkerNew(inventoryModel);
+		Phase3SourceListener sourceListener = new Phase3SourceListener(codeModel);
+		SourceFileTypeParserNew sourceParser = new SourceFileTypeParserNew();
+		
+		sourceParser.addListener(sourceListener);
+		walker.setSourceFileParser(sourceParser);	
+		
+		walker.walk();		
 	}
 }

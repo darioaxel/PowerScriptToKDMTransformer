@@ -66,7 +66,5 @@ public class Phase1SourceListener extends powerscriptBaseListener implements Pow
 		}
 		
 		return EPowerscriptFileTypes.Unknown;
-	}
-
-	
+	}	
 }
