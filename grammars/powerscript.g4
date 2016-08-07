@@ -123,9 +123,9 @@ globalVariableDeclarationBlock
     ;
 
 globalVariableDeclarationBlockBegin
-    : 'variables' delimiter?
-	| 'global variables' delimiter?
-	| 'shared variables' delimiter?
+    : 'variables' delimiter?        #localVariable
+	| 'global variables' delimiter? #globalVariable
+	| 'shared variables' delimiter? #sharedVariable
     ;
 
 globalVariableDeclarationBlockBody
@@ -139,25 +139,40 @@ variableDeclaration
     ;
 
 variableDeclarators
-    :   variableDeclarator (',' variableDeclarator)* delimiter?
+    :   variableDeclarator variableDeclaratorList* delimiter?
     ;
 
+variableDeclaratorList
+	: ',' variableDeclarator
+	;
+
 variableDeclarator
-    :   Identifier '=' literal delimiter?
-	|   Identifier arrayLengthDeclarator arrayValueInstantiation? delimiter?
-	|   Identifier delimiter?
+    :   variableDeclaratorIdentifier '=' literal delimiter? #variableDeclaratorLiteral
+	|   variableDeclaratorIdentifier arrayLengthDeclarator arrayValueInstantiation? delimiter? #variableDeclaratorArray
+	|   variableDeclaratorIdentifier delimiter? #variableDeclaratorWithoutValue
     ;
+
+variableDeclaratorIdentifier
+	: Identifier
+	;
 
 // 6. Constants Declaration
 constantDeclaration
-    :   'constant' type constantDeclarator (',' constantDeclarator)* delimiter?
+    :   'constant' type constantDeclarator constantDeclaratorList* delimiter?
     ;
 
+constantDeclaratorList
+	:  ',' constantDeclarator
+	;
+
 constantDeclarator
-    : Identifier '=' literal delimiter?
-	| Identifier arrayLengthDeclarator arrayValueInstantiation? delimiter?
+    : constantIdentifier '=' literal delimiter?
+	| constantIdentifier arrayLengthDeclarator arrayValueInstantiation? delimiter?
     ;
-	
+
+constantIdentifier
+	: Identifier
+	;
 arrayValueInstantiation
 	:  '=' '{' literal (',' literal)*? '}'
 	;

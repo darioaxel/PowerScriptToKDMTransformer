@@ -8,11 +8,13 @@ import org.darioaxel.grammar.powerscript.powerscriptBaseListener;
 import org.darioaxel.grammar.powerscript.powerscriptParser;
 import org.darioaxel.grammar.powerscript.powerscriptParser.ParameterDeclaratorContext;
 import org.darioaxel.grammar.powerscript.powerscriptParser.ParametersListContext;
+import org.darioaxel.grammar.powerscript.powerscriptParser.ScopeModificatorContext;
 import org.darioaxel.mapper.KDMElementFactory;
 import org.darioaxel.mapper.code.language.LanguageUnitCache;
 import org.darioaxel.mapper.code.language.PowerscriptLanguageUnitCache;
 import org.darioaxel.util.CodeModelUtil;
 import org.darioaxel.util.enums.EPowerscriptFileTypes;
+import org.darioaxel.util.enums.ESystemObjectNames;
 import org.eclipse.gmt.modisco.omg.kdm.code.ClassUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
 import org.eclipse.gmt.modisco.omg.kdm.code.Datatype;
@@ -22,6 +24,7 @@ import org.eclipse.gmt.modisco.omg.kdm.code.MethodKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.MethodUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.ParameterKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.ParameterUnit;
+import org.eclipse.gmt.modisco.omg.kdm.code.SharedUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.Signature;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
@@ -29,9 +32,10 @@ public class Phase2SourceListener extends powerscriptBaseListener implements Pow
 
 	private final CodeModel codeModel;
 	private String unitClassName;
+	private LanguageUnitCache languageCache;
+	
 	private boolean insideForward = false;
 	private boolean insideFunctionDeclarationBlock = false;
-	private LanguageUnitCache languageCache;
 	private boolean functionDeclarationEnded = false;
 	
 	public Phase2SourceListener (final CodeModel codeModel) {
@@ -62,14 +66,17 @@ public class Phase2SourceListener extends powerscriptBaseListener implements Pow
 	@Override
 	public void exitTypeDeclarationBegin(powerscriptParser.TypeDeclarationBeginContext ctx) { 
 		if (insideForward == true) {
-			String scopeModificator = ctx.getChild(0).getText();
-			if(!scopeModificator.equals("global")) {
-				String memberName = ctx.getChild(0).getChild(1).toString();
-				String parentClassName = ctx.getChild(0).getChild(3).toString();
+			ScopeModificatorContext scopeModificator = ctx.scopeModificator();
+			
+			if(scopeModificator == null) {
+				String memberName = ctx.typeDeclarationBeginIdentifier().typeIdentifier().getText();
+				String parentClassName = ctx.typeDeclarationBeginIdentifier().typeParentIdentifier().getText();
 				
 				ClassUnit memberClass = CodeModelUtil.getClassByName(parentClassName, codeModel);	
 				if (memberClass == null) {
+					//If there is no parent class defined, I defined it as a system.object 
 					memberClass = KDMElementFactory.createClass(parentClassName,EPowerscriptFileTypes.System_object);
+					addNewSystemObject(memberClass);
 				}
 				MemberUnit member = KDMElementFactory.createMember(memberName, memberClass, ExportKind.PROTECTED);
 								
@@ -77,7 +84,16 @@ public class Phase2SourceListener extends powerscriptBaseListener implements Pow
 			}			
 		}		
 	}	
-		
+	
+	private void addNewSystemObject(ClassUnit memberClass) {
+		SharedUnit systemObjectsUnit = CodeModelUtil.getSystemObjectClass(codeModel);
+		if (systemObjectsUnit == null) {
+			systemObjectsUnit = KDMElementFactory.createSharedUnit(ESystemObjectNames.SYSTEM_OBJECT_UNIT.Description());						
+		}
+		systemObjectsUnit.getCodeElement().add(memberClass);
+		CodeModelUtil.addSharedUnit(systemObjectsUnit, codeModel);
+	}
+	
 	@Override 
 	public void exitOnImplementationIdentifier(powerscriptParser.OnImplementationIdentifierContext ctx) {			
 			String creatorType = ctx.creatorType().getText();			

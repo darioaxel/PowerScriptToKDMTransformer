@@ -5,10 +5,14 @@
 
 grammar powerscript_05;
 
+
 @header {
 package org.darioaxel.grammar.powerscript;
 }
-
+/**
+*	Original Author: Darío Ureña
+*	E-Mail: darioaxel@gmail.com
+*/
 
 compilationUnit
     :  memberDeclaration*? EOF
@@ -57,7 +61,14 @@ typeDeclarationBegin
 	;
 	
 typeDeclarationBeginIdentifier
-	: 'type' Identifier 'from' Identifier
+	: 'type' typeIdentifier 'from' typeParentIdentifier
+	;
+typeIdentifier
+	: Identifier
+	;
+
+typeParentIdentifier
+	: Identifier
 	;
 	
 typeDeclarationBeginParent
@@ -66,9 +77,13 @@ typeDeclarationBeginParent
 	;
 	
 typeDeclarationWithin
-	: 'within' Identifier
+	: 'within' typeSuperParentIdentifier
 	;
-	
+
+typeSuperParentIdentifier
+	: Identifier
+	;
+
 typeDeclarationBody							
 	: typeDeclarationDescriptor
 	| variableDeclaration
@@ -108,9 +123,9 @@ globalVariableDeclarationBlock
     ;
 
 globalVariableDeclarationBlockBegin
-    : 'variables' delimiter?
-	| 'global variables' delimiter?
-	| 'shared variables' delimiter?
+    : 'variables' delimiter?        #localVariable
+	| 'global variables' delimiter? #globalVariable
+	| 'shared variables' delimiter? #sharedVariable
     ;
 
 globalVariableDeclarationBlockBody
@@ -124,24 +139,40 @@ variableDeclaration
     ;
 
 variableDeclarators
-    :   variableDeclarator (',' variableDeclarator)* delimiter?
+    :   variableDeclarator variableDeclaratorList* delimiter?
     ;
 
+variableDeclaratorList
+	: ',' variableDeclarator
+	;
+
 variableDeclarator
-    :   Identifier '=' literal delimiter?
-	|   Identifier arrayLengthDeclarator arrayValueInstantiation? delimiter?
-	|   Identifier delimiter?
+    :   variableDeclaratorIdentifier '=' literal delimiter? #variableDeclaratorLiteral
+	|   variableDeclaratorIdentifier arrayLengthDeclarator arrayValueInstantiation? delimiter? #variableDeclaratorArray
+	|   variableDeclaratorIdentifier delimiter? #variableDeclaratorWithoutValue
     ;
+
+variableDeclaratorIdentifier
+	: Identifier
+	;
 
 // 6. Constants Declaration
 constantDeclaration
-    :   'constant' type constantDeclarator (',' constantDeclarator)* delimiter?
+    :   'constant' type constantDeclarator constantDeclaratorList* delimiter?
     ;
 
+constantDeclaratorList
+	:  ',' constantDeclarator
+	;
+
 constantDeclarator
-    : Identifier '=' literal delimiter?
-	| Identifier arrayLengthDeclarator arrayValueInstantiation? delimiter?
+    : constantIdentifier '=' literal delimiter?
+	| constantIdentifier arrayLengthDeclarator arrayValueInstantiation? delimiter?
     ;
+
+constantIdentifier
+	: Identifier
+	;
 	
 arrayValueInstantiation
 	:  '=' '{' literal (',' literal)*? '}'
@@ -149,8 +180,16 @@ arrayValueInstantiation
 
 // 6.1 Object Declaration
 objectDeclaration
-	:  Identifier Identifier objectValueInstantiation? delimiter?
-	|  'this' '.' Identifier objectValueInstantiation delimiter?
+	:  objectDeclarationTypeIdentifier objectDeclarationIdentifier objectValueInstantiation? delimiter?
+	|  'this' '.' objectDeclarationIdentifier objectValueInstantiation delimiter?
+	;
+
+objectDeclarationTypeIdentifier
+	: Identifier
+	;
+
+objectDeclarationIdentifier
+	: Identifier
 	;
 	
 objectValueInstantiation
@@ -239,7 +278,7 @@ onImplementationHead
     ;
 
 onImplementationIdentifier
-    : expression '.' creatorType delimiter?
+    : expression '.' creatorType 
     ;
 
 onImplementationBody
@@ -294,8 +333,12 @@ parametersDeclarators
     ;
 
 parameterDeclarator
-    : 'readonly'? 'ref'? primitiveType Identifier arrayType?
+    : 'readonly'? 'ref'? primitiveType parameterIdentifier arrayType?
     ;
+    
+parameterIdentifier
+	: Identifier
+	;
 
 arrayType
 	: '[ ]'

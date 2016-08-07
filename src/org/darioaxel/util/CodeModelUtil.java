@@ -1,5 +1,6 @@
 package org.darioaxel.util;
 
+import org.darioaxel.util.enums.ESystemObjectNames;
 import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.ClassUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
@@ -8,6 +9,7 @@ import org.eclipse.gmt.modisco.omg.kdm.code.Datatype;
 import org.eclipse.gmt.modisco.omg.kdm.code.LanguageUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.MemberUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.MethodUnit;
+import org.eclipse.gmt.modisco.omg.kdm.code.SharedUnit;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
 public final class CodeModelUtil {
@@ -116,5 +118,15 @@ public final class CodeModelUtil {
 			}
 		}
 		return null;
+	}
+
+	public static SharedUnit getSystemObjectClass(CodeModel codeModel) {
+				
+		return (SharedUnit) getCompilationUnitByName( codeModel , ESystemObjectNames.SYSTEM_OBJECT_UNIT.Description());
+	}
+
+	public static void addSharedUnit(SharedUnit systemObjectsUnit, CodeModel codeModel) {
+
+		codeModel.getCodeElement().add(systemObjectsUnit);
 	}
 }

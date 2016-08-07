@@ -36,6 +36,7 @@ import org.eclipse.gmt.modisco.omg.kdm.code.Module;
 import org.eclipse.gmt.modisco.omg.kdm.code.Namespace;
 import org.eclipse.gmt.modisco.omg.kdm.code.ParameterKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.ParameterUnit;
+import org.eclipse.gmt.modisco.omg.kdm.code.SharedUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.Signature;
 import org.eclipse.gmt.modisco.omg.kdm.code.StorableKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.StorableUnit;
@@ -176,6 +177,13 @@ public final class KDMElementFactory {
 		Signature sign = CODE_FACTORY.createSignature();
 		sign.getParameterUnit().addAll(params);
 		return sign;
+	}
+
+	public static SharedUnit createSharedUnit(String description) {
+		 SharedUnit sharedUnit = CODE_FACTORY.createSharedUnit();
+		 sharedUnit.setName(description);
+		 
+		return sharedUnit;
 	}
 
 }

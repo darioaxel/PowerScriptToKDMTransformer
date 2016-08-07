@@ -22,7 +22,7 @@ String	is_anio
 end variables
 
 on w_mant_seg_scs.create
-int iCurrent
+integer iCurrent
 call super::create
 this.sle_anio=create sle_anio
 this.st_1=create st_1

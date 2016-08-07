@@ -187,7 +187,7 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="m_mydata">
         <annotation text="Menu Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="m_espera" type="//@model.1/@codeElement.9/@codeElement.1" export="protected"/>
         <codeElement xsi:type="code:MethodUnit" kind="constructor">
           <annotation text="On method"/>
         </codeElement>
@@ -227,7 +227,7 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="w_mydata">
         <annotation text="Window Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="n_p" type="//@model.1/@codeElement.9/@codeElement.2" export="protected"/>
         <codeElement xsi:type="code:MethodUnit" kind="constructor">
           <annotation text="On method"/>
         </codeElement>
@@ -261,7 +261,7 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="w_payroll">
         <annotation text="Window Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="n_p" type="//@model.1/@codeElement.9/@codeElement.3" export="protected"/>
         <codeElement xsi:type="code:MethodUnit" kind="constructor">
           <annotation text="On method"/>
         </codeElement>
@@ -295,7 +295,7 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="m_payroll">
         <annotation text="Menu Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="m_espera" type="//@model.1/@codeElement.9/@codeElement.4" export="protected"/>
         <codeElement xsi:type="code:MethodUnit" kind="constructor">
           <annotation text="On method"/>
         </codeElement>
@@ -335,15 +335,41 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="w_login">
         <annotation text="Window Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
-        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
-        <codeElement xsi:type="code:MemberUnit" name="[333 325 313 310 293 278 270]" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="st_1" type="//@model.1/@codeElement.9/@codeElement.5" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="cb_aceptar" type="//@model.1/@codeElement.9/@codeElement.6" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="sle_clave" type="//@model.1/@codeElement.9/@codeElement.7" export="protected"/>
         <codeElement xsi:type="code:MethodUnit" kind="constructor">
           <annotation text="On method"/>
         </codeElement>
         <codeElement xsi:type="code:MethodUnit" kind="destructor">
           <annotation text="On method"/>
         </codeElement>
+      </codeElement>
+    </codeElement>
+    <codeElement xsi:type="code:SharedUnit" name="SystemObjectsUnit">
+      <codeElement xsi:type="code:ClassUnit" name="menu">
+        <annotation text="System Predefined Object"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="m_master">
+        <annotation text="System Predefined Object"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="n_param">
+        <annotation text="System Predefined Object"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="n_param">
+        <annotation text="System Predefined Object"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="m_master">
+        <annotation text="System Predefined Object"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="statictext">
+        <annotation text="System Predefined Object"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="commandbutton">
+        <annotation text="System Predefined Object"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="singlelineedit">
+        <annotation text="System Predefined Object"/>
       </codeElement>
     </codeElement>
   </model>

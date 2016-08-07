@@ -17,15 +17,13 @@ import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
 
 public class CodeModels {	
 				
-	public static CodeModel create(final InventoryModel inventoryModel) {
-		
+	public static CodeModel create(final InventoryModel inventoryModel) {		
 	
 		final CodeModel codeModel = KDMElementFactory.createCodeModel("");
 		
 		phase1(inventoryModel, codeModel);
 		phase2(inventoryModel,codeModel);
-		phase3(inventoryModel,codeModel);
-		
+		phase3(inventoryModel,codeModel);		
 		return codeModel;
 	}
 	

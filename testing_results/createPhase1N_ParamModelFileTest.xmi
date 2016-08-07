@@ -30,7 +30,7 @@
         <codeElement xsi:type="code:DecimalType" name="decimal"/>
         <codeElement xsi:type="code:VoidType" name="void"/>
       </codeElement>
-      <codeElement xsi:type="code:ClassUnit" name="[333 325 313 310 293 278 270]">
+      <codeElement xsi:type="code:ClassUnit" name="n_param">
         <annotation text="Functions Collection Type"/>
       </codeElement>
     </codeElement>
@@ -57,7 +57,7 @@
         <codeElement xsi:type="code:DecimalType" name="decimal"/>
         <codeElement xsi:type="code:VoidType" name="void"/>
       </codeElement>
-      <codeElement xsi:type="code:ClassUnit" name="[333 325 313 310 293 278 270]">
+      <codeElement xsi:type="code:ClassUnit" name="n_param_criterio">
         <annotation text="Functions Collection Type"/>
       </codeElement>
     </codeElement>
