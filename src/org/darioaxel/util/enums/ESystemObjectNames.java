@@ -2,7 +2,8 @@ package org.darioaxel.util.enums;
 
 public enum ESystemObjectNames {
 
-	SYSTEM_OBJECT_UNIT("SystemObjectsUnit");
+	SYSTEM_OBJECT_UNIT("SystemObjectsUnit"),
+	ON_METHOD_ATTRIBUTE("onMethodObject");
 	
 	private String description;
 	

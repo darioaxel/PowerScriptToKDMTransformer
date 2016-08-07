@@ -33,15 +33,19 @@
         <annotation text="Menu Type"/>
         <codeElement xsi:type="code:MemberUnit" name="m_espera" type="//@model.1/@codeElement.1/@codeElement.0" export="protected"/>
         <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="m_mydata"/>
           <annotation text="On method"/>
         </codeElement>
         <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="m_mydata"/>
           <annotation text="On method"/>
         </codeElement>
         <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="m_espera"/>
           <annotation text="On method"/>
         </codeElement>
         <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="m_espera"/>
           <annotation text="On method"/>
         </codeElement>
       </codeElement>

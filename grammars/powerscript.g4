@@ -179,8 +179,16 @@ arrayValueInstantiation
 
 // 6.1 Object Declaration
 objectDeclaration
-	:  Identifier Identifier objectValueInstantiation? delimiter?
-	|  'this' '.' Identifier objectValueInstantiation delimiter?
+	:  objectDeclarationTypeIdentifier objectDeclarationIdentifier objectValueInstantiation? delimiter?
+	|  'this' '.' objectDeclarationIdentifier objectValueInstantiation delimiter? 
+	;
+
+objectDeclarationTypeIdentifier
+	: Identifier
+	;
+
+objectDeclarationIdentifier
+	: Identifier
 	;
 	
 objectValueInstantiation
@@ -484,10 +492,13 @@ throwStatement
 	;
 
 callStatement
-	: 'call' Identifier callStatementSubControl? '::' creatorType delimiter?
-	| 'call' Identifier callStatementSubControl? '::' Identifier delimiter?
+	: 'call' callStatementIdentifier callStatementSubControl? '::' creatorType delimiter?
+	| 'call' callStatementIdentifier callStatementSubControl? '::' Identifier delimiter?
 	;
 
+callStatementIdentifier
+	: Identifier
+	;
 callStatementSubControl
 	: '`' Identifier
 	;	

@@ -3,7 +3,9 @@ package org.darioaxel.mapper;
 import java.util.List;
 
 import org.darioaxel.mapper.code.MoDiscoKDM;
+import org.darioaxel.util.enums.EActionElementTypes;
 import org.darioaxel.util.enums.EPowerscriptFileTypes;
+import org.darioaxel.util.enums.ESystemObjectNames;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionElement;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionFactory;
@@ -14,8 +16,10 @@ import org.eclipse.gmt.modisco.omg.kdm.action.Reads;
 import org.eclipse.gmt.modisco.omg.kdm.action.Writes;
 import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.ClassUnit;
+import org.eclipse.gmt.modisco.omg.kdm.code.CodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodePackage;
 import org.eclipse.gmt.modisco.omg.kdm.code.ExportKind;
+import org.eclipse.gmt.modisco.omg.kdm.code.Extends;
 import org.eclipse.gmt.modisco.omg.kdm.code.MethodKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.Package;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeAssembly;
@@ -43,6 +47,7 @@ import org.eclipse.gmt.modisco.omg.kdm.code.StorableUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.TemplateParameter;
 import org.eclipse.gmt.modisco.omg.kdm.code.TemplateUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.Value;
+import org.eclipse.gmt.modisco.omg.kdm.core.CoreFactory;
 import org.eclipse.gmt.modisco.omg.kdm.core.Element;
 import org.eclipse.gmt.modisco.omg.kdm.core.KDMEntity;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.Annotation;
@@ -61,6 +66,8 @@ public final class KDMElementFactory {
 	
 	private static final KdmFactory		KDM_FACTORY					= KdmFactory.eINSTANCE;
 	private static final CodeFactory	CODE_FACTORY				= CodeFactory.eINSTANCE;
+	private static final ActionFactory  ACTION_FACTORY				= ActionFactory.eINSTANCE;
+	private static final CoreFactory	CORE_FACTORY				= CoreFactory.eINSTANCE;
 	
 	public static final String			DATAWINDOW_ANNOTATION		= "Datawindow object";
 	public static final String			STRUCT_ANNOTATION			= "Struct object";
@@ -127,7 +134,14 @@ public final class KDMElementFactory {
 		anno.setText(text);
 		kdmEntity.getAnnotation().add(anno);
 	}
-
+	
+	private static void addAttribute(String tag, String value, final MethodUnit method) {
+		Attribute anno = KDM_FACTORY.createAttribute();
+		anno.setTag(tag);
+		anno.setValue(value);
+		method.getAttribute().add(anno);
+	}
+	
 	public static CodeAssembly createCodeAssembly(final String name) {
 		CodeAssembly assembly = CODE_FACTORY.createCodeAssembly();
 		assembly.setName(name);
@@ -185,5 +199,53 @@ public final class KDMElementFactory {
 		 
 		return sharedUnit;
 	}
+
+	public static ActionElement createActionElementOnMethodCall(AbstractCodeElement member) {
+		ActionElement action = ACTION_FACTORY.createActionElement();
+		action.setKind(EActionElementTypes.ON_METHOD_CALL.Description());
+		
+		Calls call = ACTION_FACTORY.createCalls();
+		call.setTo((ControlElement) member);
+		
+		action.getActionRelation().add(call);		
+		return action;
+	}
+	
+	public static Calls createCalls(final ActionElement expression, final ControlElement method) {
+		Calls calls = ACTION_FACTORY.createCalls();
+		calls.setFrom(expression);
+		calls.setTo(method);
+		return calls;
+	}
+
+	public static void createAttributeOnMethod(final MethodUnit method, String objectParent) {
+		addAttribute(ESystemObjectNames.ON_METHOD_ATTRIBUTE.Description(), objectParent, method);
+	}
+
+	public static BlockUnit createBlockUnit() {
+		return ACTION_FACTORY.createBlockUnit();
+	}
+
+	public static StorableUnit createLocalVariable(String id) {
+		StorableUnit storableUnit = CODE_FACTORY.createStorableUnit();
+		storableUnit.setKind(StorableKind.LOCAL);
+		storableUnit.setName(id);
+		return storableUnit;
+	}
+
+	public static ActionElement createActionElement(String description) {
+		ActionElement action = ACTION_FACTORY.createActionElement();
+		action.setKind(description);
+		return action;
+	}
+
+	public static Extends createExtendsRelation(Datatype from, Datatype to) {
+		Extends ext = CODE_FACTORY.createExtends();
+		ext.setFrom(from);
+		ext.setTo(to);
+		return ext;
+	}
+
+	
 
 }
