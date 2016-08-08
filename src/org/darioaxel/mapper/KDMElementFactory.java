@@ -7,6 +7,7 @@ import org.darioaxel.util.enums.EActionElementTypes;
 import org.darioaxel.util.enums.EPowerscriptFileTypes;
 import org.darioaxel.util.enums.ESystemObjectNames;
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.gmt.modisco.omg.kdm.action.AbstractActionRelationship;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionElement;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionFactory;
 import org.eclipse.gmt.modisco.omg.kdm.action.BlockUnit;
@@ -222,8 +223,12 @@ public final class KDMElementFactory {
 		addAttribute(ESystemObjectNames.ON_METHOD_ATTRIBUTE.Description(), objectParent, method);
 	}
 
-	public static BlockUnit createBlockUnit() {
-		return ACTION_FACTORY.createBlockUnit();
+	public static BlockUnit createBlockUnit(List<ActionElement> actions) {
+		BlockUnit block = ACTION_FACTORY.createBlockUnit();
+		for(ActionElement ae: actions) {
+			block.getCodeElement().add(ae);
+		}
+		return block;
 	}
 
 	public static StorableUnit createLocalVariable(String id) {

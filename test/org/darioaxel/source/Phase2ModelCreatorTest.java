@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.util.Properties;
 
 import org.darioaxel.mapper.KDMElementFactory;
-import org.darioaxel.mapper.PowerscriptElementRepository;
 import org.darioaxel.mapper.code.CodeModels;
 import org.darioaxel.mapper.source.InventoryModels;
 import org.darioaxel.util.FileUtils;
@@ -31,13 +30,13 @@ protected Properties prop = new Properties();
 	public void createPhase2ForProyectTest() {
 		
 		Path root = Paths.get("/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject");
-		Path result = Paths.get("/home/darioaxel/git/PowerScriptGrammar/testing_results/createPhase2ModelTestNew.xmi");
+		Path result = Paths.get("/home/darioaxel/git/PowerScriptGrammar/testing_results/createPhase2ModelTest.xmi");
 		
 		InventoryModel inventoryModel = InventoryModels.create(root.toFile());
 		Segment segment = KDMElementFactory.createSegment();
 		segment.getModel().add(inventoryModel);
 		
-		CodeModel codeModel = CodeModels.create(inventoryModel);
+		CodeModel codeModel = CodeModels.create(inventoryModel, prop);
 		segment.getModel().add(codeModel);
 		
 		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());
@@ -55,7 +54,7 @@ protected Properties prop = new Properties();
 		Segment segment = KDMElementFactory.createSegment();
 		segment.getModel().add(inventoryModel);
 		
-		CodeModel codeModel = CodeModels.create(inventoryModel);
+		CodeModel codeModel = CodeModels.create(inventoryModel, prop);
 		segment.getModel().add(codeModel);
 		
 		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());
@@ -73,7 +72,7 @@ protected Properties prop = new Properties();
 		Segment segment = KDMElementFactory.createSegment();
 		segment.getModel().add(inventoryModel);
 		
-		CodeModel codeModel = CodeModels.create(inventoryModel);
+		CodeModel codeModel = CodeModels.create(inventoryModel, prop);
 		segment.getModel().add(codeModel);
 		
 		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());

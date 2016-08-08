@@ -43,5 +43,22 @@ protected Properties prop = new Properties();
 		
 		assertTrue(result.toFile().exists());
 	}
-
+	
+	@Test
+	public void createPhase3ForProyectTest() {
+		
+		Path root = Paths.get("/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject");
+		Path result = Paths.get("/home/darioaxel/git/PowerScriptGrammar/testing_results/createPhase3ModelTest.xmi");
+		
+		InventoryModel inventoryModel = InventoryModels.create(root.toFile());
+		Segment segment = KDMElementFactory.createSegment();
+		segment.getModel().add(inventoryModel);
+		
+		CodeModel codeModel = CodeModels.create(inventoryModel);
+		segment.getModel().add(codeModel);
+		
+		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());
+		
+		assertTrue(result.toFile().exists());
+	}	
 }

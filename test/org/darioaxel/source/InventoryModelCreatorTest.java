@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.darioaxel.mapper.KDMElementFactory;
-import org.darioaxel.mapper.PowerscriptElementRepository;
 import org.darioaxel.mapper.source.InventoryModels;
 import org.darioaxel.mapper.source.Segments;
 import org.darioaxel.util.FileUtils;

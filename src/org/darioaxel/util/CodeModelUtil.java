@@ -170,7 +170,7 @@ public final class CodeModelUtil {
 		return null;
 	}
 
-	public static void addBlockUnitToOnMethod(BlockUnit block, String onMethodObject, String unitClassName, CodeModel codeModel) {
+	public static void addBlockUnitToOnMethod(BlockUnit block, String onMethodObject, String unitClassName, final CodeModel codeModel) {
 
 		for(AbstractCodeElement e : codeModel.getCodeElement()) {
 			if (e instanceof CompilationUnit ) {
@@ -179,7 +179,7 @@ public final class CodeModelUtil {
 					if ( ee.getName().equals(unitClassName) && ee instanceof ClassUnit) {
 						ClassUnit cls = (ClassUnit) ee;					
 						for(AbstractCodeElement c : cls.getCodeElement()) {
-							if (c instanceof MethodUnit) {
+							if (c instanceof MethodUnit && !c.getAttribute().isEmpty()) {
 								MethodUnit m = (MethodUnit) c;
 								for(Attribute a : m.getAttribute()) {
 									if(a.getValue().equals(onMethodObject)) {
@@ -211,7 +211,7 @@ public final class CodeModelUtil {
 		return null;
 	}
 
-	public static void addCodeRelationship(AbstractCodeRelationship ext, String unitClassName, CodeModel codeModel) {
+	public static void addCodeRelationship(AbstractCodeRelationship ext, String unitClassName, final CodeModel codeModel) {
 		
 		for(AbstractCodeElement e : codeModel.getCodeElement()) {
 			if (e instanceof CompilationUnit ) {

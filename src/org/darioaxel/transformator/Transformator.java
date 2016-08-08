@@ -2,17 +2,9 @@ package org.darioaxel.transformator;
 
 import java.io.File;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
-
-import org.eclipse.gmt.modisco.omg.kdm.code.LanguageUnit;
-import org.darioaxel.mapper.IMapperElementRepository;
-import org.darioaxel.mapper.PowerscriptElementRepository;
-import org.darioaxel.mapper.code.language.LanguageUnits;
 import org.darioaxel.mapper.source.InventoryModels;
 import org.darioaxel.mapper.source.Segments;
 import org.darioaxel.util.FileUtils;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.Segment;
 import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
 

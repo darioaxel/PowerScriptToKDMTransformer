@@ -39,6 +39,7 @@ public class Phase3SourceListener extends powerscriptBaseListener implements Pow
 	private String unitClassName;
 	private LanguageUnitCache languageCache;
 	private CodeElement mainCodeElement;
+	private ClassUnit superClass;
 	
 	private boolean insideForward = false;
 	
@@ -71,12 +72,12 @@ public class Phase3SourceListener extends powerscriptBaseListener implements Pow
 	public void exitTypeDeclarationBegin(powerscriptParser.TypeDeclarationBeginContext ctx) { 
 		if (insideForward == true && ctx.scopeModificator() != null) {
 			ClassUnit a = CodeModelUtil.getClassByName(unitClassName, codeModel);
-			ClassUnit b = CodeModelUtil.getClassByName(ctx.typeDeclarationBeginIdentifier().typeParentIdentifier().getText(), codeModel);
-			Extends ext = KDMElementFactory.createExtendsRelation((Datatype) a,(Datatype) b);
-			CodeModelUtil.addCodeRelationship(ext, unitClassName, codeModel);
+			superClass = CodeModelUtil.getClassByName(ctx.typeDeclarationBeginIdentifier().typeParentIdentifier().getText(), codeModel);
+			Extends ext = KDMElementFactory.createExtendsRelation((Datatype) a,(Datatype) superClass);
+			CodeModelUtil.addCodeRelationship(ext, unitClassName, codeModel);			
 		}		
 	}
-	/*		
+		
 	@Override 
 	public void exitOnImplementation(powerscriptParser.OnImplementationContext ctx) {
 		String onMethodObjectName = ctx.onImplementationHead().onImplementationIdentifier().expression().getText();
@@ -103,29 +104,27 @@ public class Phase3SourceListener extends powerscriptBaseListener implements Pow
 			if (ae != null) actions.add(ae);
 		}
 	
-		if(calledItem == null) return;
-		onMethodCallAction = KDMElementFactory.createActionElementOnMethodCall(calledItem);
-		BlockUnit block = KDMElementFactory.createBlockUnit();
-		block.getCodeElement().add(onMethodCallAction);
-		
-		CodeModelUtil.addBlockUnitToOnMethod(block, onMethodObject, unitClassName, codeModel);
+	
+		BlockUnit block = KDMElementFactory.createBlockUnit(actions);
+		CodeModelUtil.addBlockUnitToOnMethod(block, onMethodObjectName, unitClassName, codeModel);
 		
 	}
-*/
+
 	private ActionElement callStatementAction(CallStatementContext callStatement, MethodUnit method ) {
 		ActionElement ae = null;
 		
 		if (callStatement.callStatementIdentifier().getText().equals("super")) {
-			String methodName ="";
-			String superName = method.getType().getName();
+			
+			String creatorTypeId ="";
 			MethodUnit methodCalled = null;
+						
 			if (callStatement.creatorType() != null) {
-				methodName = callStatement.creatorType().getText();
-				
-				ClassUnit memberClass = CodeModelUtil.getClassByName(superName, codeModel);
-				methodCalled = CodeModelUtil.getOnMethodFromClass(superName, getMethodKind(methodName), memberClass);
+			//Exp: call super :: creatorType	
+				creatorTypeId = callStatement.creatorType().getText();
+								
+				methodCalled = CodeModelUtil.getOnMethodFromClass(superClass.getName(), getMethodKind(creatorTypeId), superClass);
 				if (methodCalled == null) {
-					methodCalled = createOnMethod(methodName, superName, superName);
+					methodCalled = createOnMethod(creatorTypeId, superClass.getName(), superClass.getName());
 				}
 			}			
 			

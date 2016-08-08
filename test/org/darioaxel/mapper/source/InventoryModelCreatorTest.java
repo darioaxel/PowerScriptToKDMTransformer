@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 
 import org.darioaxel.mapper.KDMElementFactory;
-import org.darioaxel.mapper.PowerscriptElementRepository;
 import org.darioaxel.util.FileUtils;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
@@ -19,7 +18,6 @@ import org.junit.Test;
 
 public class InventoryModelCreatorTest {
 
-	private PowerscriptElementRepository elements = new PowerscriptElementRepository();	
 	
 	@Test
 	public void createInventoryModelCreatorFromShouldWork() {

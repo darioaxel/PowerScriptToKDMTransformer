@@ -17,15 +17,15 @@
         <inventoryElement xsi:type="source:Directory" name="mydata" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata">
           <inventoryElement xsi:type="source:ResourceDescription" name="mydata.pbg" version="LibraryDescriptor" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/mydata.pbg"/>
           <inventoryElement xsi:type="source:SourceFile" name="m_mydata.srm" version="1470470943000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/m_mydata.srm" language="Powerscript" encoding="not checked"/>
-          <inventoryElement xsi:type="source:SourceFile" name="w_mydata.srw" version="1467989463000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/w_mydata.srw" language="Powerscript" encoding="not checked"/>
+          <inventoryElement xsi:type="source:SourceFile" name="w_mydata.srw" version="1470671839000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/w_mydata.srw" language="Powerscript" encoding="not checked"/>
         </inventoryElement>
         <inventoryElement xsi:type="source:Directory" name="payroll" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/payroll">
-          <inventoryElement xsi:type="source:SourceFile" name="w_payroll.srw" version="1467989668000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/payroll/w_payroll.srw" language="Powerscript" encoding="not checked"/>
+          <inventoryElement xsi:type="source:SourceFile" name="w_payroll.srw" version="1470671871000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/payroll/w_payroll.srw" language="Powerscript" encoding="not checked"/>
           <inventoryElement xsi:type="source:ResourceDescription" name="payroll.pbg" version="LibraryDescriptor" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/payroll/payroll.pbg"/>
           <inventoryElement xsi:type="source:SourceFile" name="m_payroll.srm" version="1467534908000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/payroll/m_payroll.srm" language="Powerscript" encoding="not checked"/>
         </inventoryElement>
       </inventoryElement>
-      <inventoryElement xsi:type="source:SourceFile" name="w_login.srw" version="1467988835000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/w_login.srw" language="Powerscript" encoding="not checked"/>
+      <inventoryElement xsi:type="source:SourceFile" name="w_login.srw" version="1470671930000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/w_login.srw" language="Powerscript" encoding="not checked"/>
     </inventoryElement>
   </model>
   <model xsi:type="code:CodeModel" name="">
@@ -54,12 +54,6 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="m_login">
         <annotation text="Menu Type"/>
-        <codeElement xsi:type="code:MethodUnit" kind="constructor">
-          <annotation text="On method"/>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="destructor">
-          <annotation text="On method"/>
-        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="m_master.srm">
@@ -138,28 +132,6 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="n_param">
         <annotation text="Functions Collection Type"/>
-        <codeElement xsi:type="code:MethodUnit" name="of_read_employee">
-          <annotation text="Function method"/>
-          <codeElement xsi:type="code:Signature">
-            <parameterUnit name="s_dni" type="//@model.1/@codeElement.3/@codeElement.0/@codeElement.2"/>
-            <parameterUnit name="" type="//@model.1/@codeElement.3/@codeElement.0/@codeElement.2" kind="return"/>
-          </codeElement>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" name="of_read_employee_payroll">
-          <annotation text="Function method"/>
-          <codeElement xsi:type="code:Signature">
-            <parameterUnit name="s_dni" type="//@model.1/@codeElement.3/@codeElement.0/@codeElement.2"/>
-            <parameterUnit name="i_month" type="//@model.1/@codeElement.3/@codeElement.0/@codeElement.5"/>
-            <parameterUnit name="i_year" type="//@model.1/@codeElement.3/@codeElement.0/@codeElement.5"/>
-            <parameterUnit name="" type="//@model.1/@codeElement.3/@codeElement.0/@codeElement.2" kind="return"/>
-          </codeElement>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="constructor">
-          <annotation text="On method"/>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="destructor">
-          <annotation text="On method"/>
-        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="m_mydata.srm">
@@ -187,19 +159,6 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="m_mydata">
         <annotation text="Menu Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="m_espera" type="//@model.1/@codeElement.9/@codeElement.1" export="protected"/>
-        <codeElement xsi:type="code:MethodUnit" kind="constructor">
-          <annotation text="On method"/>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="destructor">
-          <annotation text="On method"/>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="constructor">
-          <annotation text="On method"/>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="destructor">
-          <annotation text="On method"/>
-        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="w_mydata.srw">
@@ -227,13 +186,6 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="w_mydata">
         <annotation text="Window Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="n_p" type="//@model.1/@codeElement.9/@codeElement.2" export="protected"/>
-        <codeElement xsi:type="code:MethodUnit" kind="constructor">
-          <annotation text="On method"/>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="destructor">
-          <annotation text="On method"/>
-        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="w_payroll.srw">
@@ -261,13 +213,6 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="w_payroll">
         <annotation text="Window Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="n_p" type="//@model.1/@codeElement.9/@codeElement.3" export="protected"/>
-        <codeElement xsi:type="code:MethodUnit" kind="constructor">
-          <annotation text="On method"/>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="destructor">
-          <annotation text="On method"/>
-        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="m_payroll.srm">
@@ -295,19 +240,6 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="m_payroll">
         <annotation text="Menu Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="m_espera" type="//@model.1/@codeElement.9/@codeElement.4" export="protected"/>
-        <codeElement xsi:type="code:MethodUnit" kind="constructor">
-          <annotation text="On method"/>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="destructor">
-          <annotation text="On method"/>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="constructor">
-          <annotation text="On method"/>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="destructor">
-          <annotation text="On method"/>
-        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="w_login.srw">
@@ -335,41 +267,6 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="w_login">
         <annotation text="Window Type"/>
-        <codeElement xsi:type="code:MemberUnit" name="st_1" type="//@model.1/@codeElement.9/@codeElement.5" export="protected"/>
-        <codeElement xsi:type="code:MemberUnit" name="cb_aceptar" type="//@model.1/@codeElement.9/@codeElement.6" export="protected"/>
-        <codeElement xsi:type="code:MemberUnit" name="sle_clave" type="//@model.1/@codeElement.9/@codeElement.7" export="protected"/>
-        <codeElement xsi:type="code:MethodUnit" kind="constructor">
-          <annotation text="On method"/>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="destructor">
-          <annotation text="On method"/>
-        </codeElement>
-      </codeElement>
-    </codeElement>
-    <codeElement xsi:type="code:SharedUnit" name="SystemObjectsUnit">
-      <codeElement xsi:type="code:ClassUnit" name="menu">
-        <annotation text="System Predefined Object"/>
-      </codeElement>
-      <codeElement xsi:type="code:ClassUnit" name="m_master">
-        <annotation text="System Predefined Object"/>
-      </codeElement>
-      <codeElement xsi:type="code:ClassUnit" name="n_param">
-        <annotation text="System Predefined Object"/>
-      </codeElement>
-      <codeElement xsi:type="code:ClassUnit" name="n_param">
-        <annotation text="System Predefined Object"/>
-      </codeElement>
-      <codeElement xsi:type="code:ClassUnit" name="m_master">
-        <annotation text="System Predefined Object"/>
-      </codeElement>
-      <codeElement xsi:type="code:ClassUnit" name="statictext">
-        <annotation text="System Predefined Object"/>
-      </codeElement>
-      <codeElement xsi:type="code:ClassUnit" name="commandbutton">
-        <annotation text="System Predefined Object"/>
-      </codeElement>
-      <codeElement xsi:type="code:ClassUnit" name="singlelineedit">
-        <annotation text="System Predefined Object"/>
       </codeElement>
     </codeElement>
   </model>

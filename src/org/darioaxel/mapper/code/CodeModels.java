@@ -34,10 +34,10 @@ public class CodeModels {
 				
 		if (toPhase >= 1)
 				phase1(inventoryModel, codeModel);
-		if (toPhase > 2)
+		if (toPhase >= 2)
 				phase2(inventoryModel,codeModel);
 		if (toPhase == 3)			
-			phase3(inventoryModel,codeModel);		
+				phase3(inventoryModel,codeModel);		
 		
 		return codeModel;
 	}
@@ -77,7 +77,7 @@ public class CodeModels {
 		walker.walk();
 	}	
 
-	private static void phase3(InventoryModel inventoryModel, CodeModel codeModel) {
+	private static void phase3(InventoryModel inventoryModel, final CodeModel codeModel) {
 		
 		final InventoryModelWalkerNew walker = new InventoryModelWalkerNew(inventoryModel);
 		Phase3SourceListener sourceListener = new Phase3SourceListener(codeModel);

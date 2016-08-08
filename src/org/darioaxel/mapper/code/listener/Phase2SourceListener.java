@@ -98,6 +98,8 @@ public class Phase2SourceListener extends powerscriptBaseListener implements Pow
 	public void exitOnImplementationIdentifier(powerscriptParser.OnImplementationIdentifierContext ctx) {			
 			String creatorType = ctx.creatorType().getText();			
 			MethodUnit method= KDMElementFactory.createMethodUnit(getMethodKind(creatorType), KDMElementFactory.ON_METHOD);
+			String memberOwner = ctx.expression().getText();
+			KDMElementFactory.createAttributeOnMethod(method, memberOwner);
 			CodeModelUtil.addMethodToClassUnit(unitClassName, method, codeModel);
 	}
 	

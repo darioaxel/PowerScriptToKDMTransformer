@@ -79,7 +79,7 @@ string text = "Aceptar"
 boolean default = true
 end type
 
-event ue_control();
+event ue_control()
 Boolean	lb_acceso = False
 
 IF Lower(GetApplication().AppName) = "myproject" THEN 

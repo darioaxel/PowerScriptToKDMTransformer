@@ -32,28 +32,6 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="n_param">
         <annotation text="Functions Collection Type"/>
-        <codeElement xsi:type="code:MethodUnit" name="of_read_employee">
-          <annotation text="Function method"/>
-          <codeElement xsi:type="code:Signature">
-            <parameterUnit name="s_dni" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.2"/>
-            <parameterUnit name="" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.2" kind="return"/>
-          </codeElement>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" name="of_read_employee_payroll">
-          <annotation text="Function method"/>
-          <codeElement xsi:type="code:Signature">
-            <parameterUnit name="s_dni" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.2"/>
-            <parameterUnit name="i_month" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
-            <parameterUnit name="i_year" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
-            <parameterUnit name="" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.2" kind="return"/>
-          </codeElement>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="constructor">
-          <annotation text="On method"/>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="destructor">
-          <annotation text="On method"/>
-        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="n_param_criterio.sru">
@@ -81,25 +59,6 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="n_param_criterio">
         <annotation text="Functions Collection Type"/>
-        <codeElement xsi:type="code:MethodUnit" name="of_getcriterio">
-          <annotation text="Function method"/>
-          <codeElement xsi:type="code:Signature">
-            <parameterUnit name="" type="//@model.1/@codeElement.1/@codeElement.0/@codeElement.2" kind="return"/>
-          </codeElement>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" name="of_setcriterio">
-          <annotation text="Function method"/>
-          <codeElement xsi:type="code:Signature">
-            <parameterUnit name="as_criterio" type="//@model.1/@codeElement.1/@codeElement.0/@codeElement.2"/>
-            <parameterUnit name="" type="//@model.1/@codeElement.1/@codeElement.0/@codeElement.16" kind="return"/>
-          </codeElement>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="constructor">
-          <annotation text="On method"/>
-        </codeElement>
-        <codeElement xsi:type="code:MethodUnit" kind="destructor">
-          <annotation text="On method"/>
-        </codeElement>
       </codeElement>
     </codeElement>
   </model>

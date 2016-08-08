@@ -11,14 +11,14 @@ integer width = 4261
 integer height = 1872
 boolean maxbox = false
 boolean resizable = false
-event ue_set_payroll ( );
+event ue_set_payroll ( )
 integer i_year, i_month
 string s_dni
 end type
 
 global w_payroll w_payroll
 
-event ue_set_payroll();
+event ue_set_payroll()
 s_dni = "70988722G"
 i_year = 2016
 i_month = 1
