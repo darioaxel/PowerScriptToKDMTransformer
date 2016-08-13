@@ -3,7 +3,8 @@ package org.darioaxel.util.enums;
 public enum EActionElementTypes {
 	
 	ON_METHOD_CALL("on method invocation"), 
-	METHOD_INVOCATION("method invocation");
+	METHOD_INVOCATION("method invocation"), 
+	ASSIGN("Assign");
 	
 	private String description;
 	

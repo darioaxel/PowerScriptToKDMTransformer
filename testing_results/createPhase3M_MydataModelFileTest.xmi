@@ -42,11 +42,37 @@
           <annotation text="On method"/>
           <codeElement xsi:type="action:BlockUnit">
             <codeElement xsi:type="action:ActionElement" kind="method invocation">
+              <annotation text="On Method Called"/>
               <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.1/@codeElement.0/@codeElement.0" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.0"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.1"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.5" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.1"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.2"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.6" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.2"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.3"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.7" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.3"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.4"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.8" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.4"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.5"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.9" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.5"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.6"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.10" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.6"/>
             </codeElement>
           </codeElement>
           <codeElement xsi:type="action:BlockUnit">
             <codeElement xsi:type="action:ActionElement" kind="method invocation">
+              <annotation text="On Method Called"/>
               <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.1/@codeElement.0/@codeElement.1" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.1/@codeElement.0"/>
             </codeElement>
           </codeElement>
@@ -60,15 +86,57 @@
           <annotation text="On method"/>
           <codeElement xsi:type="action:BlockUnit">
             <codeElement xsi:type="action:ActionElement" kind="method invocation">
+              <annotation text="On Method Called"/>
               <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.1/@codeElement.0/@codeElement.0" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.0"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.1"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.11" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.1"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.2"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.12" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.2"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.3"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.5" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.3"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.4"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.6" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.4"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.5"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.7" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.5"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.6"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.8" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.6"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.7"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.9" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.7"/>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" kind="Assign">
+              <actionRelation xsi:type="action:Reads" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.8"/>
+              <actionRelation xsi:type="action:Writes" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.10" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.8"/>
             </codeElement>
           </codeElement>
           <codeElement xsi:type="action:BlockUnit">
             <codeElement xsi:type="action:ActionElement" kind="method invocation">
+              <annotation text="On Method Called"/>
               <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.1/@codeElement.0/@codeElement.1" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.1/@codeElement.0"/>
             </codeElement>
           </codeElement>
         </codeElement>
+        <codeElement xsi:type="code:StorableUnit" name="m_masterstyle" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="m_mastertextcolor" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="m_masterbackcolor" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="m_masterhighlightcolor" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="textsize" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="weight" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="text" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="microhelp" kind="unknown"/>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:SharedUnit" name="SystemObjectsUnit">

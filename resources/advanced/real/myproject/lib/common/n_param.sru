@@ -14,8 +14,9 @@ end prototypes
 
 public function string of_read_employee (string s_dni);
 string ls_tabla
+long li_Fila, li_Filas, ll_codiempl
 
-SELECT stb.tabname INTO :ls_tabla
+SELECT data.tabname INTO :ls_tabla
   FROM personaldata data
  WHERE data.dni = :s_dni
  USING SQLCA;
@@ -30,7 +31,7 @@ end function
 public function string of_read_employee_payroll (string s_dni, integer i_month, integer i_year);
 string ls_tabla
 
-SELECT stb.tabname INTO :ls_tabla
+SELECT data.tabname INTO :ls_tabla
   FROM payroll data
  WHERE data.dni = :s_dni
  AND   data.month = :i_month

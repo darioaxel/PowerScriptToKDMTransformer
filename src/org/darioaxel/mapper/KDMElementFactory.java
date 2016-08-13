@@ -16,6 +16,8 @@ import org.eclipse.gmt.modisco.omg.kdm.action.Creates;
 import org.eclipse.gmt.modisco.omg.kdm.action.Reads;
 import org.eclipse.gmt.modisco.omg.kdm.action.Writes;
 import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeElement;
+import org.eclipse.gmt.modisco.omg.kdm.code.CallableKind;
+import org.eclipse.gmt.modisco.omg.kdm.code.CallableUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.ClassUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodePackage;
@@ -168,12 +170,14 @@ public final class KDMElementFactory {
 		return method;
 	}
 
-	public static ParameterUnit createParamUnit(Datatype type, ParameterKind kind, String parentId) {
+	public static ParameterUnit createParamUnit(Datatype type, ParameterKind kind, String paramName) {
 		ParameterUnit param = CODE_FACTORY.createParameterUnit();
-		param.setName(parentId);
+		param.setName(paramName);
 		param.setKind(kind);
-		param.setType(type);
-		
+		if(type != null) {
+			param.setType(type);
+		}
+				
 		return param;
 	}
 	
@@ -251,6 +255,66 @@ public final class KDMElementFactory {
 		return ext;
 	}
 
+	public static ActionElement createActionElement(String description,	String annotation) {
+		ActionElement ae = createActionElement(description);
+		Annotation ann = KDM_FACTORY.createAnnotation();
+		
+		if (annotation != null) {
+			ann.setText(annotation);
+			ae.getAnnotation().add(ann);
+		}
+			
+		return ae;
+	}
 	
+	public static StorableUnit createVariable(String variableName, String storableKind, Datatype type ) {
+		StorableUnit storableUnit = CODE_FACTORY.createStorableUnit();
+		storableUnit.setKind(getStorableKind(storableKind));
+		storableUnit.setType(type);
+		storableUnit.setName(variableName);
+		return storableUnit;
+	}
+	
+	private static StorableKind getStorableKind(String kind) {
+		if (kind == null) {
+			return StorableKind.UNKNOWN;
+		}
+		return StorableKind.UNKNOWN;
+	}
 
+	public static Value createValue(String text, Datatype type) {
+		Value val = CODE_FACTORY.createValue();
+		val.setName(text);
+		if (type == null) {
+			val.setType(CODE_FACTORY.createDatatype());
+		}
+		val.setType(type);
+		return null;
+	}
+
+	public static Writes createWrites(final ActionElement statement, final DataElement itemToBeWritten) {
+		
+		Writes writeAccess = ACTION_FACTORY.createWrites();
+		writeAccess.setFrom(statement);
+		writeAccess.setTo(itemToBeWritten);
+
+		return writeAccess;
+	}
+	
+	public static Reads createReads(final ActionElement statement, final DataElement itemToBeRead) {
+		
+		Reads readAccess = ACTION_FACTORY.createReads();
+		readAccess.setFrom(statement);
+		readAccess.setTo(itemToBeRead);
+		return readAccess;
+	}
+
+	public static CallableUnit createCallableUnit(String text, String SQLType, String functionName) {
+		CallableUnit call = CODE_FACTORY.createCallableUnit();
+		addAnnotation(SQLType, call);
+		addAnnotation(functionName, call);
+		call.setName(text);
+		call.setKind(CallableKind.STORED);
+		return call;
+	}
 }

@@ -4,6 +4,7 @@ import org.darioaxel.util.enums.ESystemObjectNames;
 import org.eclipse.gmt.modisco.omg.kdm.action.BlockUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeRelationship;
+import org.eclipse.gmt.modisco.omg.kdm.code.CallableUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.ClassUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeItem;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
@@ -14,6 +15,7 @@ import org.eclipse.gmt.modisco.omg.kdm.code.MemberUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.MethodKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.MethodUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.SharedUnit;
+import org.eclipse.gmt.modisco.omg.kdm.code.StorableUnit;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.Attribute;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
@@ -130,6 +132,11 @@ public final class CodeModelUtil {
 		return (SharedUnit) getCompilationUnitByName( codeModel , ESystemObjectNames.SYSTEM_OBJECT_UNIT.Description());
 	}
 
+	public static SharedUnit getSystemSQLSentenceClass(CodeModel codeModel) {
+		
+		return (SharedUnit) getCompilationUnitByName( codeModel , ESystemObjectNames.SYSTEM_SQL_SENTENCE_UNIT.Description());
+	}
+	
 	public static void addSharedUnit(SharedUnit systemObjectsUnit, CodeModel codeModel) {
 
 		codeModel.getCodeElement().add(systemObjectsUnit);
@@ -226,4 +233,37 @@ public final class CodeModelUtil {
 		
 	}
 
+	public static StorableUnit getStorableUnitFromClass(String storeName, String unitClassName, CodeModel codeModel) {
+		ClassUnit cl =  getClassByName(unitClassName, codeModel);
+		if (cl == null) return null;
+		for (CodeItem e : cl.getCodeElement()) {
+			if (e instanceof StorableUnit && e.getName().equals(storeName)) {
+				return (StorableUnit) e;
+			}
+		}
+		return null;
+	}
+
+	public static void addStorableUnitToClass(StorableUnit st, String unitClassName, final CodeModel codeModel) {
+		
+		for(AbstractCodeElement e : codeModel.getCodeElement()) {
+			if (e instanceof CompilationUnit ) {
+				CompilationUnit cu = (CompilationUnit) e;
+				for(AbstractCodeElement ee : cu.getCodeElement()) {
+					if ( ee.getName().equals(unitClassName) && ee instanceof ClassUnit) {
+						((ClassUnit) ee).getCodeElement().add(st);
+					}
+				}
+			}			
+		}			
+	}
+	
+	public static void addSQLSentence(CallableUnit sql, final CodeModel codeModel) {
+		
+		for(AbstractCodeElement e : codeModel.getCodeElement()) {
+			if (e instanceof SharedUnit && e.getName().equals(ESystemObjectNames.SYSTEM_SQL_SENTENCE_UNIT.Description()) ) {
+				((SharedUnit) e).getCodeElement().add(sql);
+			}			
+		}					
+	}
 }

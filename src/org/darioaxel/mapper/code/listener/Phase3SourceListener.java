@@ -11,15 +11,20 @@ import org.darioaxel.grammar.powerscript.powerscriptParser.OnImplementationBodyS
 import org.darioaxel.grammar.powerscript.powerscriptParser.OnImplementationIdentifierContext;
 import org.darioaxel.grammar.powerscript.powerscriptParser.TypeDeclarationBodyContext;
 import org.darioaxel.grammar.powerscript.powerscriptParser.VariableDeclarationContext;
+import org.darioaxel.grammar.powerscript.powerscriptParser.VariableSelectedContext;
 import org.darioaxel.mapper.KDMElementFactory;
 import org.darioaxel.mapper.code.language.LanguageUnitCache;
 import org.darioaxel.util.CodeModelUtil;
 import org.darioaxel.util.enums.EActionElementTypes;
 import org.darioaxel.util.enums.EPowerscriptFileTypes;
+import org.darioaxel.util.enums.ESQLSentenceType;
 import org.darioaxel.util.enums.ESystemObjectNames;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionElement;
 import org.eclipse.gmt.modisco.omg.kdm.action.BlockUnit;
 import org.eclipse.gmt.modisco.omg.kdm.action.Calls;
+import org.eclipse.gmt.modisco.omg.kdm.action.Reads;
+import org.eclipse.gmt.modisco.omg.kdm.action.Writes;
+import org.eclipse.gmt.modisco.omg.kdm.code.CallableUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.ClassUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeItem;
@@ -29,8 +34,11 @@ import org.eclipse.gmt.modisco.omg.kdm.code.Extends;
 import org.eclipse.gmt.modisco.omg.kdm.code.MemberUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.MethodKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.MethodUnit;
+import org.eclipse.gmt.modisco.omg.kdm.code.ParameterKind;
+import org.eclipse.gmt.modisco.omg.kdm.code.ParameterUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.SharedUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.StorableUnit;
+import org.eclipse.gmt.modisco.omg.kdm.code.Value;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
 
 public class Phase3SourceListener extends powerscriptBaseListener implements PowerscriptListener{
@@ -40,6 +48,9 @@ public class Phase3SourceListener extends powerscriptBaseListener implements Pow
 	private LanguageUnitCache languageCache;
 	private CodeElement mainCodeElement;
 	private ClassUnit superClass;
+	private String functionName = null;
+	private List<ParameterUnit> variablesSelected = new ArrayList<ParameterUnit>();
+	private boolean endSelectVariablesToReturn = false;
 	
 	private boolean insideForward = false;
 	
@@ -73,6 +84,12 @@ public class Phase3SourceListener extends powerscriptBaseListener implements Pow
 		if (insideForward == true && ctx.scopeModificator() != null) {
 			ClassUnit a = CodeModelUtil.getClassByName(unitClassName, codeModel);
 			superClass = CodeModelUtil.getClassByName(ctx.typeDeclarationBeginIdentifier().typeParentIdentifier().getText(), codeModel);
+			if (superClass == null) {
+				//If there is no parent class defined, I defined it as a system.object 
+				superClass = KDMElementFactory.createClass(ctx.typeDeclarationBeginIdentifier().typeParentIdentifier().getText(),
+														EPowerscriptFileTypes.System_object);
+				addNewSystemObject(superClass);
+			}
 			Extends ext = KDMElementFactory.createExtendsRelation((Datatype) a,(Datatype) superClass);
 			CodeModelUtil.addCodeRelationship(ext, unitClassName, codeModel);			
 		}		
@@ -128,7 +145,7 @@ public class Phase3SourceListener extends powerscriptBaseListener implements Pow
 				}
 			}			
 			
-			ae = KDMElementFactory.createActionElement(EActionElementTypes.METHOD_INVOCATION.Description());
+			ae = KDMElementFactory.createActionElement(EActionElementTypes.METHOD_INVOCATION.Description(), "On Method Called");
 			Calls ar = KDMElementFactory.createCalls(ae, methodCalled);
 			ae.getActionRelation().add(ar);
 		}
@@ -166,11 +183,39 @@ public class Phase3SourceListener extends powerscriptBaseListener implements Pow
 	private ActionElement objectDeclarationAction(ObjectDeclarationContext objectDeclaration) {
 		String storeName = objectDeclaration.objectDeclarationIdentifier().getText();
 		String type = "unknown";
+		ActionElement ae = null;
 		
 		if (objectDeclaration.objectDeclarationTypeIdentifier() == null) {
-	//		StorableUnit st = KDMElementFactory.createStorableUnit();
+		//'this' '.' objectDeclarationIdentifier 
+			StorableUnit st = CodeModelUtil.getStorableUnitFromClass(storeName, unitClassName, codeModel);
+			if (st == null) {
+				st = KDMElementFactory.createVariable(storeName, null, null);
+				CodeModelUtil.addStorableUnitToClass(st, unitClassName, codeModel);
+			}
+			ae = KDMElementFactory.createActionElement(EActionElementTypes.ASSIGN.Description(), null);
+			Reads reads = null;
+			if (objectDeclaration.objectValueInstantiation().literal() != null) {
+				Value val = KDMElementFactory.createValue(objectDeclaration.objectValueInstantiation().literal().getText(), null);
+				reads = KDMElementFactory.createReads(ae, val);
+				ae.getActionRelation().add(reads);
+			}
+			else {
+				MemberUnit member = CodeModelUtil.getMemberUnit(objectDeclaration.objectValueInstantiation().Identifier().getText(), codeModel);
+				if ( member == null) {
+					return null;
+				}
+				reads = KDMElementFactory.createReads(ae, member);
+				ae.getActionRelation().add(reads);
+			}
+			
+			if  (reads != null) {
+				ae.getActionRelation().add(reads);
+			}
+			Writes writes = KDMElementFactory.createWrites(ae, st);
+			ae.getActionRelation().add(writes);
+			
 		}
-		return null;
+		return ae;
 	}
 	
 /*	
@@ -202,5 +247,42 @@ public class Phase3SourceListener extends powerscriptBaseListener implements Pow
 		systemObjectsUnit.getCodeElement().add(memberClass);
 		CodeModelUtil.addSharedUnit(systemObjectsUnit, codeModel);
 	}
-
+	
+	@Override 
+	public void exitFunctionHeaderIdentification(powerscriptParser.FunctionHeaderIdentificationContext ctx) {
+		functionName = ctx.functionIdentifier().getText();
+	}
+	
+	@Override 
+	public void exitSelectStatement(powerscriptParser.SelectStatementContext ctx) { 
+		if (functionName == null) return;
+		
+		CallableUnit select = KDMElementFactory.createCallableUnit(ctx.getText(), ESQLSentenceType.SELECT.Description(), functionName);
+		if (CodeModelUtil.getSystemSQLSentenceClass(codeModel) == null) {
+			SharedUnit sqlUnit = KDMElementFactory.createSharedUnit(ESystemObjectNames.SYSTEM_SQL_SENTENCE_UNIT.Description());
+			CodeModelUtil.addSharedUnit(sqlUnit, codeModel);
+		}
+		for(ParameterUnit param : variablesSelected) {
+			select.getCodeElement().add(param);
+		}
+		CodeModelUtil.addSQLSentence(select, codeModel);	
+		variablesSelected = new ArrayList<ParameterUnit>();
+		endSelectVariablesToReturn = false;
+	}
+	
+	@Override 
+	public void exitVariablesSelected(powerscriptParser.VariablesSelectedContext ctx) { 
+		for(VariableSelectedContext v  : ctx.variableSelected()) {			
+			ParameterUnit parameter = KDMElementFactory.createParamUnit(null, ParameterKind.RETURN, v.Identifier().getText());
+			variablesSelected.add(parameter);
+		}		
+		endSelectVariablesToReturn = true;
+	}	
+	@Override 
+	public void exitVariableSelected(powerscriptParser.VariableSelectedContext ctx) {
+		if (endSelectVariablesToReturn) {
+			ParameterUnit parameter = KDMElementFactory.createParamUnit(null, ParameterKind.UNKNOWN, ctx.Identifier().getText());
+			variablesSelected.add(parameter);
+		}
+	}
 }

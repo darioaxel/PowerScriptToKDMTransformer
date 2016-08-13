@@ -61,4 +61,22 @@ protected Properties prop = new Properties();
 		
 		assertTrue(result.toFile().exists());
 	}	
+	
+	@Test
+	public void createPhase3N_ParamTest() {
+		
+		Path root = Paths.get("/home/darioaxel/git/PowerScriptGrammar/resources/advanced/n_param_criterio");
+		Path result = Paths.get("/home/darioaxel/git/PowerScriptGrammar/testing_results/createPhase3N_ParamModelTest.xmi");
+		
+		InventoryModel inventoryModel = InventoryModels.create(root.toFile());
+		Segment segment = KDMElementFactory.createSegment();
+		segment.getModel().add(inventoryModel);
+		
+		CodeModel codeModel = CodeModels.create(inventoryModel);
+		segment.getModel().add(codeModel);
+		
+		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());
+		
+		assertTrue(result.toFile().exists());
+	}	
 }

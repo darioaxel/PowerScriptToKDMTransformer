@@ -45,7 +45,7 @@ protected Properties prop = new Properties();
 	}	
 	
 	@Test
-	public void createPhase2ForFileTest() {
+	public void createPhase2N_ParamFileTest() {
 		
 		Path root = Paths.get("/home/darioaxel/git/PowerScriptGrammar/resources/advanced/n_param_criterio");
 		Path result = Paths.get("/home/darioaxel/git/PowerScriptGrammar/testing_results/createPhase2N_Param_CriterioModelFileTest.xmi");

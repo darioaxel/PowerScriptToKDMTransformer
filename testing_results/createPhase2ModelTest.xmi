@@ -12,7 +12,7 @@
           <inventoryElement xsi:type="source:SourceFile" name="m_master.srm" version="1470471854000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/common/m_master.srm" language="Powerscript" encoding="not checked"/>
           <inventoryElement xsi:type="source:SourceFile" name="s_userdata.srs" version="1464621863000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/common/s_userdata.srs" language="Powerscript" encoding="not checked"/>
           <inventoryElement xsi:type="source:ResourceDescription" name="common.pbg" version="LibraryDescriptor" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/common/common.pbg"/>
-          <inventoryElement xsi:type="source:SourceFile" name="n_param.sru" version="1469525195000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/common/n_param.sru" language="Powerscript" encoding="not checked"/>
+          <inventoryElement xsi:type="source:SourceFile" name="n_param.sru" version="1471091596000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/common/n_param.sru" language="Powerscript" encoding="not checked"/>
         </inventoryElement>
         <inventoryElement xsi:type="source:Directory" name="mydata" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata">
           <inventoryElement xsi:type="source:ResourceDescription" name="mydata.pbg" version="LibraryDescriptor" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/mydata.pbg"/>
@@ -54,6 +54,14 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="m_login">
         <annotation text="Menu Type"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="m_login"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="m_login"/>
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="m_master.srm">
@@ -132,6 +140,30 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="n_param">
         <annotation text="Functions Collection Type"/>
+        <codeElement xsi:type="code:MethodUnit" name="of_read_employee">
+          <annotation text="Function method"/>
+          <codeElement xsi:type="code:Signature">
+            <parameterUnit name="s_dni" type="//@model.1/@codeElement.3/@codeElement.0/@codeElement.2"/>
+            <parameterUnit name="" type="//@model.1/@codeElement.3/@codeElement.0/@codeElement.2" kind="return"/>
+          </codeElement>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" name="of_read_employee_payroll">
+          <annotation text="Function method"/>
+          <codeElement xsi:type="code:Signature">
+            <parameterUnit name="s_dni" type="//@model.1/@codeElement.3/@codeElement.0/@codeElement.2"/>
+            <parameterUnit name="i_month" type="//@model.1/@codeElement.3/@codeElement.0/@codeElement.5"/>
+            <parameterUnit name="i_year" type="//@model.1/@codeElement.3/@codeElement.0/@codeElement.5"/>
+            <parameterUnit name="" type="//@model.1/@codeElement.3/@codeElement.0/@codeElement.2" kind="return"/>
+          </codeElement>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="n_param"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="n_param"/>
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="m_mydata.srm">
@@ -159,6 +191,23 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="m_mydata">
         <annotation text="Menu Type"/>
+        <codeElement xsi:type="code:MemberUnit" name="m_espera" type="//@model.1/@codeElement.9/@codeElement.1" export="protected"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="m_mydata"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="m_mydata"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="m_espera"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="m_espera"/>
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="w_mydata.srw">
@@ -186,6 +235,15 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="w_mydata">
         <annotation text="Window Type"/>
+        <codeElement xsi:type="code:MemberUnit" name="n_p" type="//@model.1/@codeElement.3/@codeElement.1" export="protected"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="w_mydata"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="w_mydata"/>
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="w_payroll.srw">
@@ -213,6 +271,15 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="w_payroll">
         <annotation text="Window Type"/>
+        <codeElement xsi:type="code:MemberUnit" name="n_p" type="//@model.1/@codeElement.3/@codeElement.1" export="protected"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="w_payroll"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="w_payroll"/>
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="m_payroll.srm">
@@ -240,6 +307,23 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="m_payroll">
         <annotation text="Menu Type"/>
+        <codeElement xsi:type="code:MemberUnit" name="m_espera" type="//@model.1/@codeElement.9/@codeElement.1" export="protected"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="m_payroll"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="m_payroll"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="m_espera"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="m_espera"/>
+          <annotation text="On method"/>
+        </codeElement>
       </codeElement>
     </codeElement>
     <codeElement xsi:type="code:CompilationUnit" name="w_login.srw">
@@ -267,6 +351,34 @@
       </codeElement>
       <codeElement xsi:type="code:ClassUnit" name="w_login">
         <annotation text="Window Type"/>
+        <codeElement xsi:type="code:MemberUnit" name="st_1" type="//@model.1/@codeElement.9/@codeElement.2" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="cb_aceptar" type="//@model.1/@codeElement.9/@codeElement.3" export="protected"/>
+        <codeElement xsi:type="code:MemberUnit" name="sle_clave" type="//@model.1/@codeElement.9/@codeElement.4" export="protected"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="w_login"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="w_login"/>
+          <annotation text="On method"/>
+        </codeElement>
+      </codeElement>
+    </codeElement>
+    <codeElement xsi:type="code:SharedUnit" name="SystemObjectsUnit">
+      <codeElement xsi:type="code:ClassUnit" name="menu">
+        <annotation text="System Predefined Object"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="m_master">
+        <annotation text="System Predefined Object"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="statictext">
+        <annotation text="System Predefined Object"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="commandbutton">
+        <annotation text="System Predefined Object"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="singlelineedit">
+        <annotation text="System Predefined Object"/>
       </codeElement>
     </codeElement>
   </model>
