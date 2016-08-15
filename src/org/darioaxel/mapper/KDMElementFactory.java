@@ -2,62 +2,46 @@ package org.darioaxel.mapper;
 
 import java.util.List;
 
-import org.darioaxel.mapper.code.MoDiscoKDM;
 import org.darioaxel.util.enums.EActionElementTypes;
 import org.darioaxel.util.enums.EPowerscriptFileTypes;
 import org.darioaxel.util.enums.ESystemObjectNames;
-import org.eclipse.core.runtime.Assert;
-import org.eclipse.gmt.modisco.omg.kdm.action.AbstractActionRelationship;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionElement;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionFactory;
+import org.eclipse.gmt.modisco.omg.kdm.action.Addresses;
 import org.eclipse.gmt.modisco.omg.kdm.action.BlockUnit;
 import org.eclipse.gmt.modisco.omg.kdm.action.Calls;
-import org.eclipse.gmt.modisco.omg.kdm.action.Creates;
 import org.eclipse.gmt.modisco.omg.kdm.action.Reads;
 import org.eclipse.gmt.modisco.omg.kdm.action.Writes;
 import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.CallableKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.CallableUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.ClassUnit;
-import org.eclipse.gmt.modisco.omg.kdm.code.CodeElement;
-import org.eclipse.gmt.modisco.omg.kdm.code.CodePackage;
-import org.eclipse.gmt.modisco.omg.kdm.code.ExportKind;
-import org.eclipse.gmt.modisco.omg.kdm.code.Extends;
-import org.eclipse.gmt.modisco.omg.kdm.code.MethodKind;
-import org.eclipse.gmt.modisco.omg.kdm.code.Package;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeAssembly;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeFactory;
-import org.eclipse.gmt.modisco.omg.kdm.code.CodeItem;
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
 import org.eclipse.gmt.modisco.omg.kdm.code.CompilationUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.ControlElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.DataElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.Datatype;
-import org.eclipse.gmt.modisco.omg.kdm.code.EnumeratedType;
-import org.eclipse.gmt.modisco.omg.kdm.code.HasValue;
-import org.eclipse.gmt.modisco.omg.kdm.code.Imports;
-import org.eclipse.gmt.modisco.omg.kdm.code.InterfaceUnit;
+import org.eclipse.gmt.modisco.omg.kdm.code.ExportKind;
+import org.eclipse.gmt.modisco.omg.kdm.code.Extends;
 import org.eclipse.gmt.modisco.omg.kdm.code.MemberUnit;
+import org.eclipse.gmt.modisco.omg.kdm.code.MethodKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.MethodUnit;
-import org.eclipse.gmt.modisco.omg.kdm.code.Module;
-import org.eclipse.gmt.modisco.omg.kdm.code.Namespace;
+import org.eclipse.gmt.modisco.omg.kdm.code.Package;
 import org.eclipse.gmt.modisco.omg.kdm.code.ParameterKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.ParameterUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.SharedUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.Signature;
 import org.eclipse.gmt.modisco.omg.kdm.code.StorableKind;
 import org.eclipse.gmt.modisco.omg.kdm.code.StorableUnit;
-import org.eclipse.gmt.modisco.omg.kdm.code.TemplateParameter;
-import org.eclipse.gmt.modisco.omg.kdm.code.TemplateUnit;
 import org.eclipse.gmt.modisco.omg.kdm.code.Value;
 import org.eclipse.gmt.modisco.omg.kdm.core.CoreFactory;
-import org.eclipse.gmt.modisco.omg.kdm.core.Element;
 import org.eclipse.gmt.modisco.omg.kdm.core.KDMEntity;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.Annotation;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.Attribute;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.KdmFactory;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.Segment;
-import org.eclipse.gmt.modisco.omg.kdm.kdm.Stereotype;
 import org.eclipse.gmt.modisco.omg.kdm.source.ResourceDescription;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFactory;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
@@ -244,6 +228,7 @@ public final class KDMElementFactory {
 
 	public static ActionElement createActionElement(String description) {
 		ActionElement action = ACTION_FACTORY.createActionElement();
+		action.setName(description);
 		action.setKind(description);
 		return action;
 	}
@@ -289,7 +274,7 @@ public final class KDMElementFactory {
 			val.setType(CODE_FACTORY.createDatatype());
 		}
 		val.setType(type);
-		return null;
+		return val;
 	}
 
 	public static Writes createWrites(final ActionElement statement, final DataElement itemToBeWritten) {
@@ -316,5 +301,12 @@ public final class KDMElementFactory {
 		call.setName(text);
 		call.setKind(CallableKind.STORED);
 		return call;
+	}
+
+	public static Addresses createAddresses(ActionElement thisElement, StorableUnit st) {
+		Addresses add = ACTION_FACTORY.createAddresses();
+		add.setFrom(thisElement);
+		add.setTo(st);		
+		return add;
 	}
 }

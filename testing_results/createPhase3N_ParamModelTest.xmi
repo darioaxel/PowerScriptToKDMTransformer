@@ -57,15 +57,19 @@
           <attribute tag="onMethodObject" value="n_param"/>
           <annotation text="On method"/>
           <codeElement xsi:type="action:BlockUnit">
-            <codeElement xsi:type="action:ActionElement" kind="method invocation">
-              <annotation text="On Method Called"/>
-              <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.2/@codeElement.0/@codeElement.0" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.3/@codeElement.0/@codeElement.0"/>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="method invocation" kind="method invocation">
+                <annotation text="On Method Called"/>
+                <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.2/@codeElement.0/@codeElement.0" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.3/@codeElement.0/@codeElement.0/@codeElement.0"/>
+              </codeElement>
             </codeElement>
           </codeElement>
           <codeElement xsi:type="action:BlockUnit">
-            <codeElement xsi:type="action:ActionElement" kind="method invocation">
-              <annotation text="On Method Called"/>
-              <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.2/@codeElement.0/@codeElement.1" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.3/@codeElement.1/@codeElement.0"/>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="method invocation" kind="method invocation">
+                <annotation text="On Method Called"/>
+                <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.2/@codeElement.0/@codeElement.1" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.3/@codeElement.1/@codeElement.0/@codeElement.0"/>
+              </codeElement>
             </codeElement>
           </codeElement>
         </codeElement>
@@ -118,15 +122,19 @@
           <attribute tag="onMethodObject" value="n_param_criterio"/>
           <annotation text="On method"/>
           <codeElement xsi:type="action:BlockUnit">
-            <codeElement xsi:type="action:ActionElement" kind="method invocation">
-              <annotation text="On Method Called"/>
-              <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.2/@codeElement.0/@codeElement.0" from="//@model.1/@codeElement.1/@codeElement.1/@codeElement.3/@codeElement.0/@codeElement.0"/>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="method invocation" kind="method invocation">
+                <annotation text="On Method Called"/>
+                <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.2/@codeElement.0/@codeElement.0" from="//@model.1/@codeElement.1/@codeElement.1/@codeElement.3/@codeElement.0/@codeElement.0/@codeElement.0"/>
+              </codeElement>
             </codeElement>
           </codeElement>
           <codeElement xsi:type="action:BlockUnit">
-            <codeElement xsi:type="action:ActionElement" kind="method invocation">
-              <annotation text="On Method Called"/>
-              <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.2/@codeElement.0/@codeElement.1" from="//@model.1/@codeElement.1/@codeElement.1/@codeElement.3/@codeElement.1/@codeElement.0"/>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="method invocation" kind="method invocation">
+                <annotation text="On Method Called"/>
+                <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.2/@codeElement.0/@codeElement.1" from="//@model.1/@codeElement.1/@codeElement.1/@codeElement.3/@codeElement.1/@codeElement.0/@codeElement.0"/>
+              </codeElement>
             </codeElement>
           </codeElement>
         </codeElement>

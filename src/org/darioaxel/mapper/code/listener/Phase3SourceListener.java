@@ -6,6 +6,7 @@ import java.util.List;
 import org.darioaxel.grammar.powerscript.powerscriptBaseListener;
 import org.darioaxel.grammar.powerscript.powerscriptParser;
 import org.darioaxel.grammar.powerscript.powerscriptParser.CallStatementContext;
+import org.darioaxel.grammar.powerscript.powerscriptParser.LiteralContext;
 import org.darioaxel.grammar.powerscript.powerscriptParser.ObjectDeclarationContext;
 import org.darioaxel.grammar.powerscript.powerscriptParser.OnImplementationBodyStatementContext;
 import org.darioaxel.grammar.powerscript.powerscriptParser.OnImplementationIdentifierContext;
@@ -20,6 +21,7 @@ import org.darioaxel.util.enums.EPowerscriptFileTypes;
 import org.darioaxel.util.enums.ESQLSentenceType;
 import org.darioaxel.util.enums.ESystemObjectNames;
 import org.eclipse.gmt.modisco.omg.kdm.action.ActionElement;
+import org.eclipse.gmt.modisco.omg.kdm.action.Addresses;
 import org.eclipse.gmt.modisco.omg.kdm.action.BlockUnit;
 import org.eclipse.gmt.modisco.omg.kdm.action.Calls;
 import org.eclipse.gmt.modisco.omg.kdm.action.Reads;
@@ -129,6 +131,7 @@ public class Phase3SourceListener extends powerscriptBaseListener implements Pow
 
 	private ActionElement callStatementAction(CallStatementContext callStatement, MethodUnit method ) {
 		ActionElement ae = null;
+		ActionElement statement = KDMElementFactory.createActionElement(EActionElementTypes.EXPRESSION_STATEMENT.Description());
 		
 		if (callStatement.callStatementIdentifier().getText().equals("super")) {
 			
@@ -149,8 +152,8 @@ public class Phase3SourceListener extends powerscriptBaseListener implements Pow
 			Calls ar = KDMElementFactory.createCalls(ae, methodCalled);
 			ae.getActionRelation().add(ar);
 		}
-		
-		return ae == null ? null : ae;
+		statement.getCodeElement().add(ae);
+		return statement;
 	}
 	
 	private MethodUnit createOnMethod(String type, String parent, String className) {
@@ -182,43 +185,62 @@ public class Phase3SourceListener extends powerscriptBaseListener implements Pow
 	
 	private ActionElement objectDeclarationAction(ObjectDeclarationContext objectDeclaration) {
 		String storeName = objectDeclaration.objectDeclarationIdentifier().getText();
-		String type = "unknown";
-		ActionElement ae = null;
+		
+		ActionElement statement = null;
 		
 		if (objectDeclaration.objectDeclarationTypeIdentifier() == null) {
-		//'this' '.' objectDeclarationIdentifier 
+			// This.whatever = foo 
+			statement = KDMElementFactory.createActionElement(EActionElementTypes.EXPRESSION_STATEMENT.Description());
+			
+			ActionElement assign = KDMElementFactory.createActionElement(EActionElementTypes.ASSIGN.Description());
+			statement.getCodeElement().add(assign);
+			
+			ActionElement fielAccess = KDMElementFactory.createActionElement(EActionElementTypes.FIELD_ACCESS.Description());
+			ActionElement thisElement = KDMElementFactory.createActionElement("this");
+			
+			if(objectDeclaration.objectValueInstantiation() != null) {
+				if(objectDeclaration.objectValueInstantiation().literal() != null) {
+			
+				Datatype type = getDatatypeFromLiteral(objectDeclaration.objectValueInstantiation().literal());
+				Value val = KDMElementFactory.createValue(objectDeclaration.objectValueInstantiation().literal().getText(), type);
+				assign.getCodeElement().add(val);
+				}
+			}
+			
 			StorableUnit st = CodeModelUtil.getStorableUnitFromClass(storeName, unitClassName, codeModel);
 			if (st == null) {
 				st = KDMElementFactory.createVariable(storeName, null, null);
 				CodeModelUtil.addStorableUnitToClass(st, unitClassName, codeModel);
 			}
-			ae = KDMElementFactory.createActionElement(EActionElementTypes.ASSIGN.Description(), null);
-			Reads reads = null;
-			if (objectDeclaration.objectValueInstantiation().literal() != null) {
-				Value val = KDMElementFactory.createValue(objectDeclaration.objectValueInstantiation().literal().getText(), null);
-				reads = KDMElementFactory.createReads(ae, val);
-				ae.getActionRelation().add(reads);
-			}
-			else {
-				MemberUnit member = CodeModelUtil.getMemberUnit(objectDeclaration.objectValueInstantiation().Identifier().getText(), codeModel);
-				if ( member == null) {
-					return null;
-				}
-				reads = KDMElementFactory.createReads(ae, member);
-				ae.getActionRelation().add(reads);
-			}
 			
-			if  (reads != null) {
-				ae.getActionRelation().add(reads);
-			}
-			Writes writes = KDMElementFactory.createWrites(ae, st);
-			ae.getActionRelation().add(writes);
+			Addresses relation = KDMElementFactory.createAddresses(thisElement, st);
+			fielAccess.getActionRelation().add(relation);
+			fielAccess.getCodeElement().add(thisElement);
+			assign.getCodeElement().add(fielAccess);
+			statement.getCodeElement().add(assign);
 			
+		
 		}
-		return ae;
+		return statement;
 	}
 	
-/*	
+	private Datatype getDatatypeFromLiteral(LiteralContext literal) {
+		if (literal.BooleanLiteral() != null) {
+			return languageCache.getDatatypeFromString("boolean");
+		}
+		else if (literal.CharacterLiteral() != null) {
+			return languageCache.getDatatypeFromString("char");
+		}
+		else if (literal.IntegerLiteral() != null) {
+			return languageCache.getDatatypeFromString("integer");			
+		}
+		else if (literal.StringLiteral() != null) {
+			return languageCache.getDatatypeFromString("string");
+		}
+		return null;
+	}
+
+	/*	
 	@Override 
 	public void exitTypeDeclaration(powerscriptParser.TypeDeclarationContext ctx) { 
 		
