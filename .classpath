@@ -8,56 +8,49 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="lib/antlr-4.5.3-complete.jar"/>
-	<classpathentry kind="lib" path="/home/darioaxel/Trabajo/eclipse/plugins/org.eclipse.modisco.kdm.source.discoverer_0.12.2.201501021045.jar"/>
-	<classpathentry kind="lib" path="/home/darioaxel/Trabajo/eclipse/plugins/org.eclipse.gmt.modisco.omg.kdm.source_0.12.2.201501021045.jar"/>
-	<classpathentry kind="lib" path="/home/darioaxel/Trabajo/eclipse/plugins/org.eclipse.gmt.modisco.omg.kdm_0.12.2.201501021045.jar"/>
-	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.ecore.xmi_2.10.2.v20150123-0348.jar"/>
-	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.ecore_2.10.2.v20150123-0348.jar"/>
-	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.common_2.10.1.v20150123-0348.jar"/>
-	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.equinox.common_3.6.200.v20130402-1505.jar"/>
-	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/log4j-api-2.5.jar"/>
-	<classpathentry kind="lib" path="/home/darioaxel/Eclipse/plugins/org.eclipse.gmt.modisco.omg.kdm_0.12.2.201501021045.jar" sourcepath="/home/darioaxel/Eclipse/plugins/org.eclipse.gmt.modisco.omg.kdm.source_0.12.2.201501021045.jar">
-		<accessrules>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/action/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/action/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/action/util/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/build/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/build/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/build/util/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/code/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/code/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/code/util/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/conceptual/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/conceptual/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/conceptual/util/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/core/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/core/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/core/util/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/data/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/data/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/data/util/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/event/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/event/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/event/util/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/kdm/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/kdm/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/kdm/util/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/platform/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/platform/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/platform/util/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/source/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/source/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/source/util/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/structure/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/structure/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/structure/util/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/ui/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/ui/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/gmt/modisco/omg/kdm/ui/util/*"/>
-			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
-		</accessrules>
+	<classpathentry exported="true" kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.equinox.common_3.6.200.v20130402-1505.jar"/>
+	<classpathentry kind="src" path=".apt_generated">
+		<attributes>
+			<attribute name="optional" value="true"/>
+		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/log4j-core-2.6.2.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/log4j-api-2.6.2.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.ecore_2.12.0.v20160420-0247.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.ecore.xmi_2.12.0.v20160420-0247.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.ecore.change_2.11.0.v20160420-0247.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.common_2.12.0.v20160420-0247.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.mapping_2.9.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.mapping.ui_2.7.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.mapping.ecore_2.6.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.mapping.ecore2xml_2.9.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.mapping.ecore2xml.ui_2.8.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.mapping.ecore2ecore_2.9.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.mapping.ecore2ecore.editor_2.7.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.mapping.ecore.editor_2.6.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.importer_2.9.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.importer.rose_2.8.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.importer.java_2.7.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.importer.ecore_2.8.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.exporter_2.7.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.edit.ui_2.12.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf_2.6.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.edit_2.12.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.ecore.editor_2.12.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.ecore.edit_2.9.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.ecore.change.edit_2.6.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.databinding_1.3.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.databinding.edit_1.3.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.converter_2.7.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.common.ui_2.11.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.codegen_2.11.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.codegen.ui_2.6.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.codegen.ecore_2.12.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.codegen.ecore.ui_2.12.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.emf.ant_2.8.0.v20160526-0356.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/antlr-4.5.3-complete.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.gmt.modisco.kdm.source.discoverer_0.10.0.v201206130817.jar"/>
+	<classpathentry kind="lib" path="/home/darioaxel/git/PowerScriptGrammar/lib/org.eclipse.gmt.modisco.omg.kdm_0.10.0.v201206130817.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

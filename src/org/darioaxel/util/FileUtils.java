@@ -19,7 +19,6 @@ import org.antlr.v4.runtime.TokenSource;
 import org.antlr.v4.runtime.TokenStream;
 import org.darioaxel.grammar.powerscript.powerscriptLexer;
 import org.darioaxel.util.enums.EPowerscriptFileTypes;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -32,9 +31,9 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 public final class FileUtils {
 
-	public static void saveEcoreToXMI(final EObject modelInstance, final String filename, final IProgressMonitor monitor) {
+	public static void saveEcoreToXMI(final EObject modelInstance, final String filename) {
 		try {
-			FileUtils.saveEcoreToXMIUnsafe(modelInstance, filename, monitor);
+			FileUtils.saveEcoreToXMIUnsafe(modelInstance, filename);
 		} catch (StackOverflowError e) {
 			System.err.println("Could not save model due to StackOverflowError. "
 					+ "Increase the default stack size limit for threads by the JVM argument '-Xss'.");
@@ -45,9 +44,9 @@ public final class FileUtils {
 		}
 	}
 
-	private static void saveEcoreToXMIUnsafe(final EObject modelInstance, final String filename, final IProgressMonitor monitor) throws IOException {
+	private static void saveEcoreToXMIUnsafe(final EObject modelInstance, final String filename) throws IOException {
 
-		monitor.subTask("Saving model to file..." + filename);		
+		//monitor.subTask("Saving model to file..." + filename);		
 		XMIResource resource;
 		resource = new XMIResourceImpl();
 		resource.setURI(URI.createFileURI(filename));
@@ -56,29 +55,29 @@ public final class FileUtils {
 		resource.save(Collections.EMPTY_MAP);
 	}
 
-	@SuppressWarnings("unchecked")
-	public static <T extends EPackage> T loadEcoreFromXMIFile(final T modelClass, final String filename) throws IOException {
-
-		ResourceSet resourceSet = new ResourceSetImpl();
-		resourceSet.getPackageRegistry().put(modelClass.getNsURI(), modelClass);
-
-		Resource resource = resourceSet.createResource(URI.createFileURI(filename));
-		resource.load(null);
-
-		EList<EObject> contents = resource.getContents();
-
-		if (contents.size() == 0) {
-			throw new IOException("File does not contain anything (" + filename + ")");
-		}
-
-		EObject eObject = contents.get(0);
-		if (!(eObject instanceof EPackage)) {
-			throw new ClassCastException("The file content is not of the type EPackage, but of "
-					+ eObject.getClass().getName());
-		}
-
-		return (T) eObject;
-	}
+//	@SuppressWarnings("unchecked")
+//	public static <T extends EPackage> T loadEcoreFromXMIFile(final T modelClass, final String filename) throws IOException {
+//
+//		ResourceSet resourceSet = new ResourceSetImpl();
+//		resourceSet.getPackageRegistry().put(modelClass.getNsURI(), modelClass);
+//
+//		Resource resource = resourceSet.createResource(URI.createFileURI(filename));
+//		resource.load(null);
+//
+//		EList<EObject> contents = resource.getContents();
+//
+//		if (contents.size() == 0) {
+//			throw new IOException("File does not contain anything (" + filename + ")");
+//		}
+//
+//		EObject eObject = contents.get(0);
+//		if (!(eObject instanceof EPackage)) {
+//			throw new ClassCastException("The file content is not of the type EPackage, but of "
+//					+ eObject.getClass().getName());
+//		}
+//
+//		return (T) eObject;
+//	}
 
 	public static TokenStream createPowerscriptInputTokenStream(File program) throws IOException {
 

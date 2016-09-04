@@ -28,7 +28,7 @@ public class InventoryModelCreatorTest {
 		InventoryModel inventoryModel = InventoryModels.create(root.toFile());
 		Segment segment = KDMElementFactory.createSegment();
 		segment.getModel().add(inventoryModel);
-		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());
+		FileUtils.saveEcoreToXMI(segment, result.toString());
 		
 		assertTrue(result.toFile().exists());
 	}

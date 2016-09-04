@@ -50,8 +50,8 @@ import org.junit.Test;
  */
 public class PowerScriptW_mant_segTest {
 
-	private static final Path test_forward_01 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/w_mant_seg/part1.srw");
-	private static final Path test_forward_02 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/w_mant_seg/part2.srw");
+	private static final Path test_forward_01 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/w_mant_seg/w_mant_seg.srw");
+	private static final Path test_forward_02 = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/w_mant_seg/w_mant_seg.srw");
 
 	@Test
 	public void testPowerscript_part1() throws IOException {

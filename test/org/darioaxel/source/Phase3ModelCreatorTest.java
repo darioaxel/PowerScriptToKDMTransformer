@@ -39,7 +39,7 @@ protected Properties prop = new Properties();
 		CodeModel codeModel = CodeModels.create(inventoryModel);
 		segment.getModel().add(codeModel);
 		
-		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());
+		FileUtils.saveEcoreToXMI(segment, result.toString());
 		
 		assertTrue(result.toFile().exists());
 	}
@@ -57,7 +57,7 @@ protected Properties prop = new Properties();
 		CodeModel codeModel = CodeModels.create(inventoryModel);
 		segment.getModel().add(codeModel);
 		
-		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());
+		FileUtils.saveEcoreToXMI(segment, result.toString());
 		
 		assertTrue(result.toFile().exists());
 	}	
@@ -75,7 +75,7 @@ protected Properties prop = new Properties();
 		CodeModel codeModel = CodeModels.create(inventoryModel);
 		segment.getModel().add(codeModel);
 		
-		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());
+		FileUtils.saveEcoreToXMI(segment, result.toString());
 		
 		assertTrue(result.toFile().exists());
 	}	

@@ -38,7 +38,7 @@ public class Phase1ModelCreatorTest {
 		CodeModel codeModel = CodeModels.create(inventoryModel,prop);
 			
 		segment.getModel().add(codeModel);
-		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());
+		FileUtils.saveEcoreToXMI(segment, result.toString());
 		
 		assertTrue(result.toFile().exists());
 	}	
@@ -54,7 +54,7 @@ public class Phase1ModelCreatorTest {
 		CodeModel codeModel = CodeModels.create(inventoryModel, prop);
 			
 		segment.getModel().add(codeModel);
-		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());
+		FileUtils.saveEcoreToXMI(segment, result.toString());
 		
 		assertTrue(result.toFile().exists());
 	}	

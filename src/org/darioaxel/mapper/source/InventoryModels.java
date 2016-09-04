@@ -6,8 +6,6 @@ import java.util.Collection;
 import org.darioaxel.mapper.code.MoDiscoKDM;
 import org.darioaxel.mapper.source.listener.PowerscriptInventoryModelFileListener;
 import org.darioaxel.util.FileUtils;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.gmt.modisco.omg.kdm.source.Directory;
 import org.eclipse.gmt.modisco.omg.kdm.source.InventoryModel;
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFactory;

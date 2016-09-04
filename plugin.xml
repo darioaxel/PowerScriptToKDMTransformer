@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   	<extension point="org.eclipse.modisco.infra.discovery.core.discoverer">
+      	<discoverer class="org.darioaxel.project.discoverer.PowerScriptDiscoverer" id="PowerScriptDiscoverer"/>
+   	</extension>
+   	<extension point="org.eclipse.modisco.infra.discovery.ui.discoverer">
+   		<discoverer
+         discovererID="org.eclipse.modisco.xml.discoverer"
+         icon="icons/xml_tag.gif"
+         label="Discover PowerScript Model"
+         path="PowerScript"/>
+	</extension>
+</plugin>

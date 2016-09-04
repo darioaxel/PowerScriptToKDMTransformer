@@ -1,7 +1,6 @@
 package org.darioaxel.util;
 
 import java.io.File;
-import org.eclipse.core.runtime.IProgressMonitor;
 
 public interface IFileListener {
 
