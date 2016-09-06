@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kdm:Segment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:action="http://www.eclipse.org/MoDisco/kdm/action" xmlns:code="http://www.eclipse.org/MoDisco/kdm/code" xmlns:kdm="http://www.eclipse.org/MoDisco/kdm/kdm" xmlns:source="http://www.eclipse.org/MoDisco/kdm/source">
+  <model xsi:type="source:InventoryModel" name="source references">
+    <inventoryElement xsi:type="source:Directory" name="n_param_criterio" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/n_param_criterio">
+      <inventoryElement xsi:type="source:SourceFile" name="n_param.sru" version="1469525195000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/n_param_criterio/n_param.sru" language="Powerscript" encoding="not checked"/>
+      <inventoryElement xsi:type="source:SourceFile" name="n_param_criterio.sru" version="1470494183000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/n_param_criterio/n_param_criterio.sru" language="Powerscript" encoding="not checked"/>
+    </inventoryElement>
+  </model>
+  <model xsi:type="code:CodeModel" name="">
+    <codeElement xsi:type="code:CompilationUnit" name="n_param.sru">
+      <source>
+        <region file="//@model.0/@inventoryElement.0/@inventoryElement.0" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/n_param_criterio/n_param.sru"/>
+      </source>
+      <codeElement xsi:type="code:LanguageUnit" name="PowerscriptLanguage">
+        <codeElement xsi:type="code:Datatype" name="object"/>
+        <codeElement xsi:type="code:Datatype" name="dynamic"/>
+        <codeElement xsi:type="code:StringType" name="string"/>
+        <codeElement xsi:type="code:OctetType" name="sbyte"/>
+        <codeElement xsi:type="code:IntegerType" name="short"/>
+        <codeElement xsi:type="code:IntegerType" name="integer"/>
+        <codeElement xsi:type="code:IntegerType" name="long"/>
+        <codeElement xsi:type="code:OctetType" name="byte"/>
+        <codeElement xsi:type="code:IntegerType" name="ushort"/>
+        <codeElement xsi:type="code:IntegerType" name="uint"/>
+        <codeElement xsi:type="code:IntegerType" name="ulong"/>
+        <codeElement xsi:type="code:FloatType" name="float"/>
+        <codeElement xsi:type="code:FloatType" name="double"/>
+        <codeElement xsi:type="code:BooleanType" name="boolean"/>
+        <codeElement xsi:type="code:CharType" name="char"/>
+        <codeElement xsi:type="code:DecimalType" name="decimal"/>
+        <codeElement xsi:type="code:VoidType" name="void"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="n_param">
+        <annotation text="Functions Collection Type"/>
+        <codeRelation xsi:type="code:Extends" to="//@model.1/@codeElement.2/@codeElement.0" from="//@model.1/@codeElement.0/@codeElement.1"/>
+        <codeElement xsi:type="code:MethodUnit" name="of_read_employee">
+          <annotation text="Function method"/>
+          <codeElement xsi:type="code:Signature">
+            <parameterUnit name="s_dni" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.2"/>
+            <parameterUnit name="" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.2" kind="return"/>
+          </codeElement>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" name="of_read_employee_payroll">
+          <annotation text="Function method"/>
+          <codeElement xsi:type="code:Signature">
+            <parameterUnit name="s_dni" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.2"/>
+            <parameterUnit name="i_month" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
+            <parameterUnit name="i_year" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
+            <parameterUnit name="" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.2" kind="return"/>
+          </codeElement>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="n_param"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="n_param"/>
+          <annotation text="On method"/>
+          <codeElement xsi:type="action:BlockUnit">
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="method invocation" kind="method invocation">
+                <annotation text="On Method Called"/>
+                <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.2/@codeElement.0/@codeElement.0" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.3/@codeElement.0/@codeElement.0/@codeElement.0"/>
+              </codeElement>
+            </codeElement>
+          </codeElement>
+          <codeElement xsi:type="action:BlockUnit">
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="method invocation" kind="method invocation">
+                <annotation text="On Method Called"/>
+                <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.2/@codeElement.0/@codeElement.1" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.3/@codeElement.1/@codeElement.0/@codeElement.0"/>
+              </codeElement>
+            </codeElement>
+          </codeElement>
+        </codeElement>
+      </codeElement>
+    </codeElement>
+    <codeElement xsi:type="code:CompilationUnit" name="n_param_criterio.sru">
+      <source>
+        <region file="//@model.0/@inventoryElement.0/@inventoryElement.1" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/n_param_criterio/n_param_criterio.sru"/>
+      </source>
+      <codeElement xsi:type="code:LanguageUnit" name="PowerscriptLanguage">
+        <codeElement xsi:type="code:Datatype" name="object"/>
+        <codeElement xsi:type="code:Datatype" name="dynamic"/>
+        <codeElement xsi:type="code:StringType" name="string"/>
+        <codeElement xsi:type="code:OctetType" name="sbyte"/>
+        <codeElement xsi:type="code:IntegerType" name="short"/>
+        <codeElement xsi:type="code:IntegerType" name="integer"/>
+        <codeElement xsi:type="code:IntegerType" name="long"/>
+        <codeElement xsi:type="code:OctetType" name="byte"/>
+        <codeElement xsi:type="code:IntegerType" name="ushort"/>
+        <codeElement xsi:type="code:IntegerType" name="uint"/>
+        <codeElement xsi:type="code:IntegerType" name="ulong"/>
+        <codeElement xsi:type="code:FloatType" name="float"/>
+        <codeElement xsi:type="code:FloatType" name="double"/>
+        <codeElement xsi:type="code:BooleanType" name="boolean"/>
+        <codeElement xsi:type="code:CharType" name="char"/>
+        <codeElement xsi:type="code:DecimalType" name="decimal"/>
+        <codeElement xsi:type="code:VoidType" name="void"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="n_param_criterio">
+        <annotation text="Functions Collection Type"/>
+        <codeRelation xsi:type="code:Extends" to="//@model.1/@codeElement.2/@codeElement.0" from="//@model.1/@codeElement.1/@codeElement.1"/>
+        <codeElement xsi:type="code:MethodUnit" name="of_getcriterio">
+          <annotation text="Function method"/>
+          <codeElement xsi:type="code:Signature">
+            <parameterUnit name="" type="//@model.1/@codeElement.1/@codeElement.0/@codeElement.2" kind="return"/>
+          </codeElement>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" name="of_setcriterio">
+          <annotation text="Function method"/>
+          <codeElement xsi:type="code:Signature">
+            <parameterUnit name="as_criterio" type="//@model.1/@codeElement.1/@codeElement.0/@codeElement.2"/>
+            <parameterUnit name="" type="//@model.1/@codeElement.1/@codeElement.0/@codeElement.16" kind="return"/>
+          </codeElement>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="n_param_criterio"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="n_param_criterio"/>
+          <annotation text="On method"/>
+          <codeElement xsi:type="action:BlockUnit">
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="method invocation" kind="method invocation">
+                <annotation text="On Method Called"/>
+                <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.2/@codeElement.0/@codeElement.0" from="//@model.1/@codeElement.1/@codeElement.1/@codeElement.3/@codeElement.0/@codeElement.0/@codeElement.0"/>
+              </codeElement>
+            </codeElement>
+          </codeElement>
+          <codeElement xsi:type="action:BlockUnit">
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="method invocation" kind="method invocation">
+                <annotation text="On Method Called"/>
+                <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.2/@codeElement.0/@codeElement.1" from="//@model.1/@codeElement.1/@codeElement.1/@codeElement.3/@codeElement.1/@codeElement.0/@codeElement.0"/>
+              </codeElement>
+            </codeElement>
+          </codeElement>
+        </codeElement>
+      </codeElement>
+    </codeElement>
+    <codeElement xsi:type="code:SharedUnit" name="SystemObjectsUnit">
+      <codeElement xsi:type="code:ClassUnit" name="nonvisualobject">
+        <annotation text="System Predefined Object"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="nonvisualobject"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="nonvisualobject"/>
+          <annotation text="On method"/>
+        </codeElement>
+      </codeElement>
+    </codeElement>
+    <codeElement xsi:type="code:SharedUnit" name="SystemSQLSentenceUnit">
+      <codeElement xsi:type="code:CallableUnit" name="SELECTstb.tabnameINTO:ls_tablaFROMpersonaldatadataWHEREdata.dni=:s_dniUSINGSQLCA;" kind="stored">
+        <annotation text="Select"/>
+        <annotation text="of_read_employee"/>
+        <codeElement xsi:type="code:ParameterUnit" name="ls_tabla" kind="return"/>
+        <codeElement xsi:type="code:ParameterUnit" name="s_dni" kind="unknown"/>
+      </codeElement>
+      <codeElement xsi:type="code:CallableUnit" name="SELECTstb.tabnameINTO:ls_tablaFROMpayrolldataWHEREdata.dni=:s_dniANDdata.month=:i_monthANDdata.year=:i_yearUSINGSQLCA;" kind="stored">
+        <annotation text="Select"/>
+        <annotation text="of_read_employee_payroll"/>
+        <codeElement xsi:type="code:ParameterUnit" name="ls_tabla" kind="return"/>
+        <codeElement xsi:type="code:ParameterUnit" name="s_dni" kind="unknown"/>
+        <codeElement xsi:type="code:ParameterUnit" name="i_month" kind="unknown"/>
+        <codeElement xsi:type="code:ParameterUnit" name="i_year" kind="unknown"/>
+      </codeElement>
+    </codeElement>
+  </model>
+</kdm:Segment>

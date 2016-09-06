@@ -77,7 +77,7 @@ public class PowerScript05Test {
     private static final Path test_m_login = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/real/myproject/m_login.srm");  
     private static final Path test_w_login = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/real/myproject/w_login.srw");  
     private static final Path test_m_master = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/real/myproject/lib/common/m_master.srm");  
-    private static final Path test_s_userdata = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/real/myproject/lib/common/s_userdata");  
+    private static final Path test_s_userdata = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/real/myproject/lib/common/s_userdata.srs");  
     private static final Path test_n_param = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/real/myproject/lib/common/n_param.sru");  
     private static final Path test_m_mydata = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/m_mydata.srm");  
     private static final Path test_w_mydata = FileSystems.getDefault().getPath("../PowerScriptGrammar/resources/advanced/real/myproject/lib/mydata/w_mydata.srw");  
@@ -107,16 +107,15 @@ public class PowerScript05Test {
         powerscript_05Parser.CompilationUnitContext context01 = parsepowerscript_05(test_m_master.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
-    @Test
-    @Ignore
+      
+    @Test    
     public void test_n_param() throws IOException {
 
         ErrorListenerTest errorListener = new ErrorListenerTest();
         powerscript_05Parser.CompilationUnitContext context01 = parsepowerscript_05(test_n_param.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
+   
     @Test
     public void test_s_userdata() throws IOException {
 
@@ -124,7 +123,7 @@ public class PowerScript05Test {
         powerscript_05Parser.CompilationUnitContext context01 = parsepowerscript_05(test_s_userdata.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
+   
     @Test
     public void test_m_mydata() throws IOException {
 
@@ -204,7 +203,7 @@ public class PowerScript05Test {
         powerscript_05Parser.CompilationUnitContext context01 = parsepowerscript_05(test_onImplementation_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
+ /*   
     @Test
     public void test_eventImplementation_01() throws IOException {
 
@@ -212,7 +211,7 @@ public class PowerScript05Test {
         powerscript_05Parser.CompilationUnitContext context01 = parsepowerscript_05(test_eventImplementation_01.toFile(), errorListener);
         assertFalse(errorListener.isFail());    
     }
-    
+ */   
     @Test
     public void test_eventDeclaration_01() throws IOException {
 

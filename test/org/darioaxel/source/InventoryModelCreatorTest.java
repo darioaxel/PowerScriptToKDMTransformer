@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.darioaxel.mapper.KDMElementFactory;
-import org.darioaxel.mapper.PowerscriptElementRepository;
 import org.darioaxel.mapper.source.InventoryModels;
 import org.darioaxel.mapper.source.Segments;
 import org.darioaxel.util.FileUtils;
@@ -19,17 +18,17 @@ import org.junit.Test;
 public class InventoryModelCreatorTest {
 
 
-	private PowerscriptElementRepository elements = new PowerscriptElementRepository();	
+	
 	Path root = Paths.get("/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject");
 	Path result = Paths.get("/home/darioaxel/git/PowerScriptGrammar/testing_results/createInventoryModelTest.xmi");
 
 	@Test
 	public void createInventoryModelTest() {
 		
-		InventoryModel inventoryModel = InventoryModels.create(elements, root.toFile(), new NullProgressMonitor());
+		InventoryModel inventoryModel = InventoryModels.create(root.toFile());
 		Segment segment = KDMElementFactory.createSegment();
 		segment.getModel().add(inventoryModel);
-		FileUtils.saveEcoreToXMI(segment, result.toString(), new NullProgressMonitor());
+		FileUtils.saveEcoreToXMI(segment, result.toString());
 		
 		assertTrue(result.toFile().exists());
 	}
@@ -38,7 +37,7 @@ public class InventoryModelCreatorTest {
 	public void createInventoryModelLanguagesTest() {
 		
 		Collection<String> languages = new ArrayList<String>();
-		InventoryModel inventoryModel = InventoryModels.create(elements, root.toFile(), languages, new NullProgressMonitor());
+		InventoryModel inventoryModel = InventoryModels.create(root.toFile(), languages);
 			
 		assertTrue(languages.size() > 0);
 	}

@@ -3,6 +3,7 @@ package org.darioaxel.mapper.code.language;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.gmt.modisco.omg.kdm.code.AbstractCodeElement;
 import org.eclipse.gmt.modisco.omg.kdm.code.Datatype;
 import org.eclipse.gmt.modisco.omg.kdm.code.LanguageUnit;
 
@@ -13,19 +14,17 @@ public class LanguageUnitCache {
 
 	public LanguageUnitCache(final LanguageUnit languageUnit) {
 		this.languageUnit = languageUnit;
+		setCache();
 	}
 
 	public LanguageUnit getLanguageUnit() {
 		return languageUnit;
 	}
 	
-	public Datatype getDatatypeFromString(final String datatypeName) throws NotInCacheException {
+	public Datatype getDatatypeFromString(final String datatypeName) {
 		
-		Datatype datatype = cache.get(datatypeName);
+		Datatype datatype = cache.get(datatypeName);	
 		
-		if (datatype == null) {
-			throw new NotInCacheException();
-		}
 		return datatype;
 	}
 
@@ -39,5 +38,10 @@ public class LanguageUnitCache {
 	public void setName(final String name) {
 		languageUnit.setName(name);
 	}
-
+	
+	private void setCache() {
+		for(AbstractCodeElement d : languageUnit.getCodeElement()) {
+			cache.put(d.getName(), (Datatype) d);
+		}
+	}
 }

@@ -11,13 +11,13 @@ integer width = 4261
 integer height = 1872
 boolean maxbox = false
 boolean resizable = false
-event ue_get_employee();
+event ue_get_employee()
 string s_dni
 end type
 
 global w_mydata w_mydata
 
-event ue_set_employee();
+event ue_set_employee()
 s_dni = "70988722G"
 end event
 

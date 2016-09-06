@@ -16,14 +16,14 @@ import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTLexer;
 import org.darioaxel.grammar.powerscript.pbt.powerscriptPBTParser;
 import org.darioaxel.mapper.source.listener.ResourceDescriptionFileListener;
 import org.darioaxel.mapper.source.listener.error.ProjectDescriptorErrorListener;
-import org.darioaxel.project.validator.pbt.PowerbuilderProjectPBTListener;
+import org.darioaxel.project.validator.pbt.Phase1ProjectListener;
 import org.darioaxel.util.enums.EResourceDescription;
 import org.eclipse.gmt.modisco.omg.kdm.source.AbstractInventoryElement;
 import org.eclipse.gmt.modisco.omg.kdm.source.ResourceDescription;
 
 public class PowerscriptResourceDescriptionFileListener extends ResourceDescriptionFileListener {
 	
-	private final PowerbuilderProjectPBTListener pbpPBTListener = new PowerbuilderProjectPBTListener();
+	private final Phase1ProjectListener pbpPBTListener = new Phase1ProjectListener();
 	private final ProjectDescriptorErrorListener pDErrorListener = new ProjectDescriptorErrorListener();
 	
 	@Override

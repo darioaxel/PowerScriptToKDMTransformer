@@ -9,8 +9,10 @@ grammar powerscript;
 @header {
 package org.darioaxel.grammar.powerscript;
 }
-
-
+/**
+*	Original Author: Darío Ureña
+*	E-Mail: darioaxel@gmail.com
+*/
 
 compilationUnit
     :  memberDeclaration*? EOF
@@ -59,7 +61,14 @@ typeDeclarationBegin
 	;
 	
 typeDeclarationBeginIdentifier
-	: 'type' Identifier 'from' Identifier
+	: 'type' typeIdentifier 'from' typeParentIdentifier
+	;
+typeIdentifier
+	: Identifier
+	;
+
+typeParentIdentifier
+	: Identifier
 	;
 	
 typeDeclarationBeginParent
@@ -68,9 +77,13 @@ typeDeclarationBeginParent
 	;
 	
 typeDeclarationWithin
-	: 'within' Identifier
+	: 'within' typeSuperParentIdentifier
 	;
-	
+
+typeSuperParentIdentifier
+	: Identifier
+	;
+
 typeDeclarationBody							
 	: typeDeclarationDescriptor
 	| variableDeclaration
@@ -110,9 +123,9 @@ globalVariableDeclarationBlock
     ;
 
 globalVariableDeclarationBlockBegin
-    : 'variables' delimiter?
-	| 'global variables' delimiter?
-	| 'shared variables' delimiter?
+    : 'variables' delimiter?        #localVariable
+	| 'global variables' delimiter? #globalVariable
+	| 'shared variables' delimiter? #sharedVariable
     ;
 
 globalVariableDeclarationBlockBody
@@ -126,33 +139,56 @@ variableDeclaration
     ;
 
 variableDeclarators
-    :   variableDeclarator (',' variableDeclarator)* delimiter?
+    :   variableDeclarator variableDeclaratorList* delimiter?
     ;
 
+variableDeclaratorList
+	: ',' variableDeclarator
+	;
+
 variableDeclarator
-    :   Identifier '=' literal delimiter?
-	|   Identifier arrayLengthDeclarator arrayValueInstantiation? delimiter?
-	|   Identifier delimiter?
+    :   variableDeclaratorIdentifier '=' literal delimiter? #variableDeclaratorLiteral
+	|   variableDeclaratorIdentifier arrayLengthDeclarator arrayValueInstantiation? delimiter? #variableDeclaratorArray
+	|   variableDeclaratorIdentifier delimiter? #variableDeclaratorWithoutValue
     ;
+
+variableDeclaratorIdentifier
+	: Identifier
+	;
 
 // 6. Constants Declaration
 constantDeclaration
-    :   'constant' type constantDeclarator (',' constantDeclarator)* delimiter?
+    :   'constant' type constantDeclarator constantDeclaratorList* delimiter?
     ;
 
+constantDeclaratorList
+	:  ',' constantDeclarator
+	;
+
 constantDeclarator
-    : Identifier '=' literal delimiter?
-	| Identifier arrayLengthDeclarator arrayValueInstantiation? delimiter?
+    : constantIdentifier '=' literal delimiter?
+	| constantIdentifier arrayLengthDeclarator arrayValueInstantiation? delimiter?
     ;
-	
+
+constantIdentifier
+	: Identifier
+	;
 arrayValueInstantiation
 	:  '=' '{' literal (',' literal)*? '}'
 	;
 
 // 6.1 Object Declaration
 objectDeclaration
-	:  Identifier Identifier objectValueInstantiation? delimiter?
-	|  'this' '.' Identifier objectValueInstantiation delimiter?
+	:  objectDeclarationTypeIdentifier objectDeclarationIdentifier objectValueInstantiation? delimiter?
+	|  'this' '.' objectDeclarationIdentifier objectValueInstantiation delimiter? 
+	;
+
+objectDeclarationTypeIdentifier
+	: Identifier
+	;
+
+objectDeclarationIdentifier
+	: Identifier
 	;
 	
 objectValueInstantiation
@@ -181,7 +217,7 @@ functionDeclarationBlockEnd
 
 // 7. Function Declaration
 functionDeclaration
-    : functionDeclarationHeader parametersList functionDeclarationEnd delimiter
+    : functionDeclarationHeader parametersList functionDeclarationEnd delimiter?
     ;
 
 functionDeclarationHeader
@@ -210,9 +246,13 @@ functionImplementationHeader
     ;
 
 functionHeaderIdentification
-    : 'function' dataTypeName Identifier
-	| 'subroutine' Identifier
+    : 'function' dataTypeName functionIdentifier
+	| 'subroutine' functionIdentifier
     ;
+
+functionIdentifier
+	: Identifier
+	;
 
 functionDeclarationEndThrows
     : 'throws' Identifier
@@ -237,10 +277,7 @@ onImplementationHead
     ;
 
 onImplementationIdentifier
-    : Identifier
-    | expression
-    | 'open'
-    | 'close'
+    : expression '.' creatorType 
     ;
 
 onImplementationBody
@@ -257,7 +294,7 @@ onImplementationEnd
 
 // 11. Event Declaration
 eventDeclaration
-    : 'event' Identifier parametersList ';' delimiter?
+    : 'event' Identifier parametersList? delimiter? 
     ;
 
 creatorType
@@ -273,9 +310,9 @@ eventImplementation
     ;
 
 eventImplementationHead
-    : eventDeclaration
-	| 'event' creatorType ';' delimiter?
-	| 'event' Identifier ('::' Identifier)? ';' delimiter?
+    : eventDeclaration  #eventDeclarationBasic
+	| 'event' creatorType ';' delimiter? #eventDeclarationWithCreator
+	| 'event' Identifier ('::' Identifier)? ';' delimiter? #eventDeclarationParent
     ;
 
 eventImplementationBody 
@@ -295,8 +332,12 @@ parametersDeclarators
     ;
 
 parameterDeclarator
-    : 'readonly'? 'ref'? primitiveType Identifier arrayType?
+    : 'readonly'? 'ref'? primitiveType parameterIdentifier arrayType?
     ;
+    
+parameterIdentifier
+	: Identifier
+	;
 
 arrayType
 	: '[ ]'
@@ -451,10 +492,13 @@ throwStatement
 	;
 
 callStatement
-	: 'call' Identifier callStatementSubControl? '::' creatorType delimiter?
-	| 'call' Identifier callStatementSubControl? '::' Identifier delimiter?
+	: 'call' callStatementIdentifier callStatementSubControl? '::' creatorType delimiter?
+	| 'call' callStatementIdentifier callStatementSubControl? '::' Identifier delimiter?
 	;
 
+callStatementIdentifier
+	: Identifier
+	;
 callStatementSubControl
 	: '`' Identifier
 	;	
@@ -553,7 +597,6 @@ expression
     :   primary delimiter? #literalEndExpression
 	|   variableSelected   #variableSelectedExpression
 	|   expression '.' Identifier delimiter? #objectVariableExpression
-    |   expression '.' creatorType #objectCreatorExpression
     |   expression '[' expression? ']' #arrayValuesExpression
 	|   expression '=' 'create' 'using'? Identifier delimiter? #createUsingExpression	
     |   expression '(' expressionList? ')' delimiter? #subParentExpression
@@ -565,7 +608,7 @@ expression
 	|   expression '>' expression     #GreaterThanExpression
 	|   expression '<=' expression    #LessOrEqualThanExpression
 	|   expression '>=' expression    #BiggerThanExpression
-    |   expression ('==' | '!=') expression #EqualsDistintcExpression
+    |   expression ('==' | '<>') expression #EqualsDistintcExpression
     |   expression 'AND' expression   #AndExpression
     |   expression 'OR' expression	  #OrExpression
 	|   'NOT' expression              #NotExpression
@@ -663,6 +706,7 @@ dataTypeName
     |   'UNSIGNEDLONG'
     |   'ULONG'
     |	'WINDOW'
+	|   'void'
     ;
 
 type
@@ -934,4 +978,5 @@ fragment
 PBLetterOrDigit
     :   [a-zA-Z0-9$_%] // these are the "java letters or digits" below 0xFF
     ;
+
 

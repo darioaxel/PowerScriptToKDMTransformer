@@ -1,12 +1,24 @@
 package org.darioaxel.mapper.code.parser;
 
-public abstract class TypeParser implements ITypeParser
+import org.eclipse.gmt.modisco.omg.kdm.code.CodeModel;
+import org.eclipse.gmt.modisco.omg.kdm.source.SourceFile;
+
+public class TypeParser implements ITypeParser
 {
 	@Override
-	public abstract void parse(Object object);
-
+	public void parse(Object object){};
 	@Override
-	public abstract Object getListener();
+	public Object getListener() {
+		return null;
+	}
 	@Override
-	public abstract void addListener(Object listener);
+	public void addListener(Object listener) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void parse(SourceFile e, CodeModel codeModel) {
+		// TODO Auto-generated method stub
+		
+	};
 }

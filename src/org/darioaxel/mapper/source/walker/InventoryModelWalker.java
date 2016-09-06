@@ -1,6 +1,6 @@
 package org.darioaxel.mapper.source.walker;
 
-import org.darioaxel.mapper.code.parser.PowerscriptSourceFileTypeParser;
+//import org.darioaxel.mapper.code.parser.PowerscriptSourceFileTypeParser;
 import org.darioaxel.mapper.code.parser.TypeParser;
 import org.darioaxel.mapper.source.listener.ResourceDescriptionFileListener;
 import org.darioaxel.mapper.source.listener.SourceFileListener;
@@ -12,18 +12,15 @@ public class InventoryModelWalker implements IInventoryModelWalker{
 	protected final InventoryModel inventoryModel;
 	protected EResourceDescription resource;
 
-	protected TypeParser resourceDescriptorParser;
-	protected TypeParser sourceParser;
-	
+	protected TypeParser resourceDescriptionParser = null;
+	protected TypeParser sourceParser = null;	
 	
 	public InventoryModelWalker(InventoryModel inventoryModel) {
 		this.inventoryModel = inventoryModel;
-		this.sourceParser= new PowerscriptSourceFileTypeParser();
 	}
 	
 	@Override
-	public void walk() {
-			
+	public void walk() {			
 	}
 	
 	public void setSourceFileParser(final TypeParser sourceFileParser){
@@ -31,7 +28,7 @@ public class InventoryModelWalker implements IInventoryModelWalker{
 	}
 	
 	public void setResourceDescriptionParser(final TypeParser resourceDescriptorParser){
-		this.resourceDescriptorParser = resourceDescriptorParser;
+		this.resourceDescriptionParser = resourceDescriptorParser;
 	}
 
 	@Override

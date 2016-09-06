@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kdm:Segment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:action="http://www.eclipse.org/MoDisco/kdm/action" xmlns:code="http://www.eclipse.org/MoDisco/kdm/code" xmlns:kdm="http://www.eclipse.org/MoDisco/kdm/kdm" xmlns:source="http://www.eclipse.org/MoDisco/kdm/source">
+  <model xsi:type="source:InventoryModel" name="source references">
+    <inventoryElement xsi:type="source:Directory" name="phase3variableTesting" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/phase3variableTesting">
+      <inventoryElement xsi:type="source:SourceFile" name="m_mydata.srm" version="1470576263000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/phase3variableTesting/m_mydata.srm" language="Powerscript" encoding="not checked"/>
+    </inventoryElement>
+  </model>
+  <model xsi:type="code:CodeModel" name="">
+    <codeElement xsi:type="code:CompilationUnit" name="m_mydata.srm">
+      <source>
+        <region file="//@model.0/@inventoryElement.0/@inventoryElement.0" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/phase3variableTesting/m_mydata.srm"/>
+      </source>
+      <codeElement xsi:type="code:LanguageUnit" name="PowerscriptLanguage">
+        <codeElement xsi:type="code:Datatype" name="object"/>
+        <codeElement xsi:type="code:Datatype" name="dynamic"/>
+        <codeElement xsi:type="code:StringType" name="string"/>
+        <codeElement xsi:type="code:OctetType" name="sbyte"/>
+        <codeElement xsi:type="code:IntegerType" name="short"/>
+        <codeElement xsi:type="code:IntegerType" name="integer"/>
+        <codeElement xsi:type="code:IntegerType" name="long"/>
+        <codeElement xsi:type="code:OctetType" name="byte"/>
+        <codeElement xsi:type="code:IntegerType" name="ushort"/>
+        <codeElement xsi:type="code:IntegerType" name="uint"/>
+        <codeElement xsi:type="code:IntegerType" name="ulong"/>
+        <codeElement xsi:type="code:FloatType" name="float"/>
+        <codeElement xsi:type="code:FloatType" name="double"/>
+        <codeElement xsi:type="code:BooleanType" name="boolean"/>
+        <codeElement xsi:type="code:CharType" name="char"/>
+        <codeElement xsi:type="code:DecimalType" name="decimal"/>
+        <codeElement xsi:type="code:VoidType" name="void"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="m_mydata">
+        <annotation text="Menu Type"/>
+        <codeRelation xsi:type="code:Extends" to="//@model.1/@codeElement.1/@codeElement.0" from="//@model.1/@codeElement.0/@codeElement.1"/>
+        <codeElement xsi:type="code:MemberUnit" name="m_espera" type="//@model.1/@codeElement.1/@codeElement.0" export="protected"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="m_mydata"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="m_mydata"/>
+          <annotation text="On method"/>
+          <codeElement xsi:type="action:BlockUnit">
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="method invocation" kind="method invocation">
+                <annotation text="On Method Called"/>
+                <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.1/@codeElement.0/@codeElement.0" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.0/@codeElement.0"/>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="&quot;contemporarym_master&quot;" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.2"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.5" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.1/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="134217735" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.6" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.2/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="67108864" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.7" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.3/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="134217728" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.8" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.4/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="8" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.9" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.5/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="400" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.10" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.0/@codeElement.6/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+          </codeElement>
+          <codeElement xsi:type="action:BlockUnit">
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="method invocation" kind="method invocation">
+                <annotation text="On Method Called"/>
+                <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.1/@codeElement.0/@codeElement.1" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.2/@codeElement.1/@codeElement.0/@codeElement.0"/>
+              </codeElement>
+            </codeElement>
+          </codeElement>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="m_espera"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="m_espera"/>
+          <annotation text="On method"/>
+          <codeElement xsi:type="action:BlockUnit">
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="method invocation" kind="method invocation">
+                <annotation text="On Method Called"/>
+                <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.1/@codeElement.0/@codeElement.0" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.0/@codeElement.0"/>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="&quot;Espere... configurando su entorno personalizado ...&quot;" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.2"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.11" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.1/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="&quot;Espere... configurando su entorno personalizado ...&quot;" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.2"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.12" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.2/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="&quot;contemporarym_master&quot;" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.2"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.5" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.3/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="134217735" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.6" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.4/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="67108864" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.7" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.5/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="134217728" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.8" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.6/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="8" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.9" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.7/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="Assign" kind="Assign">
+                <codeElement xsi:type="code:Value" name="400" type="//@model.1/@codeElement.0/@codeElement.0/@codeElement.5"/>
+                <codeElement xsi:type="action:ActionElement" name="field access" kind="field access">
+                  <codeElement xsi:type="action:ActionElement" name="this" kind="this"/>
+                  <actionRelation xsi:type="action:Addresses" to="//@model.1/@codeElement.0/@codeElement.1/@codeElement.10" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.0/@codeElement.8/@codeElement.0/@codeElement.1/@codeElement.0"/>
+                </codeElement>
+              </codeElement>
+            </codeElement>
+          </codeElement>
+          <codeElement xsi:type="action:BlockUnit">
+            <codeElement xsi:type="action:ActionElement" name="expression statement" kind="expression statement">
+              <codeElement xsi:type="action:ActionElement" name="method invocation" kind="method invocation">
+                <annotation text="On Method Called"/>
+                <actionRelation xsi:type="action:Calls" to="//@model.1/@codeElement.1/@codeElement.0/@codeElement.1" from="//@model.1/@codeElement.0/@codeElement.1/@codeElement.4/@codeElement.1/@codeElement.0/@codeElement.0"/>
+              </codeElement>
+            </codeElement>
+          </codeElement>
+        </codeElement>
+        <codeElement xsi:type="code:StorableUnit" name="m_masterstyle" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="m_mastertextcolor" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="m_masterbackcolor" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="m_masterhighlightcolor" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="textsize" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="weight" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="text" kind="unknown"/>
+        <codeElement xsi:type="code:StorableUnit" name="microhelp" kind="unknown"/>
+      </codeElement>
+    </codeElement>
+    <codeElement xsi:type="code:SharedUnit" name="SystemObjectsUnit">
+      <codeElement xsi:type="code:ClassUnit" name="m_master">
+        <annotation text="System Predefined Object"/>
+        <codeElement xsi:type="code:MethodUnit" kind="constructor">
+          <attribute tag="onMethodObject" value="m_master"/>
+          <annotation text="On method"/>
+        </codeElement>
+        <codeElement xsi:type="code:MethodUnit" kind="destructor">
+          <attribute tag="onMethodObject" value="m_master"/>
+          <annotation text="On method"/>
+        </codeElement>
+      </codeElement>
+    </codeElement>
+  </model>
+</kdm:Segment>

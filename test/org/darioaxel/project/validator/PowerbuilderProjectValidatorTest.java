@@ -14,6 +14,6 @@ public class PowerbuilderProjectValidatorTest {
 
 		Path root = Paths.get("/home/darioaxel/git/PowerScriptGrammar/resources/advanced/real/myproject");
 		PowerbuilderProjectValidator validator = new PowerbuilderProjectValidator(root);
-		assertTrue(validator.isValid() == true);
+		assertTrue(validator.isValid());
 	  }
 }

@@ -12,7 +12,8 @@ public enum EPowerscriptFileTypes {
     Language("lng", "Language Type"),
     ImageJPG("jpg", "Image Type"),
     ProjectDefinition("pbt", "Project Definition Type"),
-    Unknown("", "Unknown Type");
+    Unknown("", "Unknown Type"),
+    System_object("", "System Predefined Object");
     
     private final String extension;
     private final String description;

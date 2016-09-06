@@ -5,8 +5,8 @@ import java.nio.file.Path;
 import java.util.Optional;
 import org.darioaxel.mapper.code.parser.LibraryDescriptorTypeParser;
 import org.darioaxel.mapper.code.parser.ProjectDescriptorTypeParser;
-import org.darioaxel.project.validator.pbg.PowerbuilderProjectPBGListener;
-import org.darioaxel.project.validator.pbt.PowerbuilderProjectPBTListener;
+import org.darioaxel.project.validator.pbg.Phase1LibraryListener;
+import org.darioaxel.project.validator.pbt.Phase1ProjectListener;
 import org.darioaxel.util.FileUtils;
 import org.darioaxel.util.enums.EPowerscriptFileTypes;
 
@@ -26,7 +26,7 @@ public class PowerbuilderProjectValidator implements IProjectValidator {
 
 			if (pbt.isPresent()) {			
 				
-				PowerbuilderProjectPBTListener listenerPBT = new PowerbuilderProjectPBTListener();
+				Phase1ProjectListener listenerPBT = new Phase1ProjectListener();
 				ProjectDescriptorTypeParser projectParser = new ProjectDescriptorTypeParser();
 				projectParser.addListener(listenerPBT);
 				projectParser.parse(pbt.get());				
@@ -52,15 +52,15 @@ public class PowerbuilderProjectValidator implements IProjectValidator {
 						
 		if( pbg.toFile().exists()) {
 			
-			PowerbuilderProjectPBGListener listenerPBG = new PowerbuilderProjectPBGListener();
-			LibraryDescriptorTypeParser libraryParser = new LibraryDescriptorTypeParser(pbg, listenerPBG);
+			Phase1LibraryListener listenerPBG = new Phase1LibraryListener();
+	/*		LibraryDescriptorTypeParser libraryParser = new LibraryDescriptorTypeParser(pbg, listenerPBG);
 			libraryParser.parse();
 			
 			for(Path f : listenerPBG.getFileNames()) {
 				Path file = FileUtils.concatWithoutLast(pbt, f);
 				if (file.toFile().exists() == false) return false;
 			}
-			return true;				
+		*/	return true;				
 		}		
 		
 		return false;

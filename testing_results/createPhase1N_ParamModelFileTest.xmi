@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kdm:Segment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:code="http://www.eclipse.org/MoDisco/kdm/code" xmlns:kdm="http://www.eclipse.org/MoDisco/kdm/kdm" xmlns:source="http://www.eclipse.org/MoDisco/kdm/source">
+  <model xsi:type="source:InventoryModel" name="source references">
+    <inventoryElement xsi:type="source:Directory" name="n_param_criterio" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/n_param_criterio">
+      <inventoryElement xsi:type="source:SourceFile" name="n_param.sru" version="1469525195000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/n_param_criterio/n_param.sru" language="Powerscript" encoding="not checked"/>
+      <inventoryElement xsi:type="source:SourceFile" name="n_param_criterio.sru" version="1470494183000" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/n_param_criterio/n_param_criterio.sru" language="Powerscript" encoding="not checked"/>
+    </inventoryElement>
+  </model>
+  <model xsi:type="code:CodeModel" name="">
+    <codeElement xsi:type="code:CompilationUnit" name="n_param.sru">
+      <source>
+        <region file="//@model.0/@inventoryElement.0/@inventoryElement.0" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/n_param_criterio/n_param.sru"/>
+      </source>
+      <codeElement xsi:type="code:LanguageUnit" name="PowerscriptLanguage">
+        <codeElement xsi:type="code:Datatype" name="object"/>
+        <codeElement xsi:type="code:Datatype" name="dynamic"/>
+        <codeElement xsi:type="code:StringType" name="string"/>
+        <codeElement xsi:type="code:OctetType" name="sbyte"/>
+        <codeElement xsi:type="code:IntegerType" name="short"/>
+        <codeElement xsi:type="code:IntegerType" name="integer"/>
+        <codeElement xsi:type="code:IntegerType" name="long"/>
+        <codeElement xsi:type="code:OctetType" name="byte"/>
+        <codeElement xsi:type="code:IntegerType" name="ushort"/>
+        <codeElement xsi:type="code:IntegerType" name="uint"/>
+        <codeElement xsi:type="code:IntegerType" name="ulong"/>
+        <codeElement xsi:type="code:FloatType" name="float"/>
+        <codeElement xsi:type="code:FloatType" name="double"/>
+        <codeElement xsi:type="code:BooleanType" name="boolean"/>
+        <codeElement xsi:type="code:CharType" name="char"/>
+        <codeElement xsi:type="code:DecimalType" name="decimal"/>
+        <codeElement xsi:type="code:VoidType" name="void"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="n_param">
+        <annotation text="Functions Collection Type"/>
+      </codeElement>
+    </codeElement>
+    <codeElement xsi:type="code:CompilationUnit" name="n_param_criterio.sru">
+      <source>
+        <region file="//@model.0/@inventoryElement.0/@inventoryElement.1" path="/home/darioaxel/git/PowerScriptGrammar/resources/advanced/n_param_criterio/n_param_criterio.sru"/>
+      </source>
+      <codeElement xsi:type="code:LanguageUnit" name="PowerscriptLanguage">
+        <codeElement xsi:type="code:Datatype" name="object"/>
+        <codeElement xsi:type="code:Datatype" name="dynamic"/>
+        <codeElement xsi:type="code:StringType" name="string"/>
+        <codeElement xsi:type="code:OctetType" name="sbyte"/>
+        <codeElement xsi:type="code:IntegerType" name="short"/>
+        <codeElement xsi:type="code:IntegerType" name="integer"/>
+        <codeElement xsi:type="code:IntegerType" name="long"/>
+        <codeElement xsi:type="code:OctetType" name="byte"/>
+        <codeElement xsi:type="code:IntegerType" name="ushort"/>
+        <codeElement xsi:type="code:IntegerType" name="uint"/>
+        <codeElement xsi:type="code:IntegerType" name="ulong"/>
+        <codeElement xsi:type="code:FloatType" name="float"/>
+        <codeElement xsi:type="code:FloatType" name="double"/>
+        <codeElement xsi:type="code:BooleanType" name="boolean"/>
+        <codeElement xsi:type="code:CharType" name="char"/>
+        <codeElement xsi:type="code:DecimalType" name="decimal"/>
+        <codeElement xsi:type="code:VoidType" name="void"/>
+      </codeElement>
+      <codeElement xsi:type="code:ClassUnit" name="n_param_criterio">
+        <annotation text="Functions Collection Type"/>
+      </codeElement>
+    </codeElement>
+  </model>
+</kdm:Segment>
